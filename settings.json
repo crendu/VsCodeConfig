@@ -48,11 +48,11 @@
 		}
 	},
 	"terminal.integrated.defaultProfile.windows": "Command Prompt",
-	//"terminal.integrated.defaultProfile.windows": [ "renduc@cr2sx29022.dev.cr2.st.com" ],
+	//"terminal.integrated.defaultProfile.windows": [ "renduc@NeededServer" ],
 	/*"terminal.integrated.shellArgs.windows": [
 		"-t",
-		"renduc@cr2sx29022.dev.cr2.st.com",
-		"cd /nfs/gitstorage/MES/${​​​​​​​env:USERNAME}​​​​​​​​​​​​​​/${workspaceFolderBasename}/$(sed 's:\\\\:/:g' <<< \"${relativeFileDirname}\") ; bash --login"
+		"renduc@NeededServer",
+		"cd /nfs/${​​​​​​​env:USERNAME}​​​​​​​​​​​​​​/${workspaceFolderBasename}/$(sed 's:\\\\:/:g' <<< \"${relativeFileDirname}\") ; bash --login" <-- Don't Work
 	],*/
 
 	// Oracle SQL/PLSQL --> mycelo.oracle-plsql
