@@ -1,0 +1,75 @@
+{
+	/***********
+	 * DISPLAY *
+	 ***********/
+	"editor.renderWhitespace": "boundary",
+	"editor.rulers": [80,120],
+	"editor.suggestSelection": "first",
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": true
+	},
+
+	"files.exclude": {
+		"**/*.o": true,
+		"**/*.updt": true,
+		"**/.factorypath": true,
+		"**/.project": true,
+		"**/.settings": true,
+		"**/.classpath": true
+	},
+	"search.exclude": {
+		"**/*.o": true,
+		"**/*.updt": true,
+		"**/build/": true,
+		"**/target/": true,
+		"**/templates/": true
+	},
+
+	"workbench.colorTheme": "Visual Studio Dark",
+	"workbench.iconTheme": "vscode-icons",
+
+	"security.workspace.trust.enabled": false,
+
+
+	/*************
+	 * EXTENSION *
+	 *************/
+	// Command Prompt SSH --> need openssh
+	"terminal.integrated.profiles.windows": {
+		"PowerShell (No Profile)": {
+			"source": "PowerShell",
+			"args": ["-NoProfile"],
+			"overrideName": true
+		},
+		"Git Bash": null,
+		"Cygwin": {
+			"path": "C:\\cygwin64\\bin\\bash.exe",
+			"args": ["--login"]
+		}
+	},
+	"terminal.integrated.defaultProfile.windows": "Command Prompt",
+	//"terminal.integrated.defaultProfile.windows": [ "renduc@cr2sx29022.dev.cr2.st.com" ],
+	/*"terminal.integrated.shellArgs.windows": [
+		"-t",
+		"renduc@cr2sx29022.dev.cr2.st.com",
+		"cd /nfs/gitstorage/MES/${​​​​​​​env:USERNAME}​​​​​​​​​​​​​​/${workspaceFolderBasename}/$(sed 's:\\\\:/:g' <<< \"${relativeFileDirname}\") ; bash --login"
+	],*/
+
+	// Oracle SQL/PLSQL --> mycelo.oracle-plsql
+	"files.associations": {
+		"*.sql": "oracle",
+		"*.ddl": "oracle",
+		"*.dml": "oracle",
+		"*.pks": "oracle",
+		"*.pkb": "oracle",
+	},
+
+	"C_Cpp.updateChannel": "Insiders",
+	"gitlens.views.commits.showBranchComparison": "branch",
+	"java.home": "C:\\Program Files\\Java\\jdk-11.0.8",
+
+	// Correctly format
+	//"[xsd]": { "editor.defaultFormatter": "mohd-akram.vscode-html-format" },
+	//"[xsl]": { "editor.defaultFormatter": "mohd-akram.vscode-html-format" },
+}
+
