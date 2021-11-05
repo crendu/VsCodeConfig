@@ -2,58 +2,83 @@
 	/***********
 	 * DISPLAY *
 	 ***********/
+	"diffEditor.ignoreTrimWhitespace": false,
+
+	"editor.codeActionsOnSave": { "source.organizeImports": true },
+	"editor.detectIndentation": false,
+	"editor.fontFamily": "Fira Code, Cascadia Code PL, Consolas, 'Courier New', monospace",
+	"editor.fontLigatures": true,
+	"editor.insertSpaces": false,
 	"editor.renderWhitespace": "boundary",
 	"editor.rulers": [80,120],
+	"editor.showUnused": true,
 	"editor.suggestSelection": "first",
-	"editor.codeActionsOnSave": {
-		"source.organizeImports": true
-	},
-
-	"files.exclude": {
-		"**/*.o": true,
-		"**/*.updt": true,
-		"**/.factorypath": true,
-		"**/.project": true,
-		"**/.settings": true,
-		"**/.classpath": true
-	},
-	"search.exclude": {
-		"**/*.o": true,
-		"**/*.updt": true,
-		"**/build/": true,
-		"**/target/": true,
-		"**/templates/": true
-	},
-
-	"workbench.colorTheme": "Visual Studio Dark",
-	"workbench.iconTheme": "vscode-icons",
 
 	"security.workspace.trust.enabled": false,
 
+	"workbench.colorCustomizations": { "editorUnnecessaryCode.border": "#dd7aab" },
+	"workbench.colorTheme": "Visual Studio Dark",
+	"workbench.iconTheme": "vscode-icons",
+
+	"files.exclude": {
+		"**/*.classpath": true,
+		"**/*.csproj": true,
+		"**/*.dat": true,
+		"**/*.factorypath": true,
+		"**/*.git": true,
+		"**/*.o": true,
+		"**/*.project": true,
+		"**/*.settings": true,
+		"**/*.sln": true,
+		"**/*.updt": true,
+		"**/*.vdproj": true,
+		"**/.classpath": true,
+		"**/.factorypath": true,
+		"**/.project": true,
+		"**/.settings": true,
+		"**/bin/": true,
+		"**/build/": true,
+		"**/docs/": true,
+		"**/javatest/": true,
+		"**/shared/": true
+	},
+	"search.exclude": {
+		"**/*.csproj": true,
+		"**/*.dat": true,
+		"**/*.git": true,
+		"**/*.o": true,
+		"**/*.sln": true,
+		"**/*.updt": true,
+		"**/*.vdproj": true,
+		"**/bin/": true,
+		"**/build/": true,
+		"**/docs/": true,
+		"**/javatest/": true,
+		"**/shared/": true,
+		"**/target/": true,
+		"**/templates/": true
+	},
 
 	/*************
 	 * EXTENSION *
 	 *************/
 	// Command Prompt SSH --> need openssh
 	"terminal.integrated.profiles.windows": {
-		"PowerShell (No Profile)": {
-			"source": "PowerShell",
-			"args": ["-NoProfile"],
-			"overrideName": true
+		"GitBash": {
+			"path": ["C:\\Programy\\Git\\bin\\bash.exe"],
+			"icon": "terminal-bash"
 		},
-		"Git Bash": null,
-		"Cygwin": {
-			"path": "C:\\cygwin64\\bin\\bash.exe",
-			"args": ["--login"]
+		"PowerShell": {
+			"source": "PowerShell",
+			"icon": "terminal-powershell"
+		},
+		"Command Prompt": {
+			"path": ["${env:windir}\\System32\\cmd.exe"],
+			"icon": "terminal-cmd"
 		}
 	},
-	"terminal.integrated.defaultProfile.windows": "Command Prompt",
-	//"terminal.integrated.defaultProfile.windows": [ "renduc@NeededServer" ],
-	/*"terminal.integrated.shellArgs.windows": [
-		"-t",
-		"renduc@NeededServer",
-		"cd /nfs/${​​​​​​​env:USERNAME}​​​​​​​​​​​​​​/${workspaceFolderBasename}/$(sed 's:\\\\:/:g' <<< \"${relativeFileDirname}\") ; bash --login" <-- Don't Work
-	],*/
+	"terminal.integrated.defaultProfile.windows": "Git Bash",
+	"terminal.integrated.cwd": "${fileDirname}",
 
 	// Oracle SQL/PLSQL --> mycelo.oracle-plsql
 	"files.associations": {
@@ -65,11 +90,7 @@
 	},
 
 	"C_Cpp.updateChannel": "Insiders",
+	"csharp.referencesCodeLens.enabled": false,
 	"gitlens.views.commits.showBranchComparison": "branch",
 	"java.home": "C:\\Program Files\\Java\\jdk-11.0.8",
-
-	// Correctly format
-	//"[xsd]": { "editor.defaultFormatter": "mohd-akram.vscode-html-format" },
-	//"[xsl]": { "editor.defaultFormatter": "mohd-akram.vscode-html-format" },
 }
-
