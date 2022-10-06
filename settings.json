@@ -1,38 +1,44 @@
 {
-	/***********
-	 * DISPLAY *
-	 ***********/
-	"diffEditor.ignoreTrimWhitespace": false,
-
-	"editor.codeActionsOnSave": { "source.organizeImports": true },
-	"editor.detectIndentation": false,
+	"editor.codeActionsOnSave": { "source.organizeImports": false },
+	"workbench.colorCustomizations": { "editorRuler.foreground": "#ff4081" },
+	"editor.cursorBlinking": "phase",
+	"editor.cursorSmoothCaretAnimation": true,
+	"editor.detectIndentation": true,
 	"editor.fontFamily": "Fira Code, Cascadia Code PL, Consolas, 'Courier New', monospace",
 	"editor.fontLigatures": true,
+	"editor.guides.bracketPairs": true,
 	"editor.insertSpaces": false,
 	"editor.renderWhitespace": "boundary",
 	"editor.rulers": [80,120],
+	"editor.showDeprecated": true,
 	"editor.showUnused": true,
 	"editor.suggestSelection": "first",
 
 	"security.workspace.trust.enabled": false,
 
-	"workbench.colorCustomizations": { "editorUnnecessaryCode.border": "#dd7aab" },
-	"workbench.colorTheme": "Visual Studio Dark",
+	"synthwave84blues.brightness": 0.9,
+	"synthwave84blues.disableGlow": false,
+
+	"vsicons.dontShowNewVersionMessage": true,
+
+	"workbench.colorCustomizations": {
+		"editorRuler.foreground": "#ff4081",
+		"editorUnnecessaryCode.border": "#dd7aab"
+	},
+	"workbench.colorTheme": "SynthWave '84 Blues",
 	"workbench.iconTheme": "vscode-icons",
 
 	"files.exclude": {
-		"**/*.classpath": true,
 		"**/*.csproj": true,
 		"**/*.dat": true,
 		"**/*.factorypath": true,
 		"**/*.git": true,
 		"**/*.o": true,
 		"**/*.project": true,
-		"**/*.settings": true,
+		"**/*.settings": false,
 		"**/*.sln": true,
 		"**/*.updt": true,
 		"**/*.vdproj": true,
-		"**/.classpath": true,
 		"**/.factorypath": true,
 		"**/.project": true,
 		"**/.settings": true,
@@ -58,6 +64,7 @@
 		"**/target/": true,
 		"**/templates/": true
 	},
+
 
 	/*************
 	 * EXTENSION *
@@ -87,10 +94,24 @@
 		"*.dml": "oracle",
 		"*.pks": "oracle",
 		"*.pkb": "oracle",
+		"*.xhtml": "html"
 	},
+
+	// Java Config
+	"java.autobuild.enabled": false,
+	//"java.checkstyle.configuration": "${workspaceFolder}\\.vscode\\checkstyle.xml",
+	//"java.format.enabled": true,
+	//"java.format.settings.profile": "style",
+	"java.format.settings.url": ".vscode/eclipse-formatter.xml",
+	"java.home": "C:\\Program Files\\Java\\jdk-11.0.8",
 
 	"C_Cpp.updateChannel": "Insiders",
 	"csharp.referencesCodeLens.enabled": false,
 	"gitlens.views.commits.showBranchComparison": "branch",
-	"java.home": "C:\\Program Files\\Java\\jdk-11.0.8",
+	"git.autofetch": true,
+	"explorer.confirmDelete": false,
+	"editor.largeFileOptimizations": false,
+	"[html]": {
+		"editor.defaultFormatter": "vscode.html-language-features"
+	},
 }
