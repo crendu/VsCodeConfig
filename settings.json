@@ -1,6 +1,5 @@
 {
 	"editor.codeActionsOnSave": { "source.organizeImports": false },
-	"workbench.colorCustomizations": { "editorRuler.foreground": "#ff4081" },
 	"editor.cursorBlinking": "phase",
 	"editor.cursorSmoothCaretAnimation": true,
 	"editor.detectIndentation": true,
@@ -9,24 +8,33 @@
 	"editor.guides.bracketPairs": true,
 	"editor.insertSpaces": false,
 	"editor.renderWhitespace": "boundary",
-	"editor.rulers": [80,120],
+	"editor.rulers": [
+		80,
+		{
+			"column": 120,
+			"color": "#ff4081"
+		},
+		{
+			"column": 160,
+			"color": "#ff0000"
+		},
+	],
 	"editor.showDeprecated": true,
 	"editor.showUnused": true,
 	"editor.suggestSelection": "first",
-
-	"security.workspace.trust.enabled": false,
+	"editor.largeFileOptimizations": false,
 
 	"synthwave84blues.brightness": 0.9,
 	"synthwave84blues.disableGlow": false,
-
 	"vsicons.dontShowNewVersionMessage": true,
-
 	"workbench.colorCustomizations": {
-		"editorRuler.foreground": "#ff4081",
-		"editorUnnecessaryCode.border": "#dd7aab"
+		"editorUnnecessaryCode.border": "#ff4081"
 	},
-	"workbench.colorTheme": "SynthWave '84 Blues",
-	"workbench.iconTheme": "vscode-icons",
+
+	"explorer.confirmDelete": false,
+	"security.workspace.trust.enabled": false,
+
+	"files.autoGuessEncoding": true,	// To resolve pb with UTF8 VS Windows1252 encoding.
 
 	"files.exclude": {
 		"**/*.csproj": true,
@@ -87,19 +95,12 @@
 	"terminal.integrated.defaultProfile.windows": "Git Bash",
 	"terminal.integrated.cwd": "${fileDirname}",
 
-	// Oracle SQL/PLSQL --> mycelo.oracle-plsql
-	"files.associations": {
-		"*.sql": "oracle",
-		"*.ddl": "oracle",
-		"*.dml": "oracle",
-		"*.pks": "oracle",
-		"*.pkb": "oracle",
-		"*.xhtml": "html"
-	},
 
+	/***********
+	 * LANGAGE *
+	 ***********/
 	// Java Config
 	"java.autobuild.enabled": false,
-	//"java.checkstyle.configuration": "${workspaceFolder}\\.vscode\\checkstyle.xml",
 	//"java.format.enabled": true,
 	//"java.format.settings.profile": "style",
 	"java.format.settings.url": ".vscode/eclipse-formatter.xml",
@@ -109,9 +110,4 @@
 	"csharp.referencesCodeLens.enabled": false,
 	"gitlens.views.commits.showBranchComparison": "branch",
 	"git.autofetch": true,
-	"explorer.confirmDelete": false,
-	"editor.largeFileOptimizations": false,
-	"[html]": {
-		"editor.defaultFormatter": "vscode.html-language-features"
-	},
 }
