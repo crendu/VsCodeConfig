@@ -1,4 +1,8 @@
 {
+	/***************
+	 * ENVIRONMENT *
+	 ***************/
+	"diffEditor.ignoreTrimWhitespace": false,
 	"editor.codeActionsOnSave": { "source.organizeImports": false },
 	"editor.cursorBlinking": "phase",
 	"editor.cursorSmoothCaretAnimation": true,
@@ -6,7 +10,8 @@
 	"editor.fontFamily": "Fira Code, Cascadia Code PL, Consolas, 'Courier New', monospace",
 	"editor.fontLigatures": true,
 	"editor.guides.bracketPairs": true,
-	"editor.insertSpaces": false,
+	"editor.insertSpaces": true,
+	"editor.largeFileOptimizations": false,
 	"editor.renderWhitespace": "boundary",
 	"editor.rulers": [
 		80,
@@ -22,7 +27,8 @@
 	"editor.showDeprecated": true,
 	"editor.showUnused": true,
 	"editor.suggestSelection": "first",
-	"editor.largeFileOptimizations": false,
+	"editor.tabSize": 4,
+	"editor.unicodeHighlight.invisibleCharacters": true,
 
 	"synthwave84blues.brightness": 0.9,
 	"synthwave84blues.disableGlow": false,
@@ -33,7 +39,13 @@
 
 	"explorer.confirmDelete": false,
 	"security.workspace.trust.enabled": false,
+	"telemetry.telemetryLevel": "off",
+	"workbench.startupEditor": "none",
 
+
+	/********************
+	 * FILES PARAMETERS *
+	 ********************/
 	"files.autoGuessEncoding": true,	// To resolve pb with UTF8 VS Windows1252 encoding.
 
 	"files.exclude": {
