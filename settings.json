@@ -1,125 +1,411 @@
 {
-	/***************
-	 * ENVIRONMENT *
-	 ***************/
-	"diffEditor.ignoreTrimWhitespace": false,
-	"editor.codeActionsOnSave": { "source.organizeImports": false },
-	"editor.cursorBlinking": "phase",
-	"editor.cursorSmoothCaretAnimation": true,
-	"editor.detectIndentation": true,
-	"editor.fontFamily": "Fira Code, Cascadia Code PL, Consolas, 'Courier New', monospace",
-	"editor.fontLigatures": true,
-	"editor.guides.bracketPairs": true,
-	"editor.insertSpaces": true,
-	"editor.largeFileOptimizations": false,
-	"editor.renderWhitespace": "boundary",
-	"editor.rulers": [
-		80,
-		{
-			"column": 120,
-			"color": "#ff4081"
-		},
-		{
-			"column": 160,
-			"color": "#ff0000"
-		},
-	],
-	"editor.showDeprecated": true,
-	"editor.showUnused": true,
-	"editor.suggestSelection": "first",
-	"editor.tabSize": 4,
-	"editor.unicodeHighlight.invisibleCharacters": true,
+    /***************
+     * ENVIRONMENT *
+     ***************/
+    "editor.codeActionsOnSave": { "source.organizeImports": false },
+    "explorer.confirmDelete": false,
+    "editor.cursorBlinking": "phase",
+    "editor.cursorSmoothCaretAnimation": true,
+    "editor.detectIndentation": false,
+    "editor.fontFamily": "Fira Code, Cascadia Code PL, Consolas, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "editor.guides.bracketPairs": true,
+    "editor.insertSpaces": true,
+    "editor.largeFileOptimizations": false,
+    "editor.padding.bottom": 200,
+    "editor.renderWhitespace": "boundary",
+    "editor.rulers": [
+        80,
+        {
+            "column": 120,
+            "color": "#ff4081"
+        },
+        {
+            "column": 160,
+            "color": "#ff0000"
+        },
+    ],
+    "editor.scrollBeyondLastLine": false,
+    "editor.showDeprecated": true,
+    "editor.showUnused": true,
+    "editor.suggestSelection": "first",
+    "editor.tabSize": 4,
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "editor.unicodeHighlight.invisibleCharacters": true,
 
-	"synthwave84blues.brightness": 0.9,
-	"synthwave84blues.disableGlow": false,
-	"vsicons.dontShowNewVersionMessage": true,
-	"workbench.colorCustomizations": {
-		"editorUnnecessaryCode.border": "#ff4081"
-	},
+    "security.workspace.trust.enabled": false,
+    "telemetry.telemetryLevel": "off",
 
-	"explorer.confirmDelete": false,
-	"security.workspace.trust.enabled": false,
-	"telemetry.telemetryLevel": "off",
-	"workbench.startupEditor": "none",
+    "workbench.colorCustomizations": { "editorUnnecessaryCode.border": "#ff4081" },
+    "workbench.colorTheme": "SynthWave '84 Blues",
+    "workbench.startupEditor": "none",
 
 
-	/********************
-	 * FILES PARAMETERS *
-	 ********************/
-	"files.autoGuessEncoding": true,	// To resolve pb with UTF8 VS Windows1252 encoding.
+    /********************
+     * FILES PARAMETERS *
+     ********************/
+    "files.autoGuessEncoding": true,    // To resolve pb with UTF8 VS Windows1252 encoding.
+    "files.associations": {
+        "*.cfg": "libconfig",
+        "*.gcp": "makefile",
+        "*.rc": "rc-script",
+        "*.rsc": "properties"
+    },
+    "files.exclude": {
+        "**/*-x64-vc14": true,
+        "**/*-x86-vc10": true,
+        "**/*.csproj": true,
+        // "**/*.dat": true,
+        // "**/*.factorypath": true,
+        // "**/*.git": true,
+        "**/*.o": true,
+        // "**/*.project": true,
+        // "**/*.settings": false,
+        "**/*.sln": true,
+        "**/*.updt": true,
+        "**/*.vcxproj": true,
+        "**/*.vcxproj.filters": true,
+        "**/*.vcxproj.user": true,
+        "**/*.vdproj": true,
+        // "**/bin/": true,
+        // "**/build/": true,
+        // "**/docs/": true,
+        // "**/javatest/": true,
+        // "**/shared/": true,
+    },
+    "search.exclude": {
+        "**.acx": true,
+        "**.css": true,
+        "**.html": true,
+        "**.js": true,
+        "**.log": true,
+        "**.map": true,
+        "**.md": true,
+        "**.olf": true,
+        "**.out": true,
+        "**.php": true,
+        "**.xsl": true,
+        "**.yaml": true,
+        // "**/target/": true,
+        // "**/templates/": true
+    },
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "search.followSymlinks": false, // Seems to avoid High CPU usage
 
-	"files.exclude": {
-		"**/*.csproj": true,
-		"**/*.dat": true,
-		"**/*.factorypath": true,
-		"**/*.git": true,
-		"**/*.o": true,
-		"**/*.project": true,
-		"**/*.settings": false,
-		"**/*.sln": true,
-		"**/*.updt": true,
-		"**/*.vdproj": true,
-		"**/.factorypath": true,
-		"**/.project": true,
-		"**/.settings": true,
-		"**/bin/": true,
-		"**/build/": true,
-		"**/docs/": true,
-		"**/javatest/": true,
-		"**/shared/": true
-	},
-	"search.exclude": {
-		"**/*.csproj": true,
-		"**/*.dat": true,
-		"**/*.git": true,
-		"**/*.o": true,
-		"**/*.sln": true,
-		"**/*.updt": true,
-		"**/*.vdproj": true,
-		"**/bin/": true,
-		"**/build/": true,
-		"**/docs/": true,
-		"**/javatest/": true,
-		"**/shared/": true,
-		"**/target/": true,
-		"**/templates/": true
-	},
-
-
-	/*************
-	 * EXTENSION *
-	 *************/
-	// Command Prompt SSH --> need openssh
-	"terminal.integrated.profiles.windows": {
-		"GitBash": {
-			"path": ["C:\\Programy\\Git\\bin\\bash.exe"],
-			"icon": "terminal-bash"
-		},
-		"PowerShell": {
-			"source": "PowerShell",
-			"icon": "terminal-powershell"
-		},
-		"Command Prompt": {
-			"path": ["${env:windir}\\System32\\cmd.exe"],
-			"icon": "terminal-cmd"
-		}
-	},
-	"terminal.integrated.defaultProfile.windows": "Git Bash",
-	"terminal.integrated.cwd": "${fileDirname}",
+    "[cmd]": {
+        "files.encoding": "windows1252"
+    },
 
 
-	/***********
-	 * LANGAGE *
-	 ***********/
-	// Java Config
-	"java.autobuild.enabled": false,
-	//"java.format.enabled": true,
-	//"java.format.settings.profile": "style",
-	"java.format.settings.url": ".vscode/eclipse-formatter.xml",
-	"java.home": "C:\\Program Files\\Java\\jdk-11.0.8",
 
-	"C_Cpp.updateChannel": "Insiders",
-	"csharp.referencesCodeLens.enabled": false,
-	"gitlens.views.commits.showBranchComparison": "branch",
-	"git.autofetch": true,
+    /******************
+     * COMMAND PROMPT *
+     ******************/
+    // Command Prompt SSH --> need openssh
+    "terminal.integrated.profiles.windows": {
+        // "GitBash": {
+        //     "path": ["C:\\Programy\\Git\\bin\\bash.exe"],
+        //     "icon": "terminal-bash"
+        // },
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell"
+        },
+        "Command Prompt": {
+            "path": ["${env:windir}\\System32\\cmd.exe"],
+            "icon": "terminal-cmd"
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "terminal.integrated.cwd": "${fileDirname}",
+
+
+    /***********************
+     * EXTENSIONS SETTINGS *
+     ***********************/
+    // Batch Runner
+        "batchrunner.cmdPath": "C:\\windows\\System32\\cmd.exe",
+        "batchrunner.runBatchIn": "Terminal",
+
+    // C/C++
+        "C_Cpp.addNodeAddonIncludePaths": false,
+        "C_Cpp.autoAddFileAssociations": true,
+        "C_Cpp.autocomplete": "default",
+        "C_Cpp.autocompleteAddParentheses": true,
+        "C_Cpp.caseSensitiveFileSupport": "default",
+        "C_Cpp.codeAnalysis.clangTidy.codeAction.formatFixes": true,
+        "C_Cpp.codeAnalysis.clangTidy.codeAction.showClear": "AllAndAllTypeAndThis",
+        "C_Cpp.codeAnalysis.clangTidy.codeAction.showDisable": true,
+        "C_Cpp.codeAnalysis.clangTidy.codeAction.showDocumentation": true,
+        "C_Cpp.codeAnalysis.clangTidy.enabled": true,
+        "C_Cpp.codeAnalysis.clangTidy.useBuildPath": false,
+        "C_Cpp.codeAnalysis.runAutomatically": true,
+        "C_Cpp.codeFolding": "enabled",
+        "C_Cpp.configurationWarnings": "enabled",
+        "C_Cpp.debugShortcut": false,
+        "C_Cpp.debugger.useBacktickCommandSubstitution": false,
+        "C_Cpp.default.browse.limitSymbolsToIncludedHeaders": true,
+        "C_Cpp.default.cStandard": "c23",
+        "C_Cpp.default.cppStandard": "c++23",
+        "C_Cpp.default.enableConfigurationSquiggles": true,
+        "C_Cpp.default.intelliSenseMode": "windows-gcc-x64",
+        "C_Cpp.default.mergeConfigurations": true,
+        "C_Cpp.dimInactiveRegions": true,
+        "C_Cpp.doxygen.generateOnType": true,
+        "C_Cpp.doxygen.generatedStyle": "/**",
+        "C_Cpp.enhancedColorization": "enabled",
+        "C_Cpp.errorSquiggles": "enabledIfIncludesResolve",
+        "C_Cpp.exclusionPolicy": "checkFilesAndFolders",
+        "C_Cpp.experimentalFeatures": "enabled",
+        "C_Cpp.formatting": "vcFormat",
+        "C_Cpp.hover": "default",
+        "C_Cpp.inlayHints.autoDeclarationTypes.enabled": true,
+        "C_Cpp.inlayHints.autoDeclarationTypes.showOnLeft": false,
+        "C_Cpp.inlayHints.parameterNames.enabled": true,
+        "C_Cpp.inlayHints.parameterNames.hideLeadingUnderscores": false,
+        "C_Cpp.inlayHints.parameterNames.suppressWhenArgumentContainsName": true,
+        "C_Cpp.inlayHints.referenceOperator.enabled": true,
+        "C_Cpp.inlayHints.referenceOperator.showSpace": true,
+        "C_Cpp.intelliSenseCacheSize": 5120,
+        "C_Cpp.intelliSenseEngine": "default",
+        "C_Cpp.intelliSenseMemoryLimit": 4096,
+        "C_Cpp.intelliSenseUpdateDelay": 2000,
+        "C_Cpp.legacyCompilerArgsBehavior": true,
+        "C_Cpp.loggingLevel": "Error",
+        "C_Cpp.preferredPathSeparator": "Backslash",
+        "C_Cpp.references.maxCachedProcesses": 0,
+        "C_Cpp.renameRequiresIdentifier": true,
+        "C_Cpp.simplifyStructuredComments": true,
+        "C_Cpp.sshTargetsView": "enabled",
+        "C_Cpp.suggestSnippets": true,
+        "C_Cpp.vcFormat.indent.accessSpecifiers": true,
+        "C_Cpp.vcFormat.indent.braces": false,
+        "C_Cpp.vcFormat.indent.caseContents": false,
+        "C_Cpp.vcFormat.indent.caseContentsWhenBlock": false,
+        "C_Cpp.vcFormat.indent.caseLabels": false,
+        "C_Cpp.vcFormat.indent.gotoLabels": "none",
+        "C_Cpp.vcFormat.indent.lambdaBracesWhenParameter": true,
+        "C_Cpp.vcFormat.indent.multiLineRelativeTo": "innermostParenthesis",
+        "C_Cpp.vcFormat.indent.namespaceContents": true,
+        "C_Cpp.vcFormat.indent.preprocessor": "leftmostColumn",
+        "C_Cpp.vcFormat.indent.preserveComments": true,
+        "C_Cpp.vcFormat.indent.preserveWithinParentheses": false,
+        "C_Cpp.vcFormat.indent.withinParentheses": "indent",
+        "C_Cpp.vcFormat.newLine.beforeCatch": false,
+        "C_Cpp.vcFormat.newLine.beforeElse": false,
+        "C_Cpp.vcFormat.newLine.beforeOpenBrace.block": "sameLine",
+        "C_Cpp.vcFormat.newLine.beforeOpenBrace.function": "sameLine",
+        "C_Cpp.vcFormat.newLine.beforeOpenBrace.lambda": "sameLine",
+        "C_Cpp.vcFormat.newLine.beforeOpenBrace.namespace": "sameLine",
+        "C_Cpp.vcFormat.newLine.beforeOpenBrace.type": "sameLine",
+        "C_Cpp.vcFormat.newLine.beforeWhileInDoWhile": true,
+        "C_Cpp.vcFormat.newLine.closeBraceSameLine.emptyFunction": true,
+        "C_Cpp.vcFormat.newLine.closeBraceSameLine.emptyType": true,
+        "C_Cpp.vcFormat.newLine.scopeBracesOnSeparateLines": true,
+        "C_Cpp.vcFormat.space.afterCastCloseParenthesis": true,
+        "C_Cpp.vcFormat.space.afterComma": true,
+        "C_Cpp.vcFormat.space.afterKeywordsInControlFlowStatements": true,
+        "C_Cpp.vcFormat.space.aroundAssignmentOperator": "insert",
+        "C_Cpp.vcFormat.space.aroundBinaryOperator": "insert",
+        "C_Cpp.vcFormat.space.aroundTernaryOperator": "insert",
+        "C_Cpp.vcFormat.space.beforeBlockOpenBrace": true,
+        "C_Cpp.vcFormat.space.beforeComma": false,
+        "C_Cpp.vcFormat.space.beforeConstructorColon": false,
+        "C_Cpp.vcFormat.space.beforeEmptySquareBrackets": true,
+        "C_Cpp.vcFormat.space.beforeFunctionOpenParenthesis": "remove",
+        "C_Cpp.vcFormat.space.beforeInheritanceColon": false,
+        "C_Cpp.vcFormat.space.beforeInitializerListOpenBrace": false,
+        "C_Cpp.vcFormat.space.beforeLambdaOpenParenthesis": false,
+        "C_Cpp.vcFormat.space.beforeOpenSquareBracket": true,
+        "C_Cpp.vcFormat.space.betweenEmptyBraces": true,
+        "C_Cpp.vcFormat.space.betweenEmptyLambdaBrackets": false,
+        "C_Cpp.vcFormat.space.betweenEmptyParameterListParentheses": false,
+        "C_Cpp.vcFormat.space.betweenEmptySquareBrackets": false,
+        "C_Cpp.vcFormat.space.groupSquareBrackets": true,
+        "C_Cpp.vcFormat.space.insertAfterSemicolon": false,
+        "C_Cpp.vcFormat.space.pointerReferenceAlignment": "left",
+        "C_Cpp.vcFormat.space.preserveInInitializerList": true,
+        "C_Cpp.vcFormat.space.removeAroundMemberOperators": true,
+        "C_Cpp.vcFormat.space.removeAroundUnaryOperator": true,
+        "C_Cpp.vcFormat.space.removeBeforeSemicolon": true,
+        "C_Cpp.vcFormat.space.withinCastParentheses": false,
+        "C_Cpp.vcFormat.space.withinControlFlowStatementParentheses": false,
+        "C_Cpp.vcFormat.space.withinExpressionParentheses": false,
+        "C_Cpp.vcFormat.space.withinInitializerListBraces": false,
+        "C_Cpp.vcFormat.space.withinLambdaBrackets": false,
+        "C_Cpp.vcFormat.space.withinParameterListParentheses": false,
+        "C_Cpp.vcFormat.space.withinSquareBrackets": false,
+        "C_Cpp.vcFormat.wrap.preserveBlocks": "oneLiners",
+        "C_Cpp.vcpkg.enabled": true,
+        "C_Cpp.workspaceParsingPriority": "highest",
+        "C_Cpp.workspaceSymbols": "Just My Code",
+
+    // Code Spell Checker
+        "cSpell.advanced.feature.useReferenceProviderWithRename": false,
+        "cSpell.allowCompoundWords": true,
+        "cSpell.autoFormatConfigFile": false,
+        "cSpell.blockCheckingWhenAverageChunkSizeGreaterThan": 80,
+        "cSpell.blockCheckingWhenLineLengthGreaterThan": 10000,
+        "cSpell.blockCheckingWhenTextChunkSizeGreaterThan": 500,
+        "cSpell.checkLimit": 500,
+        "cSpell.diagnosticLevel": "Information",
+        "cSpell.experimental.enableRegexpView": true,
+        "cSpell.experimental.enableSettingsViewerV2": true,
+        "cSpell.fixSpellingWithRenameProvider": false,
+        "cSpell.hideAddToDictionaryCodeActions": false,
+        "cSpell.language": "en,fr",
+        "cSpell.logLevel": "Information",
+        "cSpell.maxDuplicateProblems": 5,
+        "cSpell.maxNumberOfProblems": 100,
+        "cSpell.minWordLength": 4,
+        "cSpell.noConfigSearch": false,
+        "cSpell.numSuggestions": 8,
+        "cSpell.showAutocompleteSuggestions": true,
+        "cSpell.showCommandsInEditorContextMenu": false,
+        "cSpell.showStatus": true,
+        "cSpell.showStatusAlignment": "Right",
+        "cSpell.showSuggestionsLinkInEditorContextMenu": true,
+        "cSpell.spellCheckDelayMs": 50,
+        "cSpell.spellCheckOnlyWorkspaceFiles": true,
+        "cSpell.suggestionMenuType": "quickFix",
+        "cSpell.suggestionNumChanges": 3,
+        "cSpell.suggestionsTimeout": 400,
+        "cSpell.useGitignore": false,
+        "cSpell.usePnP": false,
+        "cSpell.validateDirectives": true,
+
+    // Compare Folders
+        "compareFolders.compareContent": true,
+        "compareFolders.diffLayout": "local <> compared",
+        "compareFolders.diffViewTitle": "name only",
+        "compareFolders.ignoreAllWhiteSpaces": true,
+        "compareFolders.ignoreEmptyLines": true,
+        "compareFolders.ignoreFileNameCase": false,
+        "compareFolders.ignoreLineEnding": true,
+        "compareFolders.ignoreWhiteSpaces": true,
+        "compareFolders.showIdentical": false,
+        "compareFolders.useDiffMerge": true,
+        "compareFolders.warnBeforeDelete": true,
+
+    // include-info
+        "Include Info.Auto Show Include Info": true,
+        "Include Info.File Line Number Seperator": "Comma",
+        "Include Info.File Size Decimal Digit": 2,
+        "Include Info.File Size Unit": "Auto",
+
+    // Java Config
+        // "java.autobuild.enabled": false,
+        // "java.format.enabled": true,
+        // "java.format.settings.profile": "style",
+        // "java.format.settings.url": ".vscode/eclipse-formatter.xml",
+        // "java.home": "C:\\Program Files\\Java\\jdk-11.0.8",
+
+    // LibConfig
+        "libConfigServer.maxNumberOfProblems": 1000,
+        "libConfigServer.trace.server": "off",
+
+    // Log File Highlighter - all default
+
+    // Partial Diff
+        "partialDiff.enableTelemetry": false,
+        "partialDiff.hideCommandsOnContextMenu": true,
+
+    // Perforce for VS Code
+        "perforce.activationMode": "autodetect",
+        "perforce.addOnFileCreate": false,
+        "perforce.annotate.followBranches": true,
+        "perforce.bottleneck.maxConcurrent": 10,
+        "perforce.changelistOrder": "descending",
+        "perforce.changelistSearch.maxResults": 200,
+        "perforce.client": "XXX",
+        "perforce.command": "C:\\PERFORCE-2017.3\\p4.exe",
+        "perforce.countBadge": "all-but-shelved",
+        "perforce.debugModeActive": false,
+        "perforce.debugP4Commands": false,
+        "perforce.deleteOnFileDelete": false,
+        "perforce.dir": "none",
+        "perforce.editOnFileModified": true,
+        "perforce.editOnFileSave": true,
+        "perforce.editorButtons.diffPrevAndNext": "All diffable files",
+        "perforce.enableP4ConfigScanOnStartup": true,
+        "perforce.explorer.showBasicOpCommands": true,
+        "perforce.explorer.showFileOpCommands": true,
+        "perforce.explorer.showSyncCommands": true,
+        "perforce.fileShelveMode": "prompt",
+        "perforce.hideEmptyChangelists": false,
+        "perforce.hideNonWorkspaceFiles": "hide changelists",
+        "perforce.hideShelvedFiles": true,
+        "perforce.hideSubmitIcon": true,
+        "perforce.maxFilePerCommand": 32,
+        "perforce.password": "none",
+        "perforce.port": "XXX",
+        "perforce.promptBeforeSubmit": true,
+        "perforce.realpath": true,
+        "perforce.scm.activateOnFileOpen": false,
+        "perforce.scm.deactivateOnFileClose": false,
+        "perforce.scmFileChanges": true,
+        "perforce.specEditor.showIndentWarning": true,
+        "perforce.swarmHost": "XXX",
+        "perforce.syncMode": "whole client",
+        "perforce.user": "XXX",
+        "perforce.warnOnMissingP4CONFIG": true,
+
+    // Perl
+        "perl.containerMode": "exec",
+        "perl.debugAdapterPort": 13603,
+        "perl.debugAdapterPortRange": 100,
+        "perl.disableCache": false,
+        "perl.disablePassEnv": false,
+        "perl.logLevel": 2,
+        "perl.showLocalVars": false,
+
+    // PlantUML
+        "plantuml.exportConcurrency": 3,
+        "plantuml.exportFormat": "png",
+        "plantuml.exportIncludeFolderHeirarchy": true,
+        "plantuml.exportMapFile": false,
+        "plantuml.exportOutDir": "out",
+        "plantuml.exportSubFolder": true,
+        "plantuml.fileExtensions": ".wsd,.pu,.puml,.plantuml,.iuml",
+        "plantuml.java": "java",
+        "plantuml.lintDiagramNoName": true,
+        "plantuml.previewAutoUpdate": true,
+        "plantuml.previewSnapIndicators": false,
+        "plantuml.urlResult": "MarkDown",
+
+    // RC Script Language - all default
+
+    // Sort Lines
+        "sortLines.filterBlankLines": true,
+        "sortLines.sortEntireFile": true,
+
+    // SynthWave '84' Blues
+        "synthwave84blues.brightness": 0.9,
+        "synthwave84blues.disableGlow": false,
+
+    // vscode-icons
+        "vsicons.dontShowNewVersionMessage": true,
+
+    // XML Tools
+        "xmlTools.enableXmlTreeView": true,
+        "xmlTools.enableXmlTreeViewCursorSync": false,
+        "xmlTools.enableXmlTreeViewMetadata": true,
+        "xmlTools.enforcePrettySelfClosingTagOnFormat": false,
+        "xmlTools.ignoreDefaultNamespace": true,
+        "xmlTools.persistXPathQuery": true,
+        "xmlTools.removeCommentsOnMinify": false,
+        "xmlTools.splitAttributesOnFormat": false,
+        "xmlTools.splitXmlnsOnFormat": true,
+        "xmlTools.xmlFormatterImplementation": "v2",
+        "xmlTools.xqueryExecutionArguments": [
+            "-xquery",
+            "$(script)",
+            "-in",
+            "$(input)",
+            "-out",
+            "$(input).output.xml"
+        ],
+        "xmlTools.xqueryExecutionInputLimit": 100,
+        "xmlTools.xqueryExecutionInputSearchPattern": "**/*.xml",
 }
