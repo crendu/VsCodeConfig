@@ -2,11 +2,14 @@
     /***************
      * ENVIRONMENT *
      ***************/
-    "diffEditor.ignoreTrimWhitespace": true,
-    "editor.codeActionsOnSave": { "source.organizeImports": true },
-    "explorer.confirmDelete": false,
+    "diffEditor.maxComputationTime": 0,
+    "diffEditor.hideUnchangedRegions.enabled": true,
+
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "explicit"
+    },
     "editor.cursorBlinking": "phase",
-    "editor.cursorSmoothCaretAnimation": true,
+    "editor.cursorSmoothCaretAnimation": "on",
     "editor.detectIndentation": false,
     "editor.fontFamily": "Fira Code, Cascadia Code PL, Consolas, 'Courier New', monospace",
     "editor.fontLigatures": true,
@@ -14,6 +17,7 @@
     "editor.insertSpaces": true,
     "editor.largeFileOptimizations": false,
     "editor.minimap.showSlider": "always",
+    "editor.multiCursorLimit": 100000,
     "editor.padding.bottom": 200,
     "editor.renderWhitespace": "boundary",
     "editor.rulers": [
@@ -30,16 +34,23 @@
     "editor.scrollBeyondLastLine": false,
     "editor.showDeprecated": true,
     "editor.showUnused": true,
+    "editor.stickyScroll.defaultModel": "foldingProviderModel",
+    "editor.stickyScroll.enabled": true,
+    "editor.stickyScroll.scrollWithEditor": false,
     "editor.suggestSelection": "first",
     "editor.tabSize": 4,
-    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "editor.unicodeHighlight.ambiguousCharacters": true,
     "editor.unicodeHighlight.invisibleCharacters": true,
     "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+    "explorer.confirmDelete": false,
 
+    "security.allowedUNCHosts": [ "nassvg" ],
     "security.workspace.trust.enabled": false,
     "telemetry.telemetryLevel": "off",
-    "window.zoomLevel": -0.5,
+    "update.mode": "default",
+    "window.zoomLevel": -1,
 
+    "workbench.activityBar.location": "top",
     "workbench.colorCustomizations": {
         "editorUnnecessaryCode.border": "#ff4081",
         "minimapSlider.activeBackground": "#ffff002b",
@@ -55,26 +66,28 @@
         "tab.hoverBackground": "#094c72",
     },
     "workbench.colorTheme": "SynthWave '84 Blues",
+    "workbench.editor.splitInGroupLayout": "horizontal",
     "workbench.startupEditor": "none",
 
 
     /********************
      * FILES PARAMETERS *
      ********************/
-    "files.autoGuessEncoding": true,    // To resolve pb with UTF8 VS Windows1252 encoding.
+    "files.autoGuessEncoding": true,   // To resolve pb with UTF8 VS Windows1252 encoding.
     "files.associations": {
         "*.cfg": "libconfig",
         "*.gcp": "makefile",
         "*.qss": "css",
         "*.rc": "rc-script",
         "*.rsc": "properties",
+        "*.out": "log",
     },
+    "files.encoding": "utf8",
     "files.exclude": {
         "**/*.acx": true,
         "**/*.csproj": true,
         // "**/*.dat": true,
         "**/*.dsp": true,
-        // "**/*.factorypath": true,
         // "**/*.git": true,
         "**/*.hhc": true,
         "**/*.htm": true,
@@ -90,15 +103,13 @@
         "**/*.vcproj": true,
         "**/*.vcxproj*": true,
         "**/*.vdproj": true,
-        "**/*w10-x64-vc14*": true,
-        "**/*w7-x86-vc10*": true,
         // "**/bin/": true,
         // "**/build/": true,
-        "**/Intermediates/": true,
+        "**/Intermediates*": true,
         // "**/javatest/": true,
-        "**/JenkinsReferences/": true,
+        "**/JenkinsReferences*": true,
         // "**/shared/": true,
-        "**/Software/": true,
+        "**/Software*": true,
     },
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
@@ -107,7 +118,7 @@
         "**.err": true,
         "**.html": true,
         "**.js": true,
-        "**.log": true,
+        // "**.log": true,
         "**.map": true,
         "**.php": true,
         "**.xsl": true,
@@ -115,13 +126,15 @@
         "**/doc*/": true,
         "**/Documentation/": true,
         // "**/target/": true,
-        // "**/templates/": true
+        // "**/templates/": true,
+        "**/*w10-x64-vc14*": true,
+        "**/*w7-x86-vc10*": true,
     },
     "search.followSymlinks": false, // Seems to avoid High CPU usage
 
-    "[cmd]": {
-        "files.encoding": "windows1252"
-    },
+    "[cmd]": { "files.encoding": "windows1252" },
+    "[cpp]": { "files.encoding": "windows1252" },
+    "[h]": { "files.encoding": "windows1252" },
 
 
 
@@ -150,9 +163,14 @@
     /***********************
      * EXTENSIONS SETTINGS *
      ***********************/
+    // AutoScrollDown
+        // "autoscrolldown.alsoAutoscrollActive": false,
+        // "autoscrolldown.allFiles": true,
+        // "autoscrolldown.onlyWhenAtEnd": false,
+
     // Batch Runner
-        "batchrunner.cmdPath": "C:\\windows\\System32\\cmd.exe",
-        "batchrunner.runBatchIn": "Terminal",
+        // "batchrunner.cmdPath": "C:\\windows\\System32\\cmd.exe",
+        // "batchrunner.runBatchIn": "Terminal",
 
     // C/C++
         "C_Cpp.addNodeAddonIncludePaths": false,
@@ -230,13 +248,13 @@
         "C_Cpp.vcFormat.indent.preserveComments": true,
         "C_Cpp.vcFormat.indent.preserveWithinParentheses": false,
         "C_Cpp.vcFormat.indent.withinParentheses": "indent",
-        "C_Cpp.vcFormat.newLine.beforeCatch": false,
-        "C_Cpp.vcFormat.newLine.beforeElse": false,
-        "C_Cpp.vcFormat.newLine.beforeOpenBrace.block": "sameLine",
-        "C_Cpp.vcFormat.newLine.beforeOpenBrace.function": "sameLine",
-        "C_Cpp.vcFormat.newLine.beforeOpenBrace.lambda": "sameLine",
-        "C_Cpp.vcFormat.newLine.beforeOpenBrace.namespace": "sameLine",
-        "C_Cpp.vcFormat.newLine.beforeOpenBrace.type": "sameLine",
+        "C_Cpp.vcFormat.newLine.beforeCatch": true,
+        "C_Cpp.vcFormat.newLine.beforeElse": true,
+        "C_Cpp.vcFormat.newLine.beforeOpenBrace.block": "newLine",
+        "C_Cpp.vcFormat.newLine.beforeOpenBrace.function": "newLine",
+        "C_Cpp.vcFormat.newLine.beforeOpenBrace.lambda": "newLine",
+        "C_Cpp.vcFormat.newLine.beforeOpenBrace.namespace": "newLine",
+        "C_Cpp.vcFormat.newLine.beforeOpenBrace.type": "newLine",
         "C_Cpp.vcFormat.newLine.beforeWhileInDoWhile": true,
         "C_Cpp.vcFormat.newLine.closeBraceSameLine.emptyFunction": true,
         "C_Cpp.vcFormat.newLine.closeBraceSameLine.emptyType": true,
@@ -329,6 +347,9 @@
         "Include Info.File Size Decimal Digit": 2,
         "Include Info.File Size Unit": "Auto",
 
+    // Encoding Alert for VS Code
+        // "EncodingAlert.Encoding": "ISO-8859-1", // Windows 1252
+
     // Java Config
         // "java.autobuild.enabled": false,
         // "java.format.enabled": true,
@@ -343,6 +364,25 @@
     // Log File Highlighter
         "logFileHighlighter.customPatterns": [
             {
+                "foreground": "#ff0000",
+                "overviewColor": "#ff0000",
+                "overviewRulerLane": "Left",
+                "pattern": ".*ERREUR.*|\\[ERROR]|(^.* KO.*|(fatal error| error) \\w+)",
+            },
+            {
+                "foreground": "#22aa22",
+                "pattern": "^.* OK.*",
+            },
+            {
+                "foreground": "#ffa500",
+                "pattern": ".*AVERTISSEMENT.*|\\[DEBUG]|(^.*warning : |warning \\w+)",
+            },
+            {
+                "fontWeight": "bold",
+                "foreground": "#fa8072",
+                "pattern": "[0-9]{4}/[0-9]{2}/[0-9]{2}-[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3}",
+            },
+            {
                 "fontStyle": "italic",
                 "foreground": "#fa8072",
                 "pattern": "(d|D):.*?\\.(bmx|cc|chm|dat|dll|decl|enum|err|FS|info|inl|iv|lib|log|mod|msg|obj|pl|pm|ref|reg|tex|VS)",
@@ -354,27 +394,19 @@
             },
             {
                 "foreground": "#0080ff",
-                "pattern": "^(.*?)] (?!.*(KO|OK)).*",
-            },
-            {
-                "foreground": "#ff0000",
-                "overviewColor": "#ff0000",
-                "overviewRulerLane": "Left",
-                "pattern": "^(.*?) KO.*|(fatal |) error \\w+",
-            },
-            {
-                "foreground": "#22aa22",
-                "pattern": "^(.*?) OK.*",
-            },
-            {
-                "foreground": "#ffa500",
-                "pattern": "^(.*?)warning : |warning \\w+",
+                "pattern": "\\[.*]",
             },
         ],
 
     // Partial Diff
         "partialDiff.enableTelemetry": false,
-        "partialDiff.hideCommandsOnContextMenu": true,
+        "partialDiff.commandsOnContextMenu": {
+            "markSection1": true,
+            "markSection2AndTakeDiff": true,
+            "diffSelectionWithClipboard": true,
+            "diffVisibleEditors": true,
+            "togglePreComparisonTextNormalizationRules": true
+        },
 
     // Perforce for VS Code
         "perforce.activationMode": "autodetect",
@@ -417,15 +449,18 @@
         "perforce.warnOnMissingP4CONFIG": true,
 
     // Perl
-        "perl.containerMode": "exec",
-        "perl.debugAdapterPort": 13603,
-        "perl.debugAdapterPortRange": 100,
-        "perl.disableCache": false,
-        "perl.disablePassEnv": false,
-        "perl.logLevel": 2,
-        "perl.showLocalVars": false,
+        // "perl.containerMode": "exec",
+        // "perl.debugAdapterPort": 13603,
+        // "perl.debugAdapterPortRange": 100,
+        // "perl.disableCache": false,
+        // "perl.disablePassEnv": false,
+        // "perl.logLevel": 2,
+        // "perl.showLocalVars": false,
 
     // PlantUML
+        "plantuml.commandArgs": [
+            "-DPLANTUML_LIMIT_SIZE=8192"
+        ],
         "plantuml.exportConcurrency": 3,
         "plantuml.exportFormat": "png",
         "plantuml.exportIncludeFolderHeirarchy": true,
@@ -437,6 +472,7 @@
         "plantuml.lintDiagramNoName": true,
         "plantuml.previewAutoUpdate": true,
         "plantuml.previewSnapIndicators": false,
+        "plantuml.render": "Local",
         "plantuml.urlResult": "MarkDown",
 
     // RC Script Language - all default
