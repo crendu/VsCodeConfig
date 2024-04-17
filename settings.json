@@ -6,7 +6,7 @@
     "diffEditor.hideUnchangedRegions.enabled": true,
 
     "editor.codeActionsOnSave": {
-        "source.organizeImports": "explicit"
+        "source.organizeImports": "never"
     },
     "editor.cursorBlinking": "phase",
     "editor.cursorSmoothCaretAnimation": "on",
@@ -66,14 +66,17 @@
         "tab.hoverBackground": "#094c72",
     },
     "workbench.colorTheme": "SynthWave '84 Blues",
+    "workbench.editor.enablePreview": true,
+    "workbench.editor.enablePreviewFromCodeNavigation": true,
+    "workbench.editor.enablePreviewFromQuickOpen": true,
     "workbench.editor.splitInGroupLayout": "horizontal",
+    "workbench.editorLargeFileConfirmation": 2048,
     "workbench.startupEditor": "none",
 
 
     /********************
      * FILES PARAMETERS *
      ********************/
-    "files.autoGuessEncoding": true,   // To resolve pb with UTF8 VS Windows1252 encoding.
     "files.associations": {
         "*.cfg": "libconfig",
         "*.gcp": "makefile",
@@ -82,6 +85,7 @@
         "*.rsc": "properties",
         "*.out": "log",
     },
+    "files.autoGuessEncoding": true,   // To resolve pb with UTF8 VS Windows1252 encoding.
     "files.encoding": "utf8",
     "files.exclude": {
         "**/*.acx": true,
@@ -113,6 +117,10 @@
     },
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
+    "files.watcherExclude": {   // Seems to avoid the ipch flood
+        "Intermediates/**": true,
+        "Software/**": true
+    },
     "search.exclude": {
         "**.css": true,
         "**.err": true,
@@ -135,6 +143,7 @@
     "[cmd]": { "files.encoding": "windows1252" },
     "[cpp]": { "files.encoding": "windows1252" },
     "[h]": { "files.encoding": "windows1252" },
+    "[xml]": { "editor.defaultFormatter": "DotJoshJohnson.xml" },
 
 
 
@@ -343,9 +352,6 @@
         "compareFolders.showIdentical": false,
         "compareFolders.useDiffMerge": false,
         "compareFolders.warnBeforeDelete": true,
-        "Include Info.File Line Number Seperator": "Backtick",
-        "Include Info.File Size Decimal Digit": 2,
-        "Include Info.File Size Unit": "Auto",
 
     // Encoding Alert for VS Code
         // "EncodingAlert.Encoding": "ISO-8859-1", // Windows 1252
@@ -358,7 +364,7 @@
         // "java.home": "C:\\Program Files\\Java\\jdk-11.0.8",
 
     // LibConfig
-        "libConfigServer.maxNumberOfProblems": 1000,
+        "libConfigServer.maxNumberOfProblems": 100000,
         "libConfigServer.trace.server": "off",
 
     // Log File Highlighter
@@ -399,7 +405,6 @@
         ],
 
     // Partial Diff
-        "partialDiff.enableTelemetry": false,
         "partialDiff.commandsOnContextMenu": {
             "markSection1": true,
             "markSection2AndTakeDiff": true,
@@ -407,6 +412,7 @@
             "diffVisibleEditors": true,
             "togglePreComparisonTextNormalizationRules": true
         },
+        "partialDiff.enableTelemetry": false,
 
     // Perforce for VS Code
         "perforce.activationMode": "autodetect",
@@ -459,21 +465,42 @@
 
     // PlantUML
         "plantuml.commandArgs": [
+            "-DGRAPHVIZ_DOT=XXX\\bin\\dot.exe",
             "-DPLANTUML_LIMIT_SIZE=8192"
         ],
         "plantuml.exportConcurrency": 3,
         "plantuml.exportFormat": "png",
         "plantuml.exportIncludeFolderHeirarchy": true,
         "plantuml.exportMapFile": false,
-        "plantuml.exportOutDir": "out",
+        // "plantuml.exportOutDir": "out",
         "plantuml.exportSubFolder": true,
         "plantuml.fileExtensions": ".wsd,.pu,.puml,.plantuml,.iuml",
-        "plantuml.java": "java",
         "plantuml.lintDiagramNoName": true,
         "plantuml.previewAutoUpdate": true,
         "plantuml.previewSnapIndicators": false,
         "plantuml.render": "Local",
-        "plantuml.urlResult": "MarkDown",
+
+    // Rainbow CSV
+        "rainbow_csv.align_in_scratch_file": false,
+        "rainbow_csv.autodetect_separators": [
+            ",",
+            ";",
+            "TAB",
+            "|",
+        ],
+        "rainbow_csv.autodetection_min_line_count": 10,
+        "rainbow_csv.csv_lint_detect_trailing_spaces": false,
+        "rainbow_csv.double_width_alignment": true,
+        "rainbow_csv.enable_auto_csv_lint": true,
+        "rainbow_csv.enable_context_menu_head": false,
+        "rainbow_csv.enable_context_menu_tail": false,
+        "rainbow_csv.enable_cursor_position_info": true,
+        "rainbow_csv.enable_debug_logging": false,
+        "rainbow_csv.enable_separator_autodetection": true,
+        "rainbow_csv.enable_sticky_header": true,
+        "rainbow_csv.enable_tooltip": true,
+        "rainbow_csv.enable_tooltip_column_names": true,
+        "rainbow_csv.rbql_with_headers_by_default": false,
 
     // RC Script Language - all default
 
