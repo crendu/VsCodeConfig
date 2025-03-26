@@ -1,10 +1,6 @@
 // Place your key bindings in this file to override the defaultsauto[]
 [
     {
-        "key": "ctrl+shift+alt",
-        "command": "shellLauncher.launch"
-    },
-    {
         "key": "ctrl+oem_7",
         "command": "editor.action.formatDocument",
         "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
@@ -18,5 +14,20 @@
         "key": "ctrl+alt+c",
         "command": "editor.action.addCommentLine",
         "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+k ctrl+c",
+        "command": "-editor.action.addCommentLine",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+d",
+        "command": "markdown.showPreviewToSide",
+        "when": "!notebookEditorFocused && editorLangId == 'markdown'"
+    },
+    {
+        "key": "ctrl+k v",
+        "command": "-markdown.showPreviewToSide",
+        "when": "!notebookEditorFocused && editorLangId == 'markdown'"
     }
 ]
