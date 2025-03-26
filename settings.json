@@ -1,9 +1,9 @@
+// Last Sync: 1.98.2
 {
     /***************
      * ENVIRONMENT *
      ***************/
     "diffEditor.maxComputationTime": 0,
-    "diffEditor.hideUnchangedRegions.enabled": true,
 
     "editor.codeActionsOnSave": {
         "source.organizeImports": "never"
@@ -20,8 +20,8 @@
     "editor.multiCursorLimit": 100000,
     "editor.padding.bottom": 200,
     "editor.quickSuggestions": {
-        "other": true,
         "comments": false,
+        "other": true,
         "strings": false
     },
     "editor.quickSuggestionsDelay": 10,
@@ -29,13 +29,13 @@
     "editor.rulers": [
         80,
         {
-            "column": 120,
-            "color": "#ff4081"
+            "color": "#ff4081",
+            "column": 120
         },
         {
-            "column": 160,
-            "color": "#ff0000"
-        },
+            "color": "#ff0000",
+            "column": 160
+        }
     ],
     "editor.scrollBeyondLastLine": false,
     "editor.showDeprecated": true,
@@ -69,7 +69,7 @@
         "tab.activeBorder": "#0a08b2",
         "tab.activeBorderTop": "#0c3953",
         "tab.border": "#0c3953",
-        "tab.hoverBackground": "#094c72",
+        "tab.hoverBackground": "#094c72"
     },
     "workbench.colorTheme": "SynthWave '84 Blues",
     "workbench.editor.enablePreview": true,
@@ -87,10 +87,10 @@
     "files.associations": {
         "*.cfg": "libconfig",
         "*.gcp": "makefile",
+        "*.out": "log",
         "*.qss": "css",
         "*.rc": "rc-script",
-        "*.rsc": "properties",
-        "*.out": "log",
+        "*.rsc": "properties"
     },
     "files.autoGuessEncoding": true,   // To resolve pb with UTF8 VS Windows1252 encoding.
     "files.encoding": "utf8",
@@ -102,7 +102,6 @@
         // "**/*.git": true,
         "**/*.hhc": true,
         "**/*.htm": true,
-        "**/*.md": true,
         "**/*.o": true,
         "**/*.olf": true,
         "**/*.pro": true,
@@ -114,13 +113,15 @@
         "**/*.vcproj": true,
         "**/*.vcxproj*": true,
         "**/*.vdproj": true,
+        "**/AppLogBackup/**": true,
         // "**/bin/": true,
         // "**/build/": true,
+        "**/Doxygen/**": true,
         "**/Intermediates*": true,
         // "**/javatest/": true,
         "**/JenkinsReferences*": true,
         // "**/shared/": true,
-        "**/Software*": true,
+        "**/Software/**": true
     },
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
@@ -131,19 +132,28 @@
     "search.exclude": {
         "**.css": true,
         "**.err": true,
+        "**.fdp": true,
+        "**.frag": true,
+        "**.glb": true,
         "**.html": true,
+        "**.inc": true,
+        "**.iv": true,
         "**.js": true,
-        // "**.log": true,
-        "**.map": true,
-        "**.php": true,
+        "**.log": true,
+        "**.out": true,
+        "**.sct": true,
+        "**.ShaderLib": true,
+        "**.sig": true,
+        "**.svg": true,
+        "**.vert": true,
         "**.xsl": true,
-        "**.yaml": true,
+        "**.zog": true,
+        "**/.continue/": true,
+        "**/.vscode/": true,
         "**/doc*/": true,
         "**/Documentation/": true,
         // "**/target/": true,
         // "**/templates/": true,
-        "**/*w10-x64-vc14*": true,
-        "**/*w7-x86-vc10*": true,
     },
     "search.followSymlinks": false, // Seems to avoid High CPU usage
 
@@ -159,16 +169,16 @@
     // Command Prompt SSH --> need openssh
         "terminal.integrated.profiles.windows": {
             // "GitBash": {
-            //     "path": ["C:\\Programy\\Git\\bin\\bash.exe"],
-            //     "icon": "terminal-bash"
+            //     "icon": "terminal-bash",
+            //     "path": ["C:\\Programy\\Git\\bin\\bash.exe"]
             // },
             "PowerShell": {
-                "source": "PowerShell",
-                "icon": "terminal-powershell"
+                "icon": "terminal-powershell",
+                "source": "PowerShell"
             },
             "Command Prompt": {
-                "path": ["${env:windir}\\System32\\cmd.exe"],
-                "icon": "terminal-cmd"
+                "icon": "terminal-cmd",
+                "path": ["${env:windir}\\System32\\cmd.exe"]
             }
         },
         "terminal.integrated.defaultProfile.windows": "Command Prompt",
@@ -221,14 +231,14 @@
             "modernize-use-trailing-return-type",           // Useless
             "performance-no-int-to-ptr",                    // Needed in Cortex
             "readability-identifier-length",                // Useless
-            "readability-named-parameter",                  // Conflicts with /Wall (named parameter not used)
+            "readability-named-parameter"                   // Conflicts with /Wall (named parameter not used)
         ],
         "C_Cpp.codeAnalysis.clangTidy.checks.enabled": [
             "bugprone-*",
             "clang-analyzer-*",
             "concurrency-*",
-            // "cppcoreguidelines-*",
-            // "google-*",
+            // "cppcoreguidelines-*",   // Annoying with old code
+            // "google-*",              // Annoying with old code
             "misc-*",
             "modernize-*",
             "performance-*",
@@ -265,49 +275,50 @@
             ""
         ],
         "C_Cpp.default.compilerArgs": [],
-        "C_Cpp.default.compilerPath": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Tools\\MSVC\\14.29.30133\\bin\\Hostx64\\x64\\cl.exe",
+        "C_Cpp.default.compilerPath": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
         "C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools",
-        "C_Cpp.default.cppStandard": "c++17",
+        "C_Cpp.default.cppStandard": "c++20",
         "C_Cpp.default.customConfigurationVariables": null,
         "C_Cpp.default.defines": [
             "_CRT_USE_BUILTIN_OFFSETOF",    // Fix the clang tidy error (make offsetof constexpr)
             "_DEBUG",
             "UNICODE",
-            "_UNICODE"
+            "_UNICODE",
+            "WIN32"
         ],
         "C_Cpp.default.dotConfig": "",
         "C_Cpp.default.enableConfigurationSquiggles": true,
         "C_Cpp.default.forcedInclude": [],
         "C_Cpp.default.includePath": [
-            "D:/**",
+            "D:/**"
         ],
         "C_Cpp.default.intelliSenseMode": "windows-msvc-x64",
         "C_Cpp.default.macFrameworkPath": [],
         "C_Cpp.default.mergeConfigurations": true,
         "C_Cpp.default.systemIncludePath": [],
-        "C_Cpp.default.windowsSdkVersion": "",  // "16.11.31702.278"
+        "C_Cpp.default.windowsSdkVersion": "",
         "C_Cpp.dimInactiveRegions": true,
         "C_Cpp.doxygen.generateOnType": true,
         "C_Cpp.doxygen.generatedStyle": "/**",
         "C_Cpp.doxygen.sectionTags": [
             "attention",
-            "tparam",
+            "deprecated",
+            "exception",
+            "note",
             "param",
             "result",
             "returns",
             "retval",
-            "exception",
-            "deprecated",
-            "warning",
-            "note"
+            "tparam",
+            "warning"
         ],
         "C_Cpp.enhancedColorization": "enabled",
         "C_Cpp.errorSquiggles": "disabled",
         "C_Cpp.exclusionPolicy": "checkFilesAndFolders",
         "C_Cpp.experimentalFeatures": "enabled",
         "C_Cpp.files.exclude": {
-            "**/.vscode": true,
-            "**/.vs": true
+            "**/.vs": true,
+            "**/.vscode": true
         },
         "C_Cpp.formatting": "vcFormat",
         "C_Cpp.hover": "default",
@@ -377,7 +388,7 @@
         "C_Cpp.vcFormat.space.beforeBlockOpenBrace": true,
         "C_Cpp.vcFormat.space.beforeComma": false,
         "C_Cpp.vcFormat.space.beforeConstructorColon": true,
-        "C_Cpp.vcFormat.space.beforeEmptySquareBrackets": true,
+        "C_Cpp.vcFormat.space.beforeEmptySquareBrackets": false,
         "C_Cpp.vcFormat.space.beforeFunctionOpenParenthesis": "remove",
         "C_Cpp.vcFormat.space.beforeInheritanceColon": true,
         "C_Cpp.vcFormat.space.beforeInitializerListOpenBrace": false,
@@ -452,29 +463,29 @@
         //         "description": "The build type.",
         //         "choices": {
         //             "debug": {
-        //                 "short": "Debug",
+        //                 "buildType": "Debug",
         //                 "long": "Disable optimizations - include debug information.",
-        //                 "buildType": "Debug"
+        //                 "short": "Debug"
         //             },
         //             "release": {
-        //                 "short": "Release",
+        //                 "buildType": "Release",
         //                 "long": "Optimize for speed - exclude debug information.",
-        //                 "buildType": "Release"
+        //                 "short": "Release"
         //             },
         //             "minsize": {
-        //                 "short": "MinSizeRel",
+        //                 "buildType": "MinSizeRel",
         //                 "long": "Optimize for smallest binary size - exclude debug information.",
-        //                 "buildType": "MinSizeRel"
+        //                 "short": "MinSizeRel"
         //             },
         //             "reldeb": {
-        //                 "short": "RelWithDebInfo",
+        //                 "buildType": "RelWithDebInfo",
         //                 "long": "Optimize for speed - include debug information.",
-        //                 "buildType": "RelWithDebInfo"
+        //                 "short": "RelWithDebInfo"
         //             },
         //             "unspecified": {
-        //                 "short": "Unspecified",
+        //                 "buildType": "Unspecified",
         //                 "long": "Let CMake pick the default build type.",
-        //                 "buildType": "Unspecified"
+        //                 "short": "Unspecified"
         //             }
         //         }
         //     }
@@ -485,11 +496,11 @@
         // "cmake.enableTraceLogging": false,
         // "cmake.enabledOutputParsers": [
         //     "cmake",
+        //     "diab",
         //     "gcc",
-        //     "gnuld",
-        //     "msvc",
         //     "ghs",
-        //     "diab"
+        //     "gnuld",
+        //     "msvc"
         // ],
         // "cmake.environment": {},
         // "cmake.exportCompileCommandsFile": true,
@@ -503,16 +514,16 @@
         // "cmake.mergedCompileCommands": null,
         // "cmake.options.advanced": {
         //     "build": {
-        //         "statusBarVisibility": "inherit",
-        //         "inheritDefault": "visible"
+        //         "inheritDefault": "visible",
+        //         "statusBarVisibility": "inherit"
         //     },
         //     "launch": {
-        //         "statusBarVisibility": "inherit",
-        //         "inheritDefault": "visible"
+        //         "inheritDefault": "visible",
+        //         "statusBarVisibility": "inherit"
         //     },
         //     "debug": {
-        //         "statusBarVisibility": "inherit",
-        //         "inheritDefault": "visible"
+        //         "inheritDefault": "visible",
+        //         "statusBarVisibility": "inherit"
         //     }
         // },
         // "cmake.options.statusBarVisibility": "hidden",
@@ -618,35 +629,41 @@
                 "foreground": "#ff0000",
                 "overviewColor": "#ff0000",
                 "overviewRulerLane": "Left",
-                "pattern": ".*ERREUR.*|\\[ERROR]|(^.* KO.*|(fatal error| error) \\w+)",
+                "pattern": ".*ERREUR.*|\\[ERROR]|(^.* KO.*|(fatal error| error) \\w+)"
             },
             {
                 "foreground": "#22aa22",
-                "pattern": "^.* OK.*",
+                "pattern": "^.* OK.*"
             },
             {
                 "foreground": "#ffa500",
-                "pattern": ".*AVERTISSEMENT.*|\\[DEBUG]|(^.*warning : |warning \\w+)",
+                "pattern": ".*AVERTISSEMENT.*|\\[DEBUG]|(^.*warning : |warning \\w+)"
+            },
+            {
+                "foreground": "#ffff008e",
+                "overviewColor": "#B7A128",
+                "overviewRulerLane": "Right",
+                "pattern": "^.+?\\\\Sources\\\\.+?warning.+?$"
             },
             {
                 "fontWeight": "bold",
                 "foreground": "#fa8072",
-                "pattern": "[0-9]{4}/[0-9]{2}/[0-9]{2}-[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3}",
+                "pattern": "[0-9]{4}/[0-9]{2}/[0-9]{2}-[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3}"
             },
             {
                 "fontStyle": "italic",
                 "foreground": "#fa8072",
-                "pattern": "(d|D):.*?\\.(bmx|cc|chm|dat|dll|decl|enum|err|FS|info|inl|iv|lib|log|mod|msg|obj|pl|pm|ref|reg|tex|VS)",
+                "pattern": "(d|D):.*?\\.(bmx|cc|chm|dat|dll|decl|enum|err|FS|info|inl|iv|lib|log|mod|msg|obj|pl|pm|ref|reg|tex|VS)"
             },
             {
                 "fontStyle": "italic",
                 "foreground": "#9d9dff",
-                "pattern": "(d|D):.*?\\.(cmd|cpp|cfg|bmp|fdp|h|ico|png|txt|xml)",
+                "pattern": "(d|D):.*?\\.(cmd|cpp|cfg|bmp|fdp|h|ico|png|txt|xml)"
             },
             {
                 "foreground": "#0080ff",
-                "pattern": "\\[.*]",
-            },
+                "pattern": "\\[.*]"
+            }
         ],
         "logFileHighlighter.progressIndicatorUnderlineColor": "#00ff1f8f",
 
@@ -706,7 +723,7 @@
         "perforce.scm.deactivateOnFileClose": false,
         "perforce.scmFileChanges": true,
         "perforce.specEditor.showIndentWarning": true,
-        "perforce.swarmHost": "XXX",
+        "perforce.swarmHost": "https://XXX",
         "perforce.syncMode": "whole client",
         "perforce.user": "XXX",
         "perforce.warnOnMissingP4CONFIG": true,
@@ -722,7 +739,7 @@
 
     // PlantUML
         "plantuml.commandArgs": [
-            "-DGRAPHVIZ_DOT=XXX\\dot.exe",
+            "-DGRAPHVIZ_DOT=D:\\XXX\\bin\\dot.exe",
             "-DPLANTUML_LIMIT_SIZE=8192"
         ],
         "plantuml.diagramsRoot": "",
@@ -730,7 +747,7 @@
         "plantuml.exportFormat": "png",
         "plantuml.exportIncludeFolderHeirarchy": true,
         "plantuml.exportMapFile": false,
-        // "plantuml.exportOutDir": "out",
+        "plantuml.exportOutDir": "out",
         "plantuml.exportSubFolder": true,
         "plantuml.fileExtensions": ".wsd,.pu,.puml,.plantuml,.iuml",
         "plantuml.includepaths": [],
@@ -743,157 +760,37 @@
         "plantuml.previewSwapMouseButtons": false,
         "plantuml.render": "Local",
         "plantuml.server": "",
-        "plantuml.urlFormat": "",
+        "plantuml.urlFormat":"",
         "plantuml.urlResult": "MarkDown",
 
-    // Python
-        "debugpy.debugJustMyCode": ,
-        // "debugpy.showPythonInlineValues": false,
-        // "python.REPL.enableREPLSmartSend": true,
-        // "python.REPL.provideVariables": true,
-        // "python.REPL.sendToNativeREPL": false,
-        // "python.activeStateToolPath": "state",
-        // "python.analysis.aiCodeActions": {},
-        // "python.analysis.autoFormatStrings": false,
-        // "python.analysis.autoImportCompletions": false,
-        // "python.analysis.autoIndent": true,
-        // "python.analysis.autoSearchPaths": true,
-        // "python.analysis.cacheLSPData": false,
-        // "python.analysis.completeFunctionParens": false,
-        // "python.analysis.diagnosticMode": "openFilesOnly",
-        // "python.analysis.diagnosticSeverityOverrides": {},
-        // "python.analysis.disableTaggedHints": false,
-        // "python.analysis.displayEnglishDiagnostics": false,
-        // "python.analysis.enableEditableInstalls": false,
-        // "python.analysis.enablePytestSupport": true,
-        // "python.analysis.enableSyncServer": false,
-        // "python.analysis.exclude": [],
-        // "python.analysis.extraCommitChars": false,
-        // "python.analysis.extraPaths": [],
-        // "python.analysis.fixAll": [],
-        // "python.analysis.generateWithTypeAnnotation": false,
-        // "python.analysis.gotoDefinitionInStringLiteral": true,
-        // "python.analysis.ignore": [],
-        // "python.analysis.importFormat": "absolute",
-        // "python.analysis.include": [],
-        // "python.analysis.includeAliasesFromUserFiles": false,
-        // "python.analysis.indexing": true,
-        // "python.analysis.inlayHints.callArgumentNames": "off",
-        // "python.analysis.inlayHints.functionReturnTypes": false,
-        // "python.analysis.inlayHints.pytestParameters": false,
-        // "python.analysis.inlayHints.variableTypes": false,
-        // "python.analysis.languageServerMode": "default",
-        // "python.analysis.logLevel": "Information",
-        // "python.analysis.nodeExecutable": "",
-        // "python.analysis.packageIndexDepths": [
-        //     {
-        //         "name": "sklearn",
-        //         "depth": 2
-        //     },
-        //     {
-        //         "name": "matplotlib",
-        //         "depth": 2
-        //     },
-        //     {
-        //         "name": "scipy",
-        //         "depth": 2
-        //     },
-        //     {
-        //         "name": "django",
-        //         "depth": 2
-        //     },
-        //     {
-        //         "name": "flask",
-        //         "depth": 2
-        //     },
-        //     {
-        //         "name": "fastapi",
-        //         "depth": 2
-        //     }
-        // ],
-        // "python.analysis.persistAllIndices": true,
-        // "python.analysis.regenerateStdLibIndices": false,
-        // "python.analysis.reportExtraTelemetry": false,
-        // "python.analysis.showOnlyDirectDependenciesInAutoImport": false,
-        // "python.analysis.stubPath": "typings",
-        // "python.analysis.supportDocstringTemplate": false,
-        // "python.analysis.supportRestructuredText": false,
-        // "python.analysis.typeCheckingMode": "off",
-        // "python.analysis.typeEvaluation.analyzeUnannotatedFunctions": true,
-        // "python.analysis.typeEvaluation.deprecateTypingAliases": false,
-        // "python.analysis.typeEvaluation.disableBytesTypePromotions": false,
-        // "python.analysis.typeEvaluation.enableExperimentalFeatures": false,
-        // "python.analysis.typeEvaluation.enableReachabilityAnalysis": false,
-        // "python.analysis.typeEvaluation.enableTypeIgnoreComments": true,
-        // "python.analysis.typeEvaluation.strictDictionaryInference": false,
-        // "python.analysis.typeEvaluation.strictListInference": false,
-        // "python.analysis.typeEvaluation.strictParameterNoneValue": true,
-        // "python.analysis.typeEvaluation.strictSetInference": false,
-        // "python.analysis.typeshedPaths": [],
-        // "python.analysis.useLibraryCodeForTypes": true,
-        // "python.analysis.userFileIndexingLimit": 2000,
-        // "python.autoComplete.extraPaths": [],
-        // "python.condaPath": "",
-        // "python.createEnvironment.contentButton": "hide",
-        // "python.createEnvironment.trigger": "prompt",
-        // "python.defaultInterpreterPath": "python",
-        // "python.envFile": "${workspaceFolder}/.env",
-        // "python.experiments.enabled": true,
-        // "python.experiments.optInto": [],
-        // "python.experiments.optOutFrom": [],
-        // "python.globalModuleInstallation": false,
-        // "python.interpreter.infoVisibility": "onPythonRelated",
-        // "python.languageServer": "Default",
-        // "python.locator": "js",
-        // "python.missingPackage.severity": "Hint",
-        // "python.pipenvPath": "pipenv",
-        // "python.pixiToolPath": "pixi",
-        // "python.poetryPath": "poetry",
-        // "python.terminal.activateEnvInCurrentTerminal": false,
-        // "python.terminal.activateEnvironment": true,
-        // "python.terminal.executeInFileDir": false,
-        // "python.terminal.focusAfterLaunch": false,
-        // "python.terminal.launchArgs": [],
-        // "python.terminal.shellIntegration.enabled": false,
-        // "python.testing.autoTestDiscoverOnSaveEnabled": true,
-        // "python.testing.cwd": null,
-        // "python.testing.debugPort": 3000,
-        // "python.testing.promptToConfigure": true,
-        // "python.testing.pytestArgs": [],
-        // "python.testing.pytestEnabled": false,
-        // "python.testing.pytestPath": "pytest",
-        // "python.testing.unittestArgs": [
-        //     "-v",
-        //     "-s",
-        //     ".",
-        //     "-p",
-        //     "*test*.py"
-        // ],
-        // "python.testing.unittestEnabled": false,
-        // "python.venvFolders": [],
-        // "python.venvPath": "",
 
     // Rainbow CSV
-        // "rainbow_csv.align_in_scratch_file": false,
-        // "rainbow_csv.autodetect_separators": [
-        //     ",",
-        //     ";",
-        //     "TAB",
-        //     "|",
-        // ],
-        // "rainbow_csv.autodetection_min_line_count": 10,
-        // "rainbow_csv.csv_lint_detect_trailing_spaces": false,
-        // "rainbow_csv.double_width_alignment": true,
-        // "rainbow_csv.enable_auto_csv_lint": true,
-        // "rainbow_csv.enable_context_menu_head": false,
-        // "rainbow_csv.enable_context_menu_tail": false,
-        // "rainbow_csv.enable_cursor_position_info": true,
-        // "rainbow_csv.enable_debug_logging": false,
-        // "rainbow_csv.enable_separator_autodetection": true,
-        // "rainbow_csv.enable_sticky_header": true,
-        // "rainbow_csv.enable_tooltip": true,
-        // "rainbow_csv.enable_tooltip_column_names": true,
-        // "rainbow_csv.rbql_with_headers_by_default": false,
+        "rainbow_csv.align_in_scratch_file": false,
+        "rainbow_csv.autodetect_separators": [
+            "TAB",
+            ",",
+            ";",
+            "|"
+        ],
+        "rainbow_csv.autodetection_min_line_count": 10,
+        "rainbow_csv.comment_prefix": "",
+        "rainbow_csv.csv_lint_detect_trailing_spaces": true,
+        "rainbow_csv.double_width_alignment": true,
+        "rainbow_csv.enable_auto_csv_lint": true,
+        "rainbow_csv.enable_context_menu_head": false,
+        "rainbow_csv.enable_context_menu_tail": false,
+        "rainbow_csv.enable_cursor_position_info": true,
+        "rainbow_csv.enable_debug_logging": false,
+        "rainbow_csv.enable_separator_autodetection": true,
+        "rainbow_csv.enable_sticky_header": true,
+        "rainbow_csv.enable_tooltip": true,
+        "rainbow_csv.enable_tooltip_column_names": true,
+        "rainbow_csv.highlight_rows": false,
+        "rainbow_csv.rbql_output_dir": "TMP",
+        "rainbow_csv.rbql_with_headers_by_default": false,
+        "rainbow_csv.virtual_alignment_char": "middot",
+        "rainbow_csv.virtual_alignment_mode": "disabled",
+        "rainbow_csv.virtual_alignment_vertical_grid": true,
 
     // RC Script Language
         "rc-script.fullPathToEditor": "",
@@ -908,13 +805,13 @@
         "synthwave84blues.disableGlow": false,
 
     // vscode-icons
-        "vsicons.associations.fileDefault.file": null,
-        "vsicons.associations.fileDefault.file_light": null,
+        "vsicons.associations.fileDefault.file": {},
+        "vsicons.associations.fileDefault.file_light": {},
         "vsicons.associations.files": [],
-        "vsicons.associations.folderDefault.folder": null,
-        "vsicons.associations.folderDefault.folder_light": null,
-        "vsicons.associations.folderDefault.root_folder": null,
-        "vsicons.associations.folderDefault.root_folder_light": null,
+        "vsicons.associations.folderDefault.folder": {},
+        "vsicons.associations.folderDefault.folder_light": {},
+        "vsicons.associations.folderDefault.root_folder": {},
+        "vsicons.associations.folderDefault.root_folder_light": {},
         "vsicons.associations.folders": [],
         "vsicons.customIconFolderPath": "",
         "vsicons.dontShowConfigManuallyChangedMessage": false,
@@ -953,9 +850,256 @@
         // "xmlTools.xqueryExecutionInputSearchPattern": "**/*.xml",
 
 
+    /**********************************************
+     * PRE-INSTALL EXTENSIONS SETTINGS (@builtin) *
+     **********************************************/
+    // CSS Language Features (CSS, LESS, SCSS) - ENABLED
+        //--> CSS
+            "css.completion.completePropertyWithSemicolon": true,
+            "css.completion.triggerPropertyValueCompletion": true,
+            "css.customData": [],
+            "css.format.braceStyle": "collapse",
+            "css.format.enable": true,
+            "css.format.maxPreserveNewLines": null,
+            "css.format.newlineBetweenRules": true,
+            "css.format.newlineBetweenSelectors": true,
+            "css.format.preserveNewLines": true,
+            "css.format.spaceAroundSelectorSeparator": false,
+            "css.hover.documentation": true,
+            "css.hover.references": true,
+            "css.lint.argumentsInColorFunction": "error",
+            "css.lint.boxModel": "ignore",
+            "css.lint.compatibleVendorPrefixes": "ignore",
+            "css.lint.duplicateProperties": "ignore",
+            "css.lint.emptyRules": "warning",
+            "css.lint.float": "ignore",
+            "css.lint.fontFaceProperties": "warning",
+            "css.lint.hexColorLength": "error",
+            "css.lint.idSelector": "ignore",
+            "css.lint.ieHack": "ignore",
+            "css.lint.importStatement": "ignore",
+            "css.lint.important": "ignore",
+            "css.lint.propertyIgnoredDueToDisplay": "warning",
+            "css.lint.universalSelector": "ignore",
+            "css.lint.unknownAtRules": "warning",
+            "css.lint.unknownProperties": "warning",
+            "css.lint.unknownVendorSpecificProperties": "ignore",
+            "css.lint.validProperties": [],
+            "css.lint.vendorPrefix": "warning",
+            "css.lint.zeroUnits": "ignore",
+            "css.trace.server": "off",
+            "css.validate": true,
+        //--> LESS
+            "less.completion.completePropertyWithSemicolon": true,
+            "less.completion.triggerPropertyValueCompletion": true,
+            "less.format.braceStyle": "collapse",
+            "less.format.enable": true,
+            "less.format.maxPreserveNewLines": null,
+            "less.format.newlineBetweenRules": true,
+            "less.format.newlineBetweenSelectors": true,
+            "less.format.preserveNewLines": true,
+            "less.format.spaceAroundSelectorSeparator": false,
+            "less.hover.documentation": true,
+            "less.hover.references": true,
+            "less.lint.argumentsInColorFunction": "error",
+            "less.lint.boxModel": "ignore",
+            "less.lint.compatibleVendorPrefixes": "ignore",
+            "less.lint.duplicateProperties": "ignore",
+            "less.lint.emptyRules": "warning",
+            "less.lint.float": "ignore",
+            "less.lint.fontFaceProperties": "warning",
+            "less.lint.hexColorLength": "error",
+            "less.lint.idSelector": "ignore",
+            "less.lint.ieHack": "ignore",
+            "less.lint.importStatement": "ignore",
+            "less.lint.important": "ignore",
+            "less.lint.propertyIgnoredDueToDisplay": "warning",
+            "less.lint.universalSelector": "ignore",
+            "less.lint.unknownAtRules": "warning",
+            "less.lint.unknownProperties": "warning",
+            "less.lint.unknownVendorSpecificProperties": "ignore",
+            "less.lint.validProperties": [],
+            "less.lint.vendorPrefix": "warning",
+            "less.lint.zeroUnits": "ignore",
+            "less.validate": true,
+        //--> SCSS
+            "scss.completion.completePropertyWithSemicolon": true,
+            "scss.completion.triggerPropertyValueCompletion": true,
+            "scss.format.braceStyle": "collapse",
+            "scss.format.enable": true,
+            "scss.format.maxPreserveNewLines": null,
+            "scss.format.newlineBetweenRules": true,
+            "scss.format.newlineBetweenSelectors": true,
+            "scss.format.preserveNewLines": true,
+            "scss.format.spaceAroundSelectorSeparator": false,
+            "scss.hover.documentation": true,
+            "scss.hover.references": true,
+            "scss.lint.argumentsInColorFunction": "error",
+            "scss.lint.boxModel": "ignore",
+            "scss.lint.compatibleVendorPrefixes": "ignore",
+            "scss.lint.duplicateProperties": "ignore",
+            "scss.lint.emptyRules": "warning",
+            "scss.lint.float": "ignore",
+            "scss.lint.fontFaceProperties": "warning",
+            "scss.lint.hexColorLength": "error",
+            "scss.lint.idSelector": "ignore",
+            "scss.lint.ieHack": "ignore",
+            "scss.lint.importStatement": "ignore",
+            "scss.lint.important": "ignore",
+            "scss.lint.propertyIgnoredDueToDisplay": "warning",
+            "scss.lint.universalSelector": "ignore",
+            "scss.lint.unknownAtRules": "warning",
+            "scss.lint.unknownProperties": "warning",
+            "scss.lint.unknownVendorSpecificProperties": "ignore",
+            "scss.lint.validProperties": [],
+            "scss.lint.vendorPrefix": "warning",
+            "scss.lint.zeroUnits": "ignore",
+            "scss.validate": true,
+
+    // Emmet - ENABLED - Use for VsCode auto complection
+        "emmet.excludeLanguages": [
+            "markdown"
+        ],
+        "emmet.extensionsPath": [],
+        "emmet.includeLanguages": {},
+        "emmet.optimizeStylesheetParsing": true,
+        "emmet.preferences": {},
+        "emmet.showAbbreviationSuggestions": true,
+        "emmet.showExpandedAbbreviation": "always",
+        "emmet.showSuggestionsAsSnippets": false,
+        "emmet.syntaxProfiles": {},
+        "emmet.triggerExpansionOnTab": false,
+        "emmet.useInlineCompletions": false,
+        "emmet.variables": {},
+
+    // Git/GitBase - DISABLED
+
+    // GitHub/GitHub Authentification - DISABLED
+
+    // Grunt support for VS Code - DISABLED
+
+    // Gulp support for VSCode - DISABLED
+
+    // HTML Language Features - ENABLED
+        "html.autoClosingTags": true,
+        "html.autoCreateQuotes": true,
+        "html.completion.attributeDefaultValue": "doublequotes",
+        "html.customData": [],
+        "html.format.contentUnformatted": "pre,code,textarea",
+        "html.format.enable": true,
+        "html.format.extraLiners": "head, body, /html",
+        "html.format.indentHandlebars": false,
+        "html.format.indentInnerHtml": false,
+        "html.format.maxPreserveNewLines": null,
+        "html.format.preserveNewLines": true,
+        "html.format.templating": false,
+        "html.format.unformatted": "wbr",
+        "html.format.unformattedContentDelimiter": "",
+        "html.format.wrapAttributes": "auto",
+        "html.format.wrapAttributesIndentSize": null,
+        "html.format.wrapLineLength": 120,
+        "html.hover.documentation": true,
+        "html.hover.references": true,
+        "html.suggest.html5": true,
+        "html.trace.server": "off",
+        "html.validate.scripts": true,
+        "html.validate.styles": true,
+
+    // .ipynb Support - DISABLED
+
+    // Jake support for VS Code - DISABLED
+
+    // JavaScript Debugger/JavaScript Debugger Companion Extension - DISABLED
+
+    // JSON Language Features - ENABLED
+        "json.format.enable": true,
+        "json.format.keepLines": false,
+        "json.maxItemsComputed": 5000,
+        "json.schemaDownload.enable": true,
+        "json.schemas": [],
+        "json.trace.server": "off",
+        "json.validate.enable": true,
+
+    // Markdown Language Features - ENABLED
+        "markdown.copyFiles.destination": {},
+        "markdown.copyFiles.overwriteBehavior": "nameIncrementally",
+        "markdown.editor.drop.copyIntoWorkspace": "mediaFiles",
+        "markdown.editor.drop.enabled": "smart",
+        "markdown.editor.filePaste.audioSnippet": "<audio controls src=\"${src}\" title=\"${title}\"></audio>",
+        "markdown.editor.filePaste.copyIntoWorkspace": "mediaFiles",
+        "markdown.editor.filePaste.enabled": "smart",
+        "markdown.editor.filePaste.videoSnippet": "<video controls src=\"${src}\" title=\"${title}\"></video>",
+        "markdown.editor.pasteUrlAsFormattedLink.enabled": "smartWithSelection",
+        "markdown.editor.updateLinksOnPaste.enabled": true,
+        "markdown.links.openLocation": "currentGroup",
+        "markdown.occurrencesHighlight.enabled": false,
+        "markdown.preferredMdPathExtensionStyle": "auto",
+        "markdown.preview.breaks": false,
+        "markdown.preview.doubleClickToSwitchToEditor": true,
+        "markdown.preview.fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif",
+        "markdown.preview.fontSize": 14,
+        "markdown.preview.lineHeight": 1.6,
+        "markdown.preview.linkify": true,
+        "markdown.preview.markEditorSelection": true,
+        "markdown.preview.openMarkdownLinks": "inPreview",
+        "markdown.preview.scrollEditorWithPreview": true,
+        "markdown.preview.scrollPreviewWithEditor": true,
+        "markdown.preview.typographer": false,
+        "markdown.server.log": "off",
+        "markdown.styles": [],
+        "markdown.suggest.paths.enabled": true,
+        "markdown.suggest.paths.includeWorkspaceHeaderCompletions": "onDoubleHash",
+        "markdown.trace.server": "off",
+        "markdown.updateLinksOnFileMove.enableForDirectories": true,
+        "markdown.updateLinksOnFileMove.enabled": "never",
+        "markdown.updateLinksOnFileMove.include": [
+            "**/*.{jpg,jpe,jpeg,png,bmp,gif,ico,webp,avif,tiff,svg,mp4}",
+            "**/*.{md,mkd,mdwn,mdown,markdown,markdn,mdtxt,mdtext,workbook}"
+        ],
+        "markdown.validate.duplicateLinkDefinitions.enabled": "warning",
+        "markdown.validate.enabled": false,
+        "markdown.validate.fileLinks.enabled": "warning",
+        "markdown.validate.fileLinks.markdownFragmentLinks": "inherit",
+        "markdown.validate.fragmentLinks.enabled": "warning",
+        "markdown.validate.ignoredLinks": [],
+        "markdown.validate.referenceLinks.enabled": "warning",
+        "markdown.validate.unusedLinkDefinitions.enabled": "hint",
+
+    // Markdown Math - ENABLED
+        "markdown.math.enabled": true,
+        "markdown.math.macros": {},
+
+    // MediaPreview - ENABLED
+        "mediaPreview.video.autoPlay": false,
+        "mediaPreview.video.loop": false,
+
+    // Merge Conflic - ENABLED
+        "merge-conflict.autoNavigateNextConflict.enabled": false,
+        "merge-conflict.codeLens.enabled": true,
+        "merge-conflict.decorators.enabled": true,
+        "merge-conflict.diffViewPosition": "Current",
+
+    // Microsoft Account - DISABLED
+
+    // Node Debug Auto-attach - DISABLED
+
+    // NPM Support for VS Code - DISABLED
+
+    // PHP Language Features - ENABLED
+        "php.suggest.basic": true,
+        "php.validate.enable": true,
+        "php.validate.executablePath": null,
+        "php.validate.run": "onSave",
+
+    // SimpleBrowser - ENABLED
+        "simpleBrowser.focusLockIndicator.enabled": true,
+
+    // TypeScript and JavaScript Language Features - DISABLED
+
+
     /******************
      * DEFAULT'S LAND *
-     ******************/
+     *****************/
     // Accessibility
         "accessibility.accessibleView.closeOnKeyPress": true,
         "accessibility.debugWatchVariableAnnouncements": true,
@@ -969,16 +1113,19 @@
         "accessibility.signalOptions.experimental.delays.general": {},
         "accessibility.signalOptions.experimental.delays.warningAtPosition": {},
         "accessibility.signalOptions.volume": 70,
+        "accessibility.signals.chatEditModifiedFile": {
+            "sound": "auto"
+        },
         "accessibility.signals.chatRequestSent": {
-            "sound": "auto",
-            "announcement": "auto"
+            "announcement": "auto",
+            "sound": "auto"
         },
         "accessibility.signals.chatResponseReceived": {
             "sound": "auto"
         },
         "accessibility.signals.clear": {
-            "sound": "auto",
-            "announcement": "auto"
+            "announcement": "auto",
+            "sound": "auto"
         },
         "accessibility.signals.codeActionApplied": {
             "sound": "auto"
@@ -990,89 +1137,90 @@
             "sound": "auto"
         },
         "accessibility.signals.diffLineInserted": {
-            "sound": "auto"        },
+            "sound": "auto"
+        },
         "accessibility.signals.diffLineModified": {
             "sound": "auto"
         },
         "accessibility.signals.format": {
-            "sound": "never",
-            "announcement": "never"
+            "announcement": "never",
+            "sound": "never"
         },
         "accessibility.signals.lineHasBreakpoint": {
-            "sound": "auto",
-            "announcement": "auto"
+            "announcement": "auto",
+            "sound": "auto"
         },
         "accessibility.signals.lineHasError": {
-            "sound": "auto",
-            "announcement": "auto"
+            "announcement": "auto",
+            "sound": "auto"
         },
         "accessibility.signals.lineHasFoldedArea": {
-            "sound": "auto",
-            "announcement": "auto"
+            "announcement": "auto",
+            "sound": "auto"
         },
         "accessibility.signals.lineHasInlineSuggestion": {
             "sound": "auto"
         },
         "accessibility.signals.lineHasWarning": {
-            "sound": "auto",
-            "announcement": "auto"
-            },
+            "announcement": "auto",
+            "sound": "auto"
+        },
         "accessibility.signals.noInlayHints": {
             "sound": "auto",
             "announcement": "auto"
-            },
+        },
         "accessibility.signals.notebookCellCompleted": {
-            "sound": "auto",
-            "announcement": "auto"
-            },
+            "announcement": "auto",
+            "sound": "auto"
+        },
         "accessibility.signals.notebookCellFailed": {
-            "sound": "auto",
-            "announcement": "auto"
-            },
+            "announcement": "auto",
+            "sound": "auto"
+        },
         "accessibility.signals.onDebugBreak": {
-            "sound": "auto",
-            "announcement": "auto"
-            },
+            "announcement": "auto",
+            "sound": "auto"
+        },
         "accessibility.signals.positionHasError": {
-            "sound": "auto",
-            "announcement": "auto"
-            },
+            "announcement": "auto",
+            "sound": "auto"
+        },
         "accessibility.signals.positionHasWarning": {
-            "sound": "auto",
-            "announcement": "auto"
-            },
+            "announcement": "auto",
+            "sound": "auto"
+        },
         "accessibility.signals.progress": {
-            "sound": "auto",
-            "announcement": "auto"
-            },
+            "announcement": "auto",
+            "sound": "auto"
+        },
         "accessibility.signals.save": {
-            "sound": "never",
-            "announcement": "never"
-            },
+            "announcement": "never",
+            "sound": "never"
+        },
         "accessibility.signals.taskCompleted": {
-            "sound": "auto",
-            "announcement": "auto"
-            },
+            "announcement": "auto",
+            "sound": "auto"
+        },
         "accessibility.signals.taskFailed": {
-            "sound": "auto",
-            "announcement": "auto"
-            },
+            "announcement": "auto",
+            "sound": "auto"
+        },
         "accessibility.signals.terminalBell": {
-            "sound": "auto",
-            "announcement": "auto"
-            },
+            "announcement": "auto",
+            "sound": "off"
+        },
         "accessibility.signals.terminalCommandFailed": {
-            "sound": "auto",
-            "announcement": "auto"
-            },
+            "announcement": "auto",
+            "sound": "auto"
+        },
         "accessibility.signals.terminalCommandSucceeded": {
-            "sound": "auto",
-            "announcement": "auto"
-            },
+            "announcement": "auto",
+            "sound": "auto"
+        },
         "accessibility.signals.terminalQuickFix": {
-            "sound": "auto",
-            "announcement": "auto"
-            },
+            "announcement": "auto",
+            "sound": "auto"
+        },
         "accessibility.signals.voiceRecordingStarted": {
             "sound": "on"
         },
@@ -1096,6 +1244,7 @@
         "accessibility.verbosity.sourceControl": true,
         "accessibility.verbosity.terminal": true,
         "accessibility.verbosity.walkthrough": true,
+        "accessibility.windowTitleOptimized": true,
 
     // Application
         "application.experimental.rendererProfiling": false,
@@ -1134,7 +1283,7 @@
         "breadcrumbs.symbolSortOrder": "position",
 
     // Chat
-        "chat.agent.maxRequests": 15,
+        "chat.agent.maxRequests": 0,
         "chat.commandCenter.enabled": false,
         "chat.detectParticipant.enabled": true,
         "chat.editing.autoAcceptDelay": 0,
@@ -1145,7 +1294,16 @@
         "chat.editor.fontWeight": "default",
         "chat.editor.lineHeight": 0,
         "chat.editor.wordWrap": "off",
-        "chat.promptFiles": null,
+        "chat.experimental.statusIndicator.enabled": false,
+        "chat.implicitContext.enabled": {
+            "editing-session": "first",
+            "panel": "always"
+        },
+        "chat.promptFiles": true,
+        "chat.promptFilesLocations": {
+            ".github/prompts": true
+        },
+        "chat.renderRelatedFiles": false,
 
     // Comments
         "comments.collapseOnResolve": true,
@@ -1155,77 +1313,9 @@
         "comments.useRelativeTime": true,
         "comments.visible": true,
 
-    // CSS
-        "css.completion.completePropertyWithSemicolon": true,
-        "css.completion.triggerPropertyValueCompletion": true,
-        "css.customData": [],
-        "css.format.braceStyle": "collapse",
-        "css.format.enable": true,
-        "css.format.maxPreserveNewLines": null,
-        "css.format.newlineBetweenRules": true,
-        "css.format.newlineBetweenSelectors": true,
-        "css.format.preserveNewLines": true,
-        "css.format.spaceAroundSelectorSeparator": false,
-        "css.hover.documentation": true,
-        "css.hover.references": true,
-        "css.lint.argumentsInColorFunction": "error",
-        "css.lint.boxModel": "ignore",
-        "css.lint.compatibleVendorPrefixes": "ignore",
-        "css.lint.duplicateProperties": "ignore",
-        "css.lint.emptyRules": "warning",
-        "css.lint.float": "ignore",
-        "css.lint.fontFaceProperties": "warning",
-        "css.lint.hexColorLength": "error",
-        "css.lint.idSelector": "ignore",
-        "css.lint.ieHack": "ignore",
-        "css.lint.importStatement": "ignore",
-        "css.lint.important": "ignore",
-        "css.lint.propertyIgnoredDueToDisplay": "warning",
-        "css.lint.universalSelector": "ignore",
-        "css.lint.unknownAtRules": "warning",
-        "css.lint.unknownProperties": "warning",
-        "css.lint.unknownVendorSpecificProperties": "ignore",
-        "css.lint.validProperties": [],
-        "css.lint.vendorPrefix": "warning",
-        "css.lint.zeroUnits": "ignore",
-        "css.trace.server": "off",
-        "css.validate": true,
-        "scss.completion.completePropertyWithSemicolon": true,
-        "scss.completion.triggerPropertyValueCompletion": true,
-        "scss.format.braceStyle": "collapse",
-        "scss.format.enable": true,
-        "scss.format.maxPreserveNewLines": null,
-        "scss.format.newlineBetweenRules": true,
-        "scss.format.newlineBetweenSelectors": true,
-        "scss.format.preserveNewLines": true,
-        "scss.format.spaceAroundSelectorSeparator": false,
-        "scss.hover.documentation": true,
-        "scss.hover.references": true,
-        "scss.lint.argumentsInColorFunction": "error",
-        "scss.lint.boxModel": "ignore",
-        "scss.lint.compatibleVendorPrefixes": "ignore",
-        "scss.lint.duplicateProperties": "ignore",
-        "scss.lint.emptyRules": "warning",
-        "scss.lint.float": "ignore",
-        "scss.lint.fontFaceProperties": "warning",
-        "scss.lint.hexColorLength": "error",
-        "scss.lint.idSelector": "ignore",
-        "scss.lint.ieHack": "ignore",
-        "scss.lint.importStatement": "ignore",
-        "scss.lint.important": "ignore",
-        "scss.lint.propertyIgnoredDueToDisplay": "warning",
-        "scss.lint.universalSelector": "ignore",
-        "scss.lint.unknownAtRules": "warning",
-        "scss.lint.unknownProperties": "warning",
-        "scss.lint.unknownVendorSpecificProperties": "ignore",
-        "scss.lint.validProperties": [],
-        "scss.lint.vendorPrefix": "warning",
-        "scss.lint.zeroUnits": "ignore",
-        "scss.validate": true,
-
     // Debug
         "debug.allowBreakpointsEverywhere": false,
-        "debug.autoExpandLazyVariables": false,
+        "debug.autoExpandLazyVariables": "off",
         "debug.closeReadonlyTabsOnEnd": false,
         "debug.confirmOnExit": "never",
         "debug.console.acceptSuggestionOnEnter": "off",
@@ -1307,7 +1397,7 @@
         "editor.cursorSurroundingLines": 0,
         "editor.cursorSurroundingLinesStyle": "default",
         "editor.cursorWidth": 0,
-        "editor.defaultColorDecorators": false,
+        "editor.defaultColorDecorators": "never",
         "editor.defaultFoldingRangeProvider": null,
         "editor.defaultFormatter": null,
         "editor.definitionLinkOpensInPeek": false,
@@ -1319,7 +1409,8 @@
         "editor.experimental.asyncTokenization": false,
         "editor.experimental.asyncTokenizationLogging": false,
         "editor.experimental.asyncTokenizationVerification": false,
-        "editor.experimental.preferTreeSitter": [],
+        "editor.experimental.preferTreeSitter.ini": false,
+        "editor.experimental.preferTreeSitter.typescript": false,
         "editor.experimental.treeSitterTelemetry": false,
         "editor.experimentalEditContextEnabled": false,
         "editor.experimentalGpuAcceleration": "off",
@@ -1374,11 +1465,12 @@
         "editor.inlineCompletionsAccessibilityVerbose": false,
         "editor.inlineSuggest.edits.codeShifting": true,
         "editor.inlineSuggest.edits.renderSideBySide": "auto",
+        "editor.inlineSuggest.edits.showCollapsed": false,
         "editor.inlineSuggest.enabled": true,
         "editor.inlineSuggest.fontFamily": "default",
         "editor.inlineSuggest.showToolbar": "onHover",
         "editor.inlineSuggest.suppressSuggestions": false,
-        "editor.inlineSuggest.syntaxHighlightingEnabled": false,
+        "editor.inlineSuggest.syntaxHighlightingEnabled": true,
         "editor.language.brackets": null,
         "editor.language.colorizedBracketPairs": null,
         "editor.letterSpacing": 0,
@@ -1391,6 +1483,7 @@
         "editor.maxTokenizationLineLength": 20000,
         "editor.minimap.autohide": false,
         "editor.minimap.enabled": true,
+        "editor.minimap.markSectionHeaderRegex": "\\bMARK:\\s*(?<separator>-?)\\s*(?<label>.*)$",
         "editor.minimap.maxColumn": 120,
         "editor.minimap.renderCharacters": true,
         "editor.minimap.scale": 1,
@@ -1510,28 +1603,12 @@
         "editor.wrappingIndent": "same",
         "editor.wrappingStrategy": "simple",
 
-    // Emmet - DISABLED
-        // "emmet.excludeLanguages": [
-        //     "markdown"
-        // ],
-        // "emmet.extensionsPath": [],
-        // "emmet.includeLanguages": {},
-        // "emmet.optimizeStylesheetParsing": true,
-        // "emmet.preferences": {},
-        // "emmet.showAbbreviationSuggestions": true,
-        // "emmet.showExpandedAbbreviation": "always",
-        // "emmet.showSuggestionsAsSnippets": false,
-        // "emmet.syntaxProfiles": {},
-        // "emmet.triggerExpansionOnTab": false,
-        // "emmet.useInlineCompletions": false,
-        // "emmet.variables": {},
-
     // Explorer
         "explorer.autoOpenDroppedFile": true,
         "explorer.autoReveal": true,
         "explorer.autoRevealExclude": {
-            "**/node_modules": true,
-            "**/bower_components": true
+            "**/bower_components": true,
+            "**/node_modules": true
         },
         "explorer.compactFolders": true,
         "explorer.confirmDragAndDrop": true,
@@ -1547,12 +1624,12 @@
         "explorer.fileNesting.enabled": false,
         "explorer.fileNesting.expand": true,
         "explorer.fileNesting.patterns": {
-            "*.ts": "${capture}.js",
             "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
             "*.jsx": "${capture}.js",
+            "*.ts": "${capture}.js",
             "*.tsx": "${capture}.ts",
-            "tsconfig.json": "tsconfig.*.json",
-            "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb"
+            "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb",
+            "tsconfig.json": "tsconfig.*.json"
         },
         "explorer.incrementalNaming": "simple",
         "explorer.openEditors.minVisible": 0,
@@ -1563,7 +1640,9 @@
         "explorer.sortOrderReverse": false,
 
     // Extensions
-        "extensions.allowed": "*",
+        "extensions.allowed": {
+            "*": true
+        },
         "extensions.autoCheckUpdates": true,
         "extensions.autoUpdate": true,
         "extensions.closeExtensionDetailsOnViewChange": false,
@@ -1601,151 +1680,6 @@
         "files.trimTrailingWhitespaceInRegexAndStrings": true,
         "files.watcherInclude": [],
 
-    // Git/GitBase - DISABLED
-        // "git.allowForcePush": false,
-        // "git.allowNoVerifyCommit": false,
-        // "git.alwaysShowStagedChangesResourceGroup": false,
-        // "git.alwaysSignOff": false,
-        // "git.autoRepositoryDetection": true,
-        // "git.autoStash": false,
-        // "git.autofetch": false,
-        // "git.autofetchPeriod": 180,
-        // "git.autorefresh": true,
-        // "git.blame.editorDecoration.enabled": false,
-        // "git.blame.editorDecoration.template": "${subject}, ${authorName} (${authorDateAgo})",
-        // "git.blame.statusBarItem.enabled": true,
-        // "git.blame.statusBarItem.template": "${authorName} (${authorDateAgo})",
-        // "git.branchPrefix": "",
-        // "git.branchProtection": [],
-        // "git.branchProtectionPrompt": "alwaysPrompt",
-        // "git.branchRandomName.dictionary": [
-        //     "adjectives",
-        //     "animals"
-        // ],
-        // "git.branchRandomName.enable": false,
-        // "git.branchSortOrder": "committerdate",
-        // "git.branchValidationRegex": "",
-        // "git.branchWhitespaceChar": "-",
-        // "git.checkoutType": [
-        //     "local",
-        //     "remote",
-        //     "tags"
-        // ],
-        // "git.closeDiffOnOperation": false,
-        // "git.commandsToLog": [],
-        // "git.commitShortHashLength": 7,
-        // "git.confirmEmptyCommits": true,
-        // "git.confirmForcePush": true,
-        // "git.confirmNoVerifyCommit": true,
-        // "git.confirmSync": true,
-        // "git.countBadge": "all",
-        // "git.decorations.enabled": true,
-        // "git.defaultBranchName": "main",
-        // "git.defaultCloneDirectory": null,
-        // "git.detectSubmodules": true,
-        // "git.detectSubmodulesLimit": 10,
-        // "git.enableCommitSigning": false,
-        // "git.enableSmartCommit": false,
-        // "git.enableStatusBarSync": true,
-        // "git.enabled": true,
-        // "git.fetchOnPull": false,
-        // "git.followTagsWhenSync": false,
-        // "git.ignoreLegacyWarning": false,
-        // "git.ignoreLimitWarning": false,
-        // "git.ignoreMissingGitWarning": false,
-        // "git.ignoreRebaseWarning": false,
-        // "git.ignoreSubmodules": false,
-        // "git.ignoreWindowsGit27Warning": false,
-        // "git.ignoredRepositories": [],
-        // "git.inputValidation": "off",
-        // "git.inputValidationLength": 72,
-        // "git.inputValidationSubjectLength": 50,
-        // "git.mergeEditor": false,
-        // "git.openAfterClone": "prompt",
-        // "git.openDiffOnClick": true,
-        // "git.openRepositoryInParentFolders": "prompt",
-        // "git.optimisticUpdate": true,
-        // "git.path": null,
-        // "git.postCommitCommand": "none",
-        // "git.promptToSaveFilesBeforeCommit": "always",
-        // "git.promptToSaveFilesBeforeStash": "always",
-        // "git.pruneOnFetch": false,
-        // "git.pullBeforeCheckout": false,
-        // "git.pullTags": true,
-        // "git.rebaseWhenSync": false,
-        // "git.rememberPostCommitCommand": false,
-        // "git.replaceTagsWhenPull": false,
-        // "git.repositoryScanIgnoredFolders": [
-        //     "node_modules"
-        // ],
-        // "git.repositoryScanMaxDepth": 1,
-        // "git.requireGitUserConfig": true,
-        // "git.scanRepositories": [],
-        // "git.showActionButton": {
-        //     "commit": true,
-        //     "publish": true,
-        //     "sync": true
-        // },
-        // "git.showCommitInput": true,
-        // "git.showInlineOpenFileAction": true,
-        // "git.showProgress": true,
-        // "git.showPushSuccessNotification": false,
-        // "git.similarityThreshold": 50,
-        // "git.smartCommitChanges": "all",
-        // "git.statusLimit": 10000,
-        // "git.suggestSmartCommit": true,
-        // "git.supportCancellation": false,
-        // "git.terminalAuthentication": true,
-        // "git.terminalGitEditor": false,
-        // "git.timeline.date": "committed",
-        // "git.timeline.showAuthor": true,
-        // "git.timeline.showUncommitted": false,
-        // "git.untrackedChanges": "mixed",
-        // "git.useCommitInputAsStashMessage": false,
-        // "git.useEditorAsCommitInput": true,
-        // "git.useForcePushIfIncludes": true,
-        // "git.useForcePushWithLease": true,
-        // "git.useIntegratedAskPass": true,
-        // "git.verboseCommit": false,
-
-    // GitHub/GitHub Authentification - DISABLED
-        // "github-enterprise.uri": "",
-        // "github.branchProtection": true,
-        // "github.gitAuthentication": true,
-        // "github.gitProtocol": "https",
-        // "github.showAvatar": true,
-
-    // Grunt
-        "grunt.autoDetect": "off",
-
-    // Gulp
-        "gulp.autoDetect": "off",
-
-    // Html
-        "html.autoClosingTags": true,
-        "html.autoCreateQuotes": true,
-        "html.completion.attributeDefaultValue": "doublequotes",
-        "html.customData": [],
-        "html.format.contentUnformatted": "pre,code,textarea",
-        "html.format.enable": true,
-        "html.format.extraLiners": "head, body, /html",
-        "html.format.indentHandlebars": false,
-        "html.format.indentInnerHtml": false,
-        "html.format.maxPreserveNewLines": null,
-        "html.format.preserveNewLines": true,
-        "html.format.templating": false,
-        "html.format.unformatted": "wbr",
-        "html.format.unformattedContentDelimiter": "",
-        "html.format.wrapAttributes": "auto",
-        "html.format.wrapAttributesIndentSize": null,
-        "html.format.wrapLineLength": 120,
-        "html.hover.documentation": true,
-        "html.hover.references": true,
-        "html.suggest.html5": true,
-        "html.trace.server": "off",
-        "html.validate.scripts": true,
-        "html.validate.styles": true,
-
     // Http
         "http.electronFetch": false,
         "http.experimental.systemCertificatesV2": false,
@@ -1773,153 +1707,19 @@
         "interactiveWindow.promptToSaveOnClose": false,
         "interactiveWindow.showExecutionHint": true,
 
-    // ipnyb
-        "ipynb.experimental.serialization": false,
-        "ipynb.pasteImagesAsAttachments.enabled": true,
-
-    // Jake
-        "jake.autoDetect": "off",
-
-    // JavaScript Debugger - DISABLED
-        // "debug.javascript.autoAttachFilter": "disabled",
-        // "debug.javascript.autoAttachSmartPattern": [
-        //     "${workspaceFolder}/**",
-        //     "!**/node_modules/**",
-        //     "**/$KNOWN_TOOLS$/**"
-        // ],
-        // "debug.javascript.automaticallyTunnelRemoteServer": true,
-        // "debug.javascript.breakOnConditionalError": false,
-        // "debug.javascript.codelens.npmScripts": "top",
-        // "debug.javascript.debugByLinkOptions": "on",
-        // "debug.javascript.defaultRuntimeExecutable": {
-        //     "pwa-node": "node"
-        // },
-        // "debug.javascript.enableNetworkView": false,
-        // "debug.javascript.pickAndAttachOptions": {},
-        // "debug.javascript.resourceRequestOptions": {},
-        // "debug.javascript.terminalOptions": {},
-        // "debug.javascript.unmapMissingSources": false,
-
-    // JSON Language Features - DISABLED
-        // "json.format.enable": true,
-        // "json.format.keepLines": false,
-        // "json.maxItemsComputed": 5000,
-        // "json.schemaDownload.enable": true,
-        // "json.schemas": [],
-        // "json.trace.server": "off",
-        // "json.validate.enable": true,
-
     // Keyboard
         "keyboard.mapAltGrToCtrlAlt": false,
 
     // Launch
         "launch": {
-            "version": "0.2.0",
+            "compounds": [],
             "configurations": [],
-            "compounds": []
+            "version": "0.2.0"
         },
 
-    // Less
-        "less.completion.completePropertyWithSemicolon": true,
-        "less.completion.triggerPropertyValueCompletion": true,
-        "less.format.braceStyle": "collapse",
-        "less.format.enable": true,
-        "less.format.maxPreserveNewLines": null,
-        "less.format.newlineBetweenRules": true,
-        "less.format.newlineBetweenSelectors": true,
-        "less.format.preserveNewLines": true,
-        "less.format.spaceAroundSelectorSeparator": false,
-        "less.hover.documentation": true,
-        "less.hover.references": true,
-        "less.lint.argumentsInColorFunction": "error",
-        "less.lint.boxModel": "ignore",
-        "less.lint.compatibleVendorPrefixes": "ignore",
-        "less.lint.duplicateProperties": "ignore",
-        "less.lint.emptyRules": "warning",
-        "less.lint.float": "ignore",
-        "less.lint.fontFaceProperties": "warning",
-        "less.lint.hexColorLength": "error",
-        "less.lint.idSelector": "ignore",
-        "less.lint.ieHack": "ignore",
-        "less.lint.importStatement": "ignore",
-        "less.lint.important": "ignore",
-        "less.lint.propertyIgnoredDueToDisplay": "warning",
-        "less.lint.universalSelector": "ignore",
-        "less.lint.unknownAtRules": "warning",
-        "less.lint.unknownProperties": "warning",
-        "less.lint.unknownVendorSpecificProperties": "ignore",
-        "less.lint.validProperties": [],
-        "less.lint.vendorPrefix": "warning",
-        "less.lint.zeroUnits": "ignore",
-        "less.validate": true,
-
-    // Markdown Language Features - ENABLED
-        "markdown.copyFiles.destination": {},
-        "markdown.copyFiles.overwriteBehavior": "nameIncrementally",
-        "markdown.editor.drop.copyIntoWorkspace": "mediaFiles",
-        "markdown.editor.drop.enabled": true,
-        "markdown.editor.filePaste.audioSnippet": "<audio controls src=\"${src}\" title=\"${title}\"></audio>",
-        "markdown.editor.filePaste.copyIntoWorkspace": "mediaFiles",
-        "markdown.editor.filePaste.enabled": true,
-        "markdown.editor.filePaste.videoSnippet": "<video controls src=\"${src}\" title=\"${title}\"></video>",
-        "markdown.editor.pasteUrlAsFormattedLink.enabled": "smartWithSelection",
-        "markdown.editor.updateLinksOnPaste.enabled": true,
-        "markdown.links.openLocation": "currentGroup",
-        "markdown.occurrencesHighlight.enabled": false,
-        "markdown.preferredMdPathExtensionStyle": "auto",
-        "markdown.preview.breaks": false,
-        "markdown.preview.doubleClickToSwitchToEditor": true,
-        "markdown.preview.fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif",
-        "markdown.preview.fontSize": 14,
-        "markdown.preview.lineHeight": 1.6,
-        "markdown.preview.linkify": true,
-        "markdown.preview.markEditorSelection": true,
-        "markdown.preview.openMarkdownLinks": "inPreview",
-        "markdown.preview.scrollEditorWithPreview": true,
-        "markdown.preview.scrollPreviewWithEditor": true,
-        "markdown.preview.typographer": false,
-        "markdown.server.log": "off",
-        "markdown.styles": [],
-        "markdown.suggest.paths.enabled": true,
-        "markdown.suggest.paths.includeWorkspaceHeaderCompletions": "onDoubleHash",
-        "markdown.trace.extension": "off",
-        "markdown.trace.server": "off",
-        "markdown.updateLinksOnFileMove.enableForDirectories": true,
-        "markdown.updateLinksOnFileMove.enabled": "never",
-        "markdown.updateLinksOnFileMove.include": [
-            "**/*.{md,mkd,mdwn,mdown,markdown,markdn,mdtxt,mdtext,workbook}",
-            "**/*.{jpg,jpe,jpeg,png,bmp,gif,ico,webp,avif,tiff,svg,mp4}"
-        ],
-        "markdown.validate.duplicateLinkDefinitions.enabled": "warning",
-        "markdown.validate.enabled": false,
-        "markdown.validate.fileLinks.enabled": "warning",
-        "markdown.validate.fileLinks.markdownFragmentLinks": "inherit",
-        "markdown.validate.fragmentLinks.enabled": "warning",
-        "markdown.validate.ignoredLinks": [],
-        "markdown.validate.referenceLinks.enabled": "warning",
-        "markdown.validate.unusedLinkDefinitions.enabled": "hint",
-
-    // Markdown Math
-        "markdown.math.enabled": true,
-        "markdown.math.macros": {},
-
-    // MediaPreview
-        "mediaPreview.video.autoPlay": false,
-        "mediaPreview.video.loop": false,
-
     // Merge
-        "merge-conflict.autoNavigateNextConflict.enabled": false,
-        "merge-conflict.codeLens.enabled": true,
-        "merge-conflict.decorators.enabled": true,
-        "merge-conflict.diffViewPosition": "Current",
         "mergeEditor.diffAlgorithm": "advanced",
         "mergeEditor.showDeletionMarkers": true,
-
-    // Microsoft
-        "microsoft-authentication.clientIdVersion": "v1",
-        "microsoft-authentication.implementation": "msal",
-        "microsoft-sovereign-cloud.customEnvironment": {},
-        "microsoft-sovereign-cloud.environment": "",
 
     // MultiDiffEditor
         "multiDiffEditor.experimental.enabled": true,
@@ -1941,6 +1741,7 @@
         "notebook.consolidatedRunButton": false,
         "notebook.defaultFormatter": null,
         "notebook.diff.enablePreview": true,
+        "notebook.diff.experimental.toggleInline": false,
         "notebook.diff.ignoreMetadata": false,
         "notebook.diff.ignoreOutputs": false,
         "notebook.diff.overviewRuler": false,
@@ -1950,17 +1751,17 @@
         "notebook.experimental.generate": true,
         "notebook.experimental.remoteSave": false,
         "notebook.find.filters": {
-            "markupSource": true,
-            "markupPreview": true,
+            "codeOutput": true,
             "codeSource": true,
-            "codeOutput": true
+            "markupPreview": true,
+            "markupSource": true
         },
         "notebook.formatOnCellExecution": false,
         "notebook.formatOnSave.enabled": false,
         "notebook.globalToolbar": true,
         "notebook.globalToolbarShowLabel": "always",
         "notebook.gotoSymbols.showAllSymbols": true,
-        "notebook.inlineValues": false,
+        "notebook.inlineValues": "off",
         "notebook.insertFinalNewline": false,
         "notebook.insertToolbarLocation": "both",
         "notebook.lineNumbers": "off",
@@ -1987,17 +1788,6 @@
         "notebook.stickyScroll.mode": "indented",
         "notebook.undoRedoPerCell": true,
         "notebook.variablesView": false,
-
-    // NPM Support for VS Code - DISABLED
-        // "npm.autoDetect": "on",
-        // "npm.enableRunFromFolder": false,
-        // "npm.exclude": "",
-        // "npm.fetchOnlinePackageInfo": true,
-        // "npm.packageManager": "auto",
-        // "npm.runSilent": false,
-        // "npm.scriptExplorerAction": "open",
-        // "npm.scriptExplorerExclude": [],
-        // "npm.scriptHover": true,
 
     // Outline
         "outline.collapseItems": "alwaysExpand",
@@ -2034,12 +1824,6 @@
 
     // Output
         "output.smartScroll.enabled": true,
-
-    // PHP
-        "php.suggest.basic": true,
-        "php.validate.enable": true,
-        "php.validate.executablePath": null,
-        "php.validate.run": "onSave",
 
     // Problems
         "problems.autoReveal": true,
@@ -2112,10 +1896,10 @@
     // ScreenCast
         "screencastMode.fontSize": 56,
         "screencastMode.keyboardOptions": {
-            "showKeys": true,
-            "showKeybindings": true,
-            "showCommands": true,
             "showCommandGroups": false,
+            "showCommands": true,
+            "showKeybindings": true,
+            "showKeys": true,
             "showSingleEditorCursorMoves": true
         },
         "screencastMode.keyboardOverlayTimeout": 800,
@@ -2168,9 +1952,6 @@
         "settingsSync.ignoredSettings": [],
         "settingsSync.keybindingsPerPlatform": true,
 
-    // SimpleBrowser
-        "simpleBrowser.focusLockIndicator.enabled": true,
-
     // Task
         "task.allowAutomaticTasks": "on",
         "task.autoDetect": "on",
@@ -2221,7 +2002,6 @@
         "terminal.integrated.defaultProfile.osx": null,
         "terminal.integrated.detectLocale": "auto",
         "terminal.integrated.drawBoldTextInBrightColors": true,
-        "terminal.integrated.enableBell": false,
         "terminal.integrated.enableFileLinks": "on",
         "terminal.integrated.enableImages": false,
         "terminal.integrated.enableMultiLinePasteWarning": "auto",
@@ -2232,72 +2012,71 @@
         "terminal.integrated.env.windows": {},
         "terminal.integrated.environmentChangesIndicator": "warnonly",
         "terminal.integrated.environmentChangesRelaunch": true,
-        "terminal.integrated.experimental.windowsUseConptyDll": false,
         "terminal.integrated.fastScrollSensitivity": 5,
         "terminal.integrated.focusAfterRun": "none",
         "terminal.integrated.fontFamily": "",
         "terminal.integrated.fontLigatures.enabled": false,
         "terminal.integrated.fontLigatures.fallbackLigatures": [
-            "<--",
-            "<---",
-            "<<-",
-            "<-",
-            "->",
-            "->>",
-            "-->",
-            "--->",
-            "<==",
-            "<===",
-            "<<=",
-            "<=",
-            "=>",
-            "=>>",
-            "==>",
-            "===>",
-            ">=",
-            ">>=",
-            "<->",
-            "<-->",
-            "<--->",
-            "<---->",
-            "<=>",
-            "<==>",
-            "<===>",
-            "<====>",
-            "::",
-            ":::",
-            "<~~",
-            "</",
-            "</>",
-            "/>",
-            "~~>",
-            "==",
             "!=",
-            "/=",
-            "~=",
-            "<>",
-            "===",
             "!==",
             "!===",
-            "<:",
-            ":=",
-            "*=",
             "*+",
+            "*/",
+            "*=",
+            "*>",
+            "+*",
+            "+++",
+            "--->",
+            "-->",
+            "->",
+            "->>",
+            "/*",
+            "/=",
+            "/>",
+            "::",
+            ":::",
+            ":=",
+            ":>",
+            "<!--",
+            "<!---",
             "<*",
             "<*>",
-            "*>",
+            "<-",
+            "<--",
+            "<---",
+            "<---->",
+            "<--->",
+            "<-->",
+            "<->",
+            "</",
+            "</>",
+            "<:",
+            "<<-",
+            "<<=",
+            "<=",
+            "<==",
+            "<===",
+            "<====>",
+            "<===>",
+            "<==>",
+            "<=>",
+            "<>",
             "<|",
             "<|>",
-            "|>",
-            "+*",
+            "<~~",
             "=*",
             "=:",
-            ":>",
-            "/*",
-            "*/",
-            "+++",
-            "<!--",
-            "<!---"
+            "==",
+            "===",
+            "===>",
+            "==>",
+            "=>",
+            "=>>",
+            ">=",
+            ">>=",
+            "|>",
+            "~=",
+            "~~>"
         ],
         "terminal.integrated.fontLigatures.featureSettings": "\"calt\" on",
         "terminal.integrated.fontSize": 14,
@@ -2308,9 +2087,9 @@
         "terminal.integrated.hideOnStartup": "never",
         "terminal.integrated.ignoreBracketedPasteMode": false,
         "terminal.integrated.ignoreProcessNames": [
-            "starship",
-            "oh-my-posh",
             "bash",
+            "oh-my-posh",
+            "starship",
             "zsh"
         ],
         "terminal.integrated.inheritEnv": true,
@@ -2319,10 +2098,10 @@
         "terminal.integrated.lineHeight": 1,
         "terminal.integrated.localEchoEnabled": "auto",
         "terminal.integrated.localEchoExcludePrograms": [
-            "vim",
-            "vi",
             "nano",
-            "tmux"
+            "tmux",
+            "vi",
+            "vim"
         ],
         "terminal.integrated.localEchoLatencyThreshold": 30,
         "terminal.integrated.localEchoStyle": "dim",
@@ -2336,8 +2115,8 @@
         "terminal.integrated.persistentSessionScrollback": 100,
         "terminal.integrated.profiles.linux": {
             "bash": {
-                "path": "bash",
-                "icon": "terminal-bash"
+                "icon": "terminal-bash",
+                "path": "bash"
             },
             "zsh": {
                 "path": "zsh"
@@ -2346,41 +2125,41 @@
                 "path": "fish"
             },
             "tmux": {
-                "path": "tmux",
-                "icon": "terminal-tmux"
+                "icon": "terminal-tmux",
+                "path": "tmux"
             },
             "pwsh": {
-                "path": "pwsh",
-                "icon": "terminal-powershell"
+                "icon": "terminal-powershell",
+                "path": "pwsh"
             }
         },
         "terminal.integrated.profiles.osx": {
             "bash": {
-                "path": "bash",
                 "args": [
                     "-l"
                 ],
-                "icon": "terminal-bash"
+                "icon": "terminal-bash",
+                "path": "bash"
             },
             "zsh": {
-                "path": "zsh",
                 "args": [
                     "-l"
-                ]
+                ],
+                "path": "zsh"
             },
             "fish": {
-                "path": "fish",
                 "args": [
                     "-l"
-                ]
+                ],
+                "path": "fish"
             },
             "tmux": {
-                "path": "tmux",
-                "icon": "terminal-tmux"
+                "icon": "terminal-tmux",
+                "path": "tmux"
             },
             "pwsh": {
-                "path": "pwsh",
-                "icon": "terminal-powershell"
+                "icon": "terminal-powershell",
+                "path": "pwsh"
             }
         },
         "terminal.integrated.rescaleOverlappingGlyphs": true,
@@ -2389,6 +2168,7 @@
         "terminal.integrated.sendKeybindingsToShell": false,
         "terminal.integrated.shellIntegration.decorationsEnabled": "both",
         "terminal.integrated.shellIntegration.enabled": true,
+        "terminal.integrated.shellIntegration.environmentReporting": false,
         "terminal.integrated.shellIntegration.history": 100,
         "terminal.integrated.shellIntegration.showCommandGuide": true,
         "terminal.integrated.showExitAlert": true,
@@ -2397,16 +2177,18 @@
         "terminal.integrated.splitCwd": "inherited",
         "terminal.integrated.stickyScroll.enabled": false,
         "terminal.integrated.stickyScroll.maxLineCount": 5,
-        "terminal.integrated.suggest.builtinCompletions": {
-            "pwshCode": true,
-            "pwshGit": true
-        },
+        "terminal.integrated.suggest.cdPath": "absolute",
         "terminal.integrated.suggest.enabled": false,
+        "terminal.integrated.suggest.inlineSuggestion": "alwaysOnTop",
         "terminal.integrated.suggest.providers": {
-            "terminal-suggest": true,
-            "pwsh-shell-integration": false
+            "pwsh-shell-integration": false,
+            "terminal-suggest": true
         },
-        "terminal.integrated.suggest.quickSuggestions": true,
+        "terminal.integrated.suggest.quickSuggestions": {
+            "arguments": "on",
+            "commands": "on",
+            "unknown": "off"
+        },
         "terminal.integrated.suggest.runOnEnter": "ignore",
         "terminal.integrated.suggest.showStatusBar": true,
         "terminal.integrated.suggest.suggestOnTriggerCharacters": true,
@@ -2427,6 +2209,7 @@
         "terminal.integrated.unicodeVersion": "11",
         "terminal.integrated.useWslProfiles": true,
         "terminal.integrated.windowsEnableConpty": true,
+        "terminal.integrated.windowsUseConptyDll": false,
         "terminal.integrated.wordSeparators": " ()[]{}',\"`─‘’|",
         "terminal.sourceControlRepositoriesKind": "integrated",
 
@@ -2437,9 +2220,9 @@
         "testing.automaticallyOpenTestResults": "openOnTestStart",
         "testing.countBadge": "failed",
         "testing.coverageBarThresholds": {
+            "green": 90,
             "red": 0,
-            "yellow": 60,
-            "green": 90
+            "yellow": 60
         },
         "testing.coverageToolbarEnabled": false,
         "testing.defaultGutterClickAction": "run",
@@ -2453,148 +2236,6 @@
     // Timeline
         "timeline.pageOnScroll": false,
         "timeline.pageSize": null,
-
-    // TypeScript and JavaScript Language Features - DISABLED
-        // "javascript.autoClosingTags": true,
-        // "javascript.format.enable": true,
-        // "javascript.format.indentSwitchCase": true,
-        // "javascript.format.insertSpaceAfterCommaDelimiter": true,
-        // "javascript.format.insertSpaceAfterConstructor": false,
-        // "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
-        // "javascript.format.insertSpaceAfterKeywordsInControlFlowStatements": true,
-        // "javascript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": true,
-        // "javascript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": false,
-        // "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-        // "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": false,
-        // "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
-        // "javascript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": false,
-        // "javascript.format.insertSpaceAfterSemicolonInForStatements": true,
-        // "javascript.format.insertSpaceBeforeAndAfterBinaryOperators": true,
-        // "javascript.format.insertSpaceBeforeFunctionParenthesis": false,
-        // "javascript.format.placeOpenBraceOnNewLineForControlBlocks": false,
-        // "javascript.format.placeOpenBraceOnNewLineForFunctions": false,
-        // "javascript.format.semicolons": "ignore",
-        // "javascript.inlayHints.functionLikeReturnTypes.enabled": false,
-        // "javascript.inlayHints.parameterNames.enabled": "none",
-        // "javascript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": true,
-        // "javascript.inlayHints.parameterTypes.enabled": false,
-        // "javascript.inlayHints.propertyDeclarationTypes.enabled": false,
-        // "javascript.inlayHints.variableTypes.enabled": false,
-        // "javascript.inlayHints.variableTypes.suppressWhenTypeMatchesName": true,
-        // "javascript.preferGoToSourceDefinition": false,
-        // "javascript.preferences.autoImportFileExcludePatterns": [],
-        // "javascript.preferences.autoImportSpecifierExcludeRegexes": [],
-        // "javascript.preferences.importModuleSpecifier": "shortest",
-        // "javascript.preferences.importModuleSpecifierEnding": "auto",
-        // "javascript.preferences.jsxAttributeCompletionStyle": "auto",
-        // "javascript.preferences.organizeImports": {},
-        // "javascript.preferences.quoteStyle": "auto",
-        // "javascript.preferences.renameMatchingJsxTags": true,
-        // "javascript.preferences.useAliasesForRenames": true,
-        // "javascript.referencesCodeLens.enabled": false,
-        // "javascript.referencesCodeLens.showOnAllFunctions": false,
-        // "javascript.suggest.autoImports": true,
-        // "javascript.suggest.classMemberSnippets.enabled": true,
-        // "javascript.suggest.completeFunctionCalls": false,
-        // "javascript.suggest.completeJSDocs": true,
-        // "javascript.suggest.enabled": true,
-        // "javascript.suggest.includeAutomaticOptionalChainCompletions": true,
-        // "javascript.suggest.includeCompletionsForImportStatements": true,
-        // "javascript.suggest.jsdoc.generateReturns": true,
-        // "javascript.suggest.names": true,
-        // "javascript.suggest.paths": true,
-        // "javascript.suggestionActions.enabled": true,
-        // "javascript.updateImportsOnFileMove.enabled": "prompt",
-        // "javascript.updateImportsOnPaste.enabled": true,
-        // "javascript.validate.enable": true,
-        // "js/ts.implicitProjectConfig.checkJs": false,
-        // "js/ts.implicitProjectConfig.experimentalDecorators": false,
-        // "js/ts.implicitProjectConfig.module": "ESNext",
-        // "js/ts.implicitProjectConfig.strictFunctionTypes": true,
-        // "js/ts.implicitProjectConfig.strictNullChecks": true,
-        // "js/ts.implicitProjectConfig.target": "ES2020",
-        // "typescript.autoClosingTags": true,
-        // "typescript.check.npmIsInstalled": true,
-        // "typescript.disableAutomaticTypeAcquisition": false,
-        // "typescript.enablePromptUseWorkspaceTsdk": false,
-        // "typescript.experimental.expandableHover": false,
-        // "typescript.format.enable": true,
-        // "typescript.format.indentSwitchCase": true,
-        // "typescript.format.insertSpaceAfterCommaDelimiter": true,
-        // "typescript.format.insertSpaceAfterConstructor": false,
-        // "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
-        // "typescript.format.insertSpaceAfterKeywordsInControlFlowStatements": true,
-        // "typescript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": true,
-        // "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": false,
-        // "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-        // "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": false,
-        // "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
-        // "typescript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": false,
-        // "typescript.format.insertSpaceAfterSemicolonInForStatements": true,
-        // "typescript.format.insertSpaceAfterTypeAssertion": false,
-        // "typescript.format.insertSpaceBeforeAndAfterBinaryOperators": true,
-        // "typescript.format.insertSpaceBeforeFunctionParenthesis": false,
-        // "typescript.format.placeOpenBraceOnNewLineForControlBlocks": false,
-        // "typescript.format.placeOpenBraceOnNewLineForFunctions": false,
-        // "typescript.format.semicolons": "ignore",
-        // "typescript.implementationsCodeLens.enabled": false,
-        // "typescript.implementationsCodeLens.showOnInterfaceMethods": false,
-        // "typescript.inlayHints.enumMemberValues.enabled": false,
-        // "typescript.inlayHints.functionLikeReturnTypes.enabled": false,
-        // "typescript.inlayHints.parameterNames.enabled": "none",
-        // "typescript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": true,
-        // "typescript.inlayHints.parameterTypes.enabled": false,
-        // "typescript.inlayHints.propertyDeclarationTypes.enabled": false,
-        // "typescript.inlayHints.variableTypes.enabled": false,
-        // "typescript.inlayHints.variableTypes.suppressWhenTypeMatchesName": true,
-        // "typescript.locale": "auto",
-        // "typescript.npm": "",
-        // "typescript.preferGoToSourceDefinition": false,
-        // "typescript.preferences.autoImportFileExcludePatterns": [],
-        // "typescript.preferences.autoImportSpecifierExcludeRegexes": [],
-        // "typescript.preferences.importModuleSpecifier": "shortest",
-        // "typescript.preferences.importModuleSpecifierEnding": "auto",
-        // "typescript.preferences.includePackageJsonAutoImports": "auto",
-        // "typescript.preferences.jsxAttributeCompletionStyle": "auto",
-        // "typescript.preferences.organizeImports": {},
-        // "typescript.preferences.preferTypeOnlyAutoImports": false,
-        // "typescript.preferences.quoteStyle": "auto",
-        // "typescript.preferences.renameMatchingJsxTags": true,
-        // "typescript.preferences.useAliasesForRenames": true,
-        // "typescript.referencesCodeLens.enabled": false,
-        // "typescript.referencesCodeLens.showOnAllFunctions": false,
-        // "typescript.reportStyleChecksAsWarnings": true,
-        // "typescript.suggest.autoImports": true,
-        // "typescript.suggest.classMemberSnippets.enabled": true,
-        // "typescript.suggest.completeFunctionCalls": false,
-        // "typescript.suggest.completeJSDocs": true,
-        // "typescript.suggest.enabled": true,
-        // "typescript.suggest.includeAutomaticOptionalChainCompletions": true,
-        // "typescript.suggest.includeCompletionsForImportStatements": true,
-        // "typescript.suggest.jsdoc.generateReturns": true,
-        // "typescript.suggest.objectLiteralMethodSnippets.enabled": true,
-        // "typescript.suggest.paths": true,
-        // "typescript.suggestionActions.enabled": true,
-        // "typescript.surveys.enabled": true,
-        // "typescript.tsc.autoDetect": "on",
-        // "typescript.tsdk": "",
-        // "typescript.tsserver.enableRegionDiagnostics": true,
-        // "typescript.tsserver.enableTracing": false,
-        // "typescript.tsserver.experimental.enableProjectDiagnostics": false,
-        // "typescript.tsserver.log": "off",
-        // "typescript.tsserver.maxTsServerMemory": 3072,
-        // "typescript.tsserver.nodePath": "",
-        // "typescript.tsserver.pluginPaths": [],
-        // "typescript.tsserver.useSyntaxServer": "auto",
-        // "typescript.tsserver.watchOptions": {},
-        // "typescript.tsserver.web.projectWideIntellisense.enabled": true,
-        // "typescript.tsserver.web.projectWideIntellisense.suppressSemanticErrors": true,
-        // "typescript.tsserver.web.typeAcquisition.enabled": true,
-        // "typescript.updateImportsOnFileMove.enabled": "prompt",
-        // "typescript.updateImportsOnPaste.enabled": true,
-        // "typescript.validate.enable": true,
-        // "typescript.workspaceSymbols.excludeLibrarySymbols": true,
-        // "typescript.workspaceSymbols.scope": "allOpenProjects",
 
     // Update
         "update.enableWindowsBackgroundUpdates": true,
@@ -2639,21 +2280,21 @@
         "workbench.editor.alwaysShowEditorActions": false,
         "workbench.editor.autoLockGroups": {
             "default": false,
-            "workbench.editor.chatSession": false,
-            "workbench.editorinputs.searchEditorInput": false,
-            "jupyter-notebook": false,
             "imagePreview.previewEditor": false,
-            "vscode.audioPreview": false,
-            "vscode.videoPreview": false,
             "jsProfileVisualizer.cpuprofile.table": false,
             "jsProfileVisualizer.heapprofile.table": false,
             "jsProfileVisualizer.heapsnapshot.table": false,
-            "workbench.editors.gettingStartedInput": false,
-            "terminalEditor": true,
-            "workbench.input.interactive": false,
+            "mainThreadWebview-browserPreview": true,
             "mainThreadWebview-markdown.preview": false,
             "mainThreadWebview-simpleBrowser.view": true,
-            "mainThreadWebview-browserPreview": true
+            "repl": false,
+            "terminalEditor": true,
+            "vscode.audioPreview": false,
+            "vscode.videoPreview": false,
+            "workbench.editor.chatSession": false,
+            "workbench.editorinputs.searchEditorInput": false,
+            "workbench.editors.gettingStartedInput": false,
+            "workbench.input.interactive": false
         },
         "workbench.editor.centeredLayoutAutoResize": true,
         "workbench.editor.centeredLayoutFixedWidth": false,
@@ -2674,8 +2315,8 @@
         "workbench.editor.labelFormat": "default",
         "workbench.editor.languageDetection": true,
         "workbench.editor.languageDetectionHints": {
-            "untitledEditors": true,
-            "notebookEditors": true
+            "notebookEditors": true,
+            "untitledEditors": true
         },
         "workbench.editor.limit.enabled": false,
         "workbench.editor.limit.excludeDirty": false,
@@ -2714,7 +2355,7 @@
         "workbench.externalBrowser": "",
         "workbench.externalUriOpeners": {},
         "workbench.hover.delay": 500,
-        "workbench.iconTheme": "vs-seti",
+        "workbench.iconTheme": "vscode-icons",
         "workbench.layoutControl.type": "both",
         "workbench.list.defaultFindMatchType": "fuzzy",
         "workbench.list.defaultFindMode": "highlight",
@@ -2746,6 +2387,7 @@
         "workbench.remoteIndicator.showExtensionRecommendations": true,
         "workbench.sash.hoverDelay": 300,
         "workbench.sash.size": 4,
+        "workbench.secondarySideBar.showLabels": true,
         "workbench.settings.applyToAllProfiles": [],
         "workbench.settings.editor": "ui",
         "workbench.settings.enableNaturalLanguageSearch": true,
@@ -2778,7 +2420,8 @@
         "zenMode.silentNotifications": true,
 
 
-    /*************************
-     * UPDATABLES PARAMETERS *
-     *************************/
+    /***********************
+     * EVOLVING PARAMETERS *
+     ***********************/
+    "diffEditor.hideUnchangedRegions.enabled": true,
 }
