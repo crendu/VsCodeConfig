@@ -1,10 +1,9 @@
-// Last Sync: 1.102.3
+// Last Sync: 1.103.0
 {
     /***************
      * ENVIRONMENT *
      ***************/
     "diffEditor.maxComputationTime": 0,
-
     "editor.codeActionsOnSave": {
         "source.organizeImports": "never"
     },
@@ -14,17 +13,10 @@
     "editor.fontFamily": "Fira Code, Cascadia Code PL, Consolas, 'Courier New', monospace",
     "editor.fontLigatures": true,
     "editor.guides.bracketPairs": true,
-    "editor.insertSpaces": true,
     "editor.largeFileOptimizations": false,
     "editor.minimap.showSlider": "always",
     "editor.multiCursorLimit": 100000,
     "editor.padding.bottom": 200,
-    "editor.quickSuggestions": {
-        "comments": false,
-        "other": true,
-        "strings": false
-    },
-    "editor.quickSuggestionsDelay": 10,
     "editor.renderWhitespace": "boundary",
     "editor.rulers": [
         80,
@@ -38,18 +30,10 @@
         }
     ],
     "editor.scrollBeyondLastLine": false,
-    "editor.showDeprecated": true,
-    "editor.showUnused": true,
     "editor.stickyScroll.defaultModel": "foldingProviderModel",
-    "editor.stickyScroll.enabled": true,
     "editor.stickyScroll.scrollWithEditor": false,
-    "editor.suggestSelection": "first",
-    "editor.tabSize": 4,
-    "editor.unicodeHighlight.ambiguousCharacters": false,
-    "editor.unicodeHighlight.invisibleCharacters": true,
     "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
     "explorer.confirmDelete": false,
-
     "security.allowedUNCHosts": [ "XXX" ],
     "security.workspace.trust.enabled": false,
     "telemetry.editStats.details.enabled": false,
@@ -123,7 +107,7 @@
         // "**/bin/": true,
         // "**/build/": true,
         "**/Doxygen/**": true,
-        "**/Intermediates*": true,
+        "**/Intermediates/**": true,
         // "**/javatest/": true,
         "**/JenkinsReferences*": true,
         // "**/shared/": true,
@@ -132,8 +116,8 @@
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.watcherExclude": {   // Seems to avoid the ipch flood
-        "Intermediates/**": true,
-        "Software/**": true
+        "**/Intermediates/**": true,
+        "**/Software/**": true
     },
     "search.exclude": {
         "**.css": true,
@@ -215,7 +199,7 @@
         "continue.remoteConfigSyncPeriod": 60,
         "continue.showInlineTip": true,
         "continue.telemetryEnabled": false,
-        "continue.userToken": "",
+        "continue.userToken": "XXX",
 
     // C/C++
         "C_Cpp.addNodeAddonIncludePaths": false,
@@ -276,13 +260,11 @@
         "C_Cpp.debugger.useBacktickCommandSubstitution": false,
         "C_Cpp.default.browse.databaseFilename": "",
         "C_Cpp.default.browse.limitSymbolsToIncludedHeaders": true,
-        "C_Cpp.default.browse.path": null,
+        "C_Cpp.default.browse.path": [],
         "C_Cpp.default.cStandard": "c17",
-        "C_Cpp.default.compileCommands": [
-            ""
-        ],
+        "C_Cpp.default.compileCommands": "",
         "C_Cpp.default.compilerArgs": [],
-        "C_Cpp.default.compilerPath": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+        "C_Cpp.default.compilerPath": "cl.exe",
         "C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools",
         "C_Cpp.default.cppStandard": "c++20",
         "C_Cpp.default.customConfigurationVariables": null,
@@ -296,9 +278,7 @@
         "C_Cpp.default.dotConfig": "",
         "C_Cpp.default.enableConfigurationSquiggles": true,
         "C_Cpp.default.forcedInclude": [],
-        "C_Cpp.default.includePath": [
-            "D:/**",
-        ],
+        "C_Cpp.default.includePath": [],
         "C_Cpp.default.intelliSenseMode": "windows-msvc-x64",
         "C_Cpp.default.macFrameworkPath": [],
         "C_Cpp.default.mergeConfigurations": true,
@@ -446,6 +426,7 @@
         "compareFolders.showIdentical": false,
         "compareFolders.useDiffMerge": false,
         "compareFolders.warnBeforeDelete": true,
+        "compareFolders.warnBeforeTake": true,
 
     // Encoding Alert for VS Code
         // "EncodingAlert.Encoding": "ISO-8859-1", // Windows 1252
@@ -534,7 +515,7 @@
         "perforce.changelistSearch.maxResults": 200,
         "perforce.charset": "none",
         "perforce.client": "XXX",
-        "perforce.command": "C:\\Perforce-2025.1\\p4.exe",
+        "perforce.command": "C:\\Perforce-2025.2\\p4.exe",
         "perforce.countBadge": "all-but-shelved",
         "perforce.debugModeActive": false,
         "perforce.debugP4Commands": false,
@@ -579,7 +560,7 @@
 
     // PlantUML
         "plantuml.commandArgs": [
-            "-DGRAPHVIZ_DOT=XXX\\dot.exe",
+            "-DGRAPHVIZ_DOT=dot.exe",
             "-DPLANTUML_LIMIT_SIZE=8192"
         ],
         "plantuml.diagramsRoot": "",
@@ -927,6 +908,7 @@
         "accessibility.dimUnfocused.enabled": false,
         "accessibility.dimUnfocused.opacity": 0.75,
         "accessibility.hideAccessibleView": false,
+        "accessibility.openChatEditedFiles": true,
         "accessibility.replEditor.autoFocusReplExecution": "input",
         "accessibility.replEditor.readLastExecutionOutput": true,
         "accessibility.signalOptions.debouncePositionChanges": false,
@@ -1122,6 +1104,9 @@
     // Chat
         "chat.agent.enabled": false,
         "chat.agent.maxRequests": 0,
+        "chat.agentSessionsViewLocation": "disabled",
+        "chat.checkpoints.enabled": true,
+        "chat.checkpoints.showFileChanges": false,
         "chat.commandCenter.enabled": false,
         "chat.detectParticipant.enabled": false,
         "chat.editRequests": "inline",
@@ -1134,14 +1119,19 @@
         "chat.editor.lineHeight": 0,
         "chat.editor.wordWrap": "off",
         "chat.edits2.enabled": false,
+        "chat.emptyChatState.enabled": false,
         "chat.extensionTools.enabled": false,
         "chat.implicitContext.enabled": {
             "editing-session": "first",
             "panel": "always"
         },
+        "chat.implicitContext.suggestedContext": false,
         "chat.instructionsFilesLocations": {
             ".github/instructions": false
         },
+        "chat.math.enabled": false,
+        "chat.mcp.assisted.nuget.enabled": false,
+        "chat.mcp.autostart": "never",
         "chat.mcp.discovery.enabled": false,
         "chat.mcp.enabled": false,
         "chat.mcp.serverSampling": {},
@@ -1158,7 +1148,21 @@
         "chat.sendElementsToChat.attachImages": true,
         "chat.sendElementsToChat.enabled": true,
         "chat.setup.signInDialogVariant": "default",
+        "chat.todoListTool.enabled": false,
         "chat.tools.autoApprove": false,
+        "chat.tools.terminal.autoApprove": {
+            "rm": false,
+            "rmdir": false,
+            "del": false,
+            "kill": false,
+            "curl": false,
+            "wget": false,
+            "eval": false,
+            "chmod": false,
+            "chown": false,
+            "/^Remove-Item\\b/i": false
+        },
+        "chat.tools.useTreePicker": true,
         "chat.undoRequests.restoreInput": true,
         "chat.useFileStorage": false,
 
@@ -1228,6 +1232,7 @@
         "editor.acceptSuggestionOnEnter": "on",
         "editor.accessibilityPageSize": 10,
         "editor.accessibilitySupport": "auto",
+        "editor.aiStats.enabled": false,
         "editor.allowVariableFonts": true,
         "editor.allowVariableFontsInAccessibilityMode": false,
         "editor.allowVariableLineHeights": true,
@@ -1255,6 +1260,7 @@
         "editor.comments.ignoreEmptyLines": true,
         "editor.comments.insertSpace": true,
         "editor.copyWithSyntaxHighlighting": true,
+        "editor.cursorHeight": 0,
         "editor.cursorStyle": "line-thin",
         "editor.cursorSurroundingLines": 0,
         "editor.cursorSurroundingLinesStyle": "default",
@@ -1322,6 +1328,7 @@
         "editor.hover.hidingDelay": 300,
         "editor.hover.sticky": true,
         "editor.indentSize": "tabSize",
+        "editor.inertialScroll": false,
         "editor.inlayHints.enabled": "on",
         "editor.inlayHints.fontFamily": "",
         "editor.inlayHints.fontSize": 0,
@@ -1337,6 +1344,7 @@
         "editor.inlineSuggest.showToolbar": "onHover",
         "editor.inlineSuggest.suppressSuggestions": false,
         "editor.inlineSuggest.syntaxHighlightingEnabled": true,
+        "editor.insertSpaces": true,
         "editor.language.brackets": null,
         "editor.language.colorizedBracketPairs": null,
         "editor.letterSpacing": 0,
@@ -1347,7 +1355,7 @@
         "editor.links": true,
         "editor.matchBrackets": "always",
         "editor.maxTokenizationLineLength": 20000,
-        "editor.minimap.autohide": false,
+        "editor.minimap.autohide": "none",
         "editor.minimap.enabled": true,
         "editor.minimap.markSectionHeaderRegex": "\\bMARK:\\s*(?<separator>-?)\\s*(?<label>.*)$",
         "editor.minimap.maxColumn": 120,
@@ -1376,11 +1384,18 @@
         "editor.pasteAs.preferences": [],
         "editor.pasteAs.showPasteSelector": "afterPaste",
         "editor.peekWidgetDefaultFocus": "tree",
+        "editor.quickSuggestions": {
+            "other": "on",
+            "comments": "off",
+            "strings": "off"
+        },
+        "editor.quickSuggestionsDelay": 10,
         "editor.rename.enablePreview": true,
         "editor.renderControlCharacters": true,
         "editor.renderFinalNewline": "on",
         "editor.renderLineHighlight": "line",
         "editor.renderLineHighlightOnlyWhenFocus": false,
+        "editor.renderRichScreenReaderContent": false,
         "editor.roundedSelection": true,
         "editor.screenReaderAnnounceInlineSuggestion": true,
         "editor.scrollBeyondLastColumn": 4,
@@ -1393,15 +1408,20 @@
         "editor.scrollbar.vertical": "auto",
         "editor.scrollbar.verticalScrollbarSize": 14,
         "editor.selectionHighlight": true,
+        "editor.selectionHighlightMaxLength": 200,
+        "editor.selectionHighlightMultiline": false,
         "editor.semanticHighlighting.enabled": "configuredByTheme",
         "editor.semanticTokenColorCustomizations": {},
+        "editor.showDeprecated": true,
         "editor.showFoldingControls": "mouseover",
+        "editor.showUnused": true,
         "editor.smartSelect.selectLeadingAndTrailingWhitespace": true,
         "editor.smartSelect.selectSubwords": true,
         "editor.smoothScrolling": false,
         "editor.snippetSuggestions": "inline",
         "editor.snippets.codeActions.enabled": true,
         "editor.stablePeek": false,
+        "editor.stickyScroll.enabled": true,
         "editor.stickyScroll.maxLineCount": 5,
         "editor.stickyTabStops": false,
         "editor.suggest.filterGraceful": true,
@@ -1447,26 +1467,32 @@
         "editor.suggestFontSize": 0,
         "editor.suggestLineHeight": 0,
         "editor.suggestOnTriggerCharacters": true,
+        "editor.suggestSelection": "first",
         "editor.tabCompletion": "off",
         "editor.tabFocusMode": false,
+        "editor.tabSize": 4,
         "editor.tokenColorCustomizations": {},
         "editor.trimAutoWhitespace": true,
+        "editor.trimWhitespaceOnDelete": false,
         "editor.unfoldOnClickAfterEndOfLine": false,
         "editor.unicodeHighlight.allowedCharacters": {},
         "editor.unicodeHighlight.allowedLocales": {
             "_os": true,
             "_vscode": true
         },
+        "editor.unicodeHighlight.ambiguousCharacters": true,
         "editor.unicodeHighlight.includeComments": "inUntrustedWorkspace",
         "editor.unicodeHighlight.includeStrings": true,
+        "editor.unicodeHighlight.invisibleCharacters": true,
         "editor.unicodeHighlight.nonBasicASCII": "inUntrustedWorkspace",
         "editor.unusualLineTerminators": "prompt",
         "editor.useTabStops": true,
         "editor.wordBasedSuggestions": "matchingDocuments",
         "editor.wordBreak": "normal",
-        "editor.wordSegmenterLocales": null,
+        "editor.wordSegmenterLocales": [],
         "editor.wordWrap": "off",
         "editor.wordWrapColumn": 80,
+        "editor.wrapOnEscapedLineFeeds": false,
         "editor.wrappingIndent": "same",
         "editor.wrappingStrategy": "simple",
 
@@ -1569,6 +1595,7 @@
         "inlineChat.holdToSpeech": true,
         "inlineChat.lineEmptyHint": false,
         "inlineChat.lineNaturalLanguageHint": true,
+        "inlineChat.notebookAgent": false,
 
     // Interactive Windows
         "interactiveWindow.alwaysScrollOnNewCell": true,
@@ -2306,6 +2333,6 @@
      * UPDATABLE PARAMETERS *
      ************************/
         "diffEditor.hideUnchangedRegions.enabled": true,
-        "diffEditor.ignoreTrimWhitespace": true,
+        "diffEditor.ignoreTrimWhitespace": false,
         "editor.inlineSuggest.edits.allowCodeShifting": "always",
 }
