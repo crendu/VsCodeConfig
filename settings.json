@@ -1,4 +1,4 @@
-// Last Sync: 1.103.0
+// Last Sync: 1.105.1
 {
     /***************
      * ENVIRONMENT *
@@ -13,7 +13,7 @@
     "editor.fontFamily": "Fira Code, Cascadia Code PL, Consolas, 'Courier New', monospace",
     "editor.fontLigatures": true,
     "editor.guides.bracketPairs": true,
-    "editor.largeFileOptimizations": false,
+    "editor.largeFileOptimizations": false, // Better for large files
     "editor.minimap.showSlider": "always",
     "editor.multiCursorLimit": 100000,
     "editor.padding.bottom": 200,
@@ -151,6 +151,8 @@
     "[cmd]": { "files.encoding": "windows1252" },
     "[cpp]": { "files.encoding": "windows1252" },
     "[h]": { "files.encoding": "windows1252" },
+    "[log]": { "files.encoding": "utf8" },
+    "[out]": { "files.encoding": "utf8" },
 
 
 
@@ -191,6 +193,7 @@
     // Continue - Codestral, Claude, and more
         "continue.disableQuickFix": false,
         "continue.enableConsole": false,
+        "continue.enableNextEdit": false,
         "continue.enableQuickActions": true,
         "continue.enableTabAutocomplete": false,
         "continue.pauseCodebaseIndexOnStart": false,
@@ -245,7 +248,8 @@
         "C_Cpp.codeAnalysis.clangTidy.headerFilter": null,
         "C_Cpp.codeAnalysis.clangTidy.path": "",
         "C_Cpp.codeAnalysis.clangTidy.useBuildPath": false,
-        "C_Cpp.codeAnalysis.exclude": {},
+        "C_Cpp.codeAnalysis.exclude": {
+        },
         "C_Cpp.codeAnalysis.maxConcurrentThreads": null,
         "C_Cpp.codeAnalysis.maxMemory": null,
         "C_Cpp.codeAnalysis.runAutomatically": true,
@@ -260,7 +264,8 @@
         "C_Cpp.debugger.useBacktickCommandSubstitution": false,
         "C_Cpp.default.browse.databaseFilename": "",
         "C_Cpp.default.browse.limitSymbolsToIncludedHeaders": true,
-        "C_Cpp.default.browse.path": [],
+        "C_Cpp.default.browse.path": [
+        ],
         "C_Cpp.default.cStandard": "c17",
         "C_Cpp.default.compileCommands": "",
         "C_Cpp.default.compilerArgs": [],
@@ -278,7 +283,8 @@
         "C_Cpp.default.dotConfig": "",
         "C_Cpp.default.enableConfigurationSquiggles": true,
         "C_Cpp.default.forcedInclude": [],
-        "C_Cpp.default.includePath": [],
+        "C_Cpp.default.includePath": [
+        ],
         "C_Cpp.default.intelliSenseMode": "windows-msvc-x64",
         "C_Cpp.default.macFrameworkPath": [],
         "C_Cpp.default.mergeConfigurations": true,
@@ -302,7 +308,7 @@
             "tparam",
             "warning"
         ],
-        "C_Cpp.enhancedColorization": "enabled",
+        "C_Cpp.enhancedColorization": "disabled",   // Better for colorisation of large files
         "C_Cpp.errorSquiggles": "disabled",
         "C_Cpp.exclusionPolicy": "checkFilesAndFolders",
         "C_Cpp.experimentalFeatures": "enabled",
@@ -325,10 +331,10 @@
         "C_Cpp.intelliSense.maxCachedProcesses": null,
         "C_Cpp.intelliSense.maxMemory": 30000,
         "C_Cpp.intelliSenseCachePath": "",
-        "C_Cpp.intelliSenseCacheSize": 0,   // Better for large AutoPCH cache file (hello there Unreal Engine)
+        "C_Cpp.intelliSenseCacheSize": 0,       // Better for large AutoPCH cache file (hello there Unreal Engine)
         "C_Cpp.intelliSenseEngine": "default",
         "C_Cpp.intelliSenseMemoryLimit": 16384,
-        "C_Cpp.intelliSenseUpdateDelay": 3000,
+        "C_Cpp.intelliSenseUpdateDelay": 500,   // Need to be quick, but can be greedy
         "C_Cpp.legacyCompilerArgsBehavior": true,
         "C_Cpp.loggingLevel": "Error",
         "C_Cpp.markdownInComments": "subsetEnabled",
@@ -347,7 +353,7 @@
         "C_Cpp.suggestSnippets": true,
         "C_Cpp.vcFormat.indent.accessSpecifiers": true,
         "C_Cpp.vcFormat.indent.braces": false,
-        "C_Cpp.vcFormat.indent.caseContents": false,
+        "C_Cpp.vcFormat.indent.caseContents": true,
         "C_Cpp.vcFormat.indent.caseContentsWhenBlock": false,
         "C_Cpp.vcFormat.indent.caseLabels": true,
         "C_Cpp.vcFormat.indent.gotoLabels": "none",
@@ -404,6 +410,7 @@
         "C_Cpp.vcFormat.space.withinSquareBrackets": false,
         "C_Cpp.vcFormat.wrap.preserveBlocks": "oneLiners",
         "C_Cpp.vcpkg.enabled": true,
+        "C_Cpp.windowsErrorReportingMode": "default",
         "C_Cpp.workspaceParsingPriority": "high",   // Limit CPU to 75%
         "C_Cpp.workspaceSymbols": "All",
 
@@ -443,7 +450,7 @@
         "libConfigServer.trace.server": "off",
 
     // Log File Highlighter
-        "logFileHighlighter.enableProgressIndicator": true,
+        "logFileHighlighter.enableProgressIndicator": false,
         "logFileHighlighter.enableTailMode": true,
         "logFileHighlighter.customPatterns": [
             {
@@ -560,7 +567,7 @@
 
     // PlantUML
         "plantuml.commandArgs": [
-            "-DGRAPHVIZ_DOT=dot.exe",
+            "-DGRAPHVIZ_DOT=XXX",
             "-DPLANTUML_LIMIT_SIZE=8192"
         ],
         "plantuml.diagramsRoot": "",
@@ -586,7 +593,6 @@
 
 
     // Rainbow CSV
-        "rainbow_csv.align_in_scratch_file": false,
         "rainbow_csv.autodetect_separators": [
             "TAB",
             ",",
@@ -629,27 +635,84 @@
         "synthwave84blues.brightness": 0.9,
         "synthwave84blues.disableGlow": false,
 
-    // XML Tools
-        // "xmlTools.enableXmlTreeView": true,
-        // "xmlTools.enableXmlTreeViewCursorSync": false,
-        // "xmlTools.enableXmlTreeViewMetadata": true,
-        // "xmlTools.enforcePrettySelfClosingTagOnFormat": false,
-        // "xmlTools.ignoreDefaultNamespace": true,
-        // "xmlTools.persistXPathQuery": true,
-        // "xmlTools.removeCommentsOnMinify": false,
-        // "xmlTools.splitAttributesOnFormat": false,
-        // "xmlTools.splitXmlnsOnFormat": true,
-        // "xmlTools.xmlFormatterImplementation": "v2",
-        // "xmlTools.xqueryExecutionArguments": [
-        //     "-xquery",
-        //     "$(script)",
-        //     "-in",
-        //     "$(input)",
-        //     "-out",
-        //     "$(input).output.xml"
-        // ],
-        // "xmlTools.xqueryExecutionInputLimit": 100,
-        // "xmlTools.xqueryExecutionInputSearchPattern": "**/*.xml",
+    // XML
+        "redhat.telemetry.enabled": false,
+        "xml.catalogs": [],
+        "xml.codeLens.enabled": true,
+        "xml.colors": [],
+        "xml.completion.autoCloseRemovesContent": true,
+        "xml.completion.autoCloseTags": true,
+        "xml.downloadExternalResources.enabled": false,
+        "xml.extension.jars": [],
+        "xml.fileAssociations": [],
+        "xml.filePathSupport.mappings": [],
+        "xml.foldings.includeClosingTagInFold": false,
+        "xml.format.closingBracketNewLine": false,
+        "xml.format.emptyElements": "ignore",
+        "xml.format.enabled": true,
+        "xml.format.enforceQuoteStyle": "ignore",
+        "xml.format.grammarAwareFormatting": true,
+        "xml.format.joinCDATALines": false,
+        "xml.format.joinCommentLines": false,
+        "xml.format.joinContentLines": false,
+        "xml.format.legacy": false,
+        "xml.format.maxLineWidth": 100,
+        "xml.format.preserveAttributeLineBreaks": true,
+        "xml.format.preserveEmptyContent": false,
+        "xml.format.preserveSpace": [
+            "xsl:text",
+            "xsl:comment",
+            "xsl:processing-instruction",
+            "literallayout",
+            "programlisting",
+            "screen",
+            "synopsis",
+            "pre",
+            "xd:pre"
+        ],
+        "xml.format.preservedNewlines": 2,
+        "xml.format.spaceBeforeEmptyCloseTag": true,
+        "xml.format.splitAttributes": "preserve",
+        "xml.format.splitAttributesIndentSize": 2,
+        "xml.format.xsiSchemaLocationSplit": "onPair",
+        "xml.java.home": null,
+        "xml.logs.client": false,
+        "xml.preferences.quoteStyle": "double",
+        "xml.preferences.showSchemaDocumentationType": "all",
+        "xml.references": [],
+        "xml.server.binary.args": "",
+        "xml.server.binary.path": "",
+        "xml.server.binary.trustedHashes": [],
+        "xml.server.preferBinary": false,
+        "xml.server.silenceExtensionWarning": false,
+        "xml.server.vmargs": "-Xmx64M",
+        "xml.server.workDir": "~/.lemminx",
+        "xml.symbols.enabled": true,
+        "xml.symbols.excluded": [],
+        "xml.symbols.filters": [],
+        "xml.symbols.maxItemsComputed": 5000,
+        "xml.symbols.showReferencedGrammars": true,
+        "xml.trace.server": "off",
+        "xml.validation.disallowDocTypeDecl": false,
+        "xml.validation.enabled": true,
+        "xml.validation.filters": [
+            {
+                "pattern": "**.exsd",
+                "noGrammar": "ignore",
+                "schema": {
+                    "enabled": "never"
+                }
+            },
+            {
+                "pattern": "**{.project,.classpath,plugin.xml,feature.xml,category.xml,.target,.product}",
+                "noGrammar": "ignore"
+            }
+        ],
+        "xml.validation.namespaces.enabled": "always",
+        "xml.validation.noGrammar": "hint",
+        "xml.validation.resolveExternalEntities": false,
+        "xml.validation.schema.enabled": "always",
+        "xml.validation.xInclude.enabled": false,
 
 
     /**********************************************
@@ -1047,6 +1110,7 @@
             "sound": "auto"
         },
         "accessibility.underlineLinks": false,
+        "accessibility.verboseChatProgressUpdates": true,
         "accessibility.verbosity.comments": true,
         "accessibility.verbosity.debug": true,
         "accessibility.verbosity.diffEditor": true,
@@ -1104,12 +1168,18 @@
     // Chat
         "chat.agent.enabled": false,
         "chat.agent.maxRequests": 0,
+        "chat.agent.thinkingStyle": "collapsedPreview",
+        "chat.agent.todoList": {
+            "position": "default"
+        },
         "chat.agentSessionsViewLocation": "disabled",
-        "chat.checkpoints.enabled": true,
+        "chat.allowAnonymousAccess": false,
+        "chat.checkpoints.enabled": false,
         "chat.checkpoints.showFileChanges": false,
         "chat.commandCenter.enabled": false,
         "chat.detectParticipant.enabled": false,
-        "chat.editRequests": "inline",
+        "chat.disableAIFeatures": false,
+        "chat.editRequests": "none",
         "chat.editing.autoAcceptDelay": 0,
         "chat.editing.confirmEditRequestRemoval": true,
         "chat.editing.confirmEditRequestRetry": true,
@@ -1120,7 +1190,10 @@
         "chat.editor.wordWrap": "off",
         "chat.edits2.enabled": false,
         "chat.emptyChatState.enabled": false,
+        "chat.emptyState.history.enabled": false,
         "chat.extensionTools.enabled": false,
+        "chat.fontFamily": "default",
+        "chat.fontSize": 13,
         "chat.implicitContext.enabled": {
             "editing-session": "first",
             "panel": "always"
@@ -1130,26 +1203,43 @@
             ".github/instructions": false
         },
         "chat.math.enabled": false,
+        "chat.mcp.access": "none",
         "chat.mcp.assisted.nuget.enabled": false,
         "chat.mcp.autostart": "never",
-        "chat.mcp.discovery.enabled": false,
-        "chat.mcp.enabled": false,
+        "chat.mcp.discovery.enabled": {
+            "claude-desktop": false,
+            "windsurf": false,
+            "cursor-global": false,
+            "cursor-workspace": false
+        },
+        "chat.mcp.gallery.enabled": false,
         "chat.mcp.serverSampling": {},
         "chat.modeFilesLocations": {
             ".github/chatmodes": false
         },
         "chat.notifyWindowOnConfirmation": true,
+        "chat.notifyWindowOnResponseReceived": true,
         "chat.promptFiles": true,
         "chat.promptFilesLocations": {
             ".github/prompts": false
         },
+        "chat.promptFilesRecommendations": {},
         "chat.renderRelatedFiles": false,
         "chat.sendElementsToChat.attachCSS": true,
         "chat.sendElementsToChat.attachImages": true,
         "chat.sendElementsToChat.enabled": true,
         "chat.setup.signInDialogVariant": "default",
-        "chat.todoListTool.enabled": false,
-        "chat.tools.autoApprove": false,
+        "chat.showAgentSessionsViewDescription": true,
+        "chat.todoListTool.descriptionField": true,
+        "chat.todoListTool.writeOnly": false,
+        "chat.tools.edits.autoApprove": {
+            "**/*": true,
+            "**/.vscode/*.json": false,
+            "**/.git/**": false,
+            "**/{package.json,package-lock.json,server.xml,build.rs,web.config,.gitattributes,.env}": false,
+            "**/*.{csproj,fsproj,vbproj}": false
+        },
+        "chat.tools.global.autoApprove": false,
         "chat.tools.terminal.autoApprove": {
             "rm": false,
             "rmdir": false,
@@ -1162,9 +1252,17 @@
             "chown": false,
             "/^Remove-Item\\b/i": false
         },
-        "chat.tools.useTreePicker": true,
+        "chat.tools.terminal.autoReplyToPrompts": false,
+        "chat.tools.terminal.enableAutoApprove": false,
+        "chat.tools.terminal.shellIntegrationTimeout": -1,
+        "chat.tools.terminal.terminalProfile.linux": null,
+        "chat.tools.terminal.terminalProfile.osx": null,
+        "chat.tools.terminal.terminalProfile.windows": null,
         "chat.undoRequests.restoreInput": true,
-        "chat.useFileStorage": false,
+        "chat.useAgentsMdFile": true,
+        "chat.useCloudButtonV2": false,
+        "chat.useNestedAgentsMdFiles": false,
+        "mermaid-chat.enabled": false,
 
     // Comments
         "comments.collapseOnResolve": true,
@@ -1207,7 +1305,7 @@
         "debug.showSubSessionsInToolBar": false,
         "debug.showVariableTypes": false,
         "debug.terminal.clearBeforeReusing": false,
-        "debug.toolBarLocation": "floating",
+        "debug.toolBarLocation": "commandCenter",
 
     // DiffEditor
         "diffEditor.codeLens": false,
@@ -1338,12 +1436,16 @@
         "editor.inlineSuggest.edits.renderSideBySide": "auto",
         "editor.inlineSuggest.edits.showCollapsed": false,
         "editor.inlineSuggest.enabled": true,
+        "editor.inlineSuggest.experimental.emptyResponseInformation": false,
+        "editor.inlineSuggest.experimental.showOnSuggestConflict": "always",
         "editor.inlineSuggest.experimental.suppressInlineSuggestions": [],
-        "editor.inlineSuggest.experimental.triggerCommandOnProviderChange": true,
         "editor.inlineSuggest.fontFamily": "default",
+        "editor.inlineSuggest.minShowDelay": 0,
         "editor.inlineSuggest.showToolbar": "onHover",
+        "editor.inlineSuggest.suppressInSnippetMode": false,
         "editor.inlineSuggest.suppressSuggestions": false,
         "editor.inlineSuggest.syntaxHighlightingEnabled": true,
+        "editor.inlineSuggest.triggerCommandOnProviderChange": true,
         "editor.insertSpaces": true,
         "editor.language.brackets": null,
         "editor.language.colorizedBracketPairs": null,
@@ -1367,6 +1469,7 @@
         "editor.minimap.showRegionSectionHeaders": true,
         "editor.minimap.side": "right",
         "editor.minimap.size": "proportional",
+        "editor.mouseMiddleClickAction": "default",
         "editor.mouseWheelScrollSensitivity": 1,
         "editor.mouseWheelZoom": false,
         "editor.multiCursorMergeOverlapping": true,
@@ -1576,6 +1679,7 @@
 
     // Http
         "http.electronFetch": false,
+        "http.experimental.networkInterfaceCheckInterval": 300,
         "http.experimental.systemCertificatesV2": false,
         "http.fetchAdditionalSupport": true,
         "http.noProxy": [],
@@ -1859,6 +1963,7 @@
     // Task
         "task.allowAutomaticTasks": "on",
         "task.autoDetect": "on",
+        "task.notifyWindowOnTaskCompletion": 60000,
         "task.problemMatchers.neverPrompt": false,
         "task.quickOpen.detail": true,
         "task.quickOpen.history": 30,
@@ -2135,6 +2240,7 @@
         "testing.displayedCoveragePercent": "totalCoverage",
         "testing.followRunningTest": true,
         "testing.gutterEnabled": true,
+        "testing.resultsView.layout": "treeRight",
         "testing.saveBeforeTest": true,
         "testing.showAllMessages": false,
         "testing.showCoverageInExplorer": true,
@@ -2244,6 +2350,7 @@
         "workbench.editor.scrollToSwitchTabs": false,
         "workbench.editor.sharedViewState": false,
         "workbench.editor.showIcons": true,
+        "workbench.editor.showTabIndex": true,
         "workbench.editor.showTabs": "multiple",
         "workbench.editor.splitOnDragAndDrop": true,
         "workbench.editor.splitSizing": "auto",
@@ -2254,6 +2361,7 @@
         "workbench.editor.tabSizingFixedMaxWidth": 160,
         "workbench.editor.tabSizingFixedMinWidth": 50,
         "workbench.editor.titleScrollbarSizing": "default",
+        "workbench.editor.titleScrollbarVisibility": "auto",
         "workbench.editor.untitled.labelFormat": "content",
         "workbench.editor.wrapTabs": false,
         "workbench.editorAssociations": {},
@@ -2295,7 +2403,7 @@
         "workbench.remoteIndicator.showExtensionRecommendations": true,
         "workbench.sash.hoverDelay": 300,
         "workbench.sash.size": 4,
-        "workbench.secondarySideBar.defaultVisibility": "visible",
+        "workbench.secondarySideBar.defaultVisibility": "hidden",
         "workbench.secondarySideBar.showLabels": true,
         "workbench.settings.applyToAllProfiles": [],
         "workbench.settings.editor": "ui",
@@ -2333,6 +2441,6 @@
      * UPDATABLE PARAMETERS *
      ************************/
         "diffEditor.hideUnchangedRegions.enabled": true,
-        "diffEditor.ignoreTrimWhitespace": false,
+        "diffEditor.ignoreTrimWhitespace": true,
         "editor.inlineSuggest.edits.allowCodeShifting": "always",
 }
