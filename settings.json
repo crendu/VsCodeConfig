@@ -1,4 +1,4 @@
-// Last Sync: 1.105.1
+// Last Sync: 1.107.0
 {
     /***************
      * ENVIRONMENT *
@@ -10,6 +10,9 @@
     "editor.cursorBlinking": "phase",
     "editor.cursorSmoothCaretAnimation": "on",
     "editor.detectIndentation": false,
+    "editor.experimental.asyncTokenization": true,             // Better for asynchrone coloration
+    "editor.experimental.asyncTokenizationLogging": true,      // Better for asynchrone coloration
+    "editor.experimental.asyncTokenizationVerification": true, // Better for asynchrone coloration
     "editor.fontFamily": "Fira Code, Cascadia Code PL, Consolas, 'Courier New', monospace",
     "editor.fontLigatures": true,
     "editor.guides.bracketPairs": true,
@@ -151,9 +154,18 @@
     "[cmd]": { "files.encoding": "windows1252" },
     "[cpp]": { "files.encoding": "windows1252" },
     "[h]": { "files.encoding": "windows1252" },
-    "[log]": { "files.encoding": "utf8" },
-    "[out]": { "files.encoding": "utf8" },
+    "[log]": {
+        "files.encoding": "utf8",
 
+        // Better for large files
+        "editor.folding": false,
+        "editor.foldingHighlight": false,
+        "editor.maxTokenizationLineLength": 100000, // Coloration for long lines
+        "editor.minimap.enabled": false,
+        "editor.occurrencesHighlight": "off",
+        "editor.semanticHighlighting.enabled": false,
+    },
+    "[out]": { "files.encoding": "utf8" },
 
 
     /******************
@@ -200,7 +212,7 @@
         "continue.pauseTabAutocompleteOnBattery": false,
         "continue.remoteConfigServerUrl": null,
         "continue.remoteConfigSyncPeriod": 60,
-        "continue.showInlineTip": true,
+        "continue.showInlineTip": false,
         "continue.telemetryEnabled": false,
         "continue.userToken": "XXX",
 
@@ -342,6 +354,7 @@
         "C_Cpp.maxConcurrentThreads": null,
         "C_Cpp.maxMemory": null,
         "C_Cpp.maxSymbolSearchResults": 5000,
+        "C_Cpp.persistVsDeveloperEnvironment": true,
         "C_Cpp.preferredPathSeparator": "Backslash",
         "C_Cpp.refactoring.includeHeader": "ifNeeded",
         "C_Cpp.references.maxCachedProcesses": 0,
@@ -517,6 +530,7 @@
             "description|22",
             "->timeAgo|14"
         ],
+        "perforce.binaryAsText": false,
         "perforce.bottleneck.maxConcurrent": 10,
         "perforce.changelistOrder": "descending",
         "perforce.changelistSearch.maxResults": 200,
@@ -531,6 +545,7 @@
         "perforce.editOnFileModified": true,
         "perforce.editOnFileSave": true,
         "perforce.editorButtons.diffPrevAndNext": "All diffable files",
+        "perforce.enableFileSystemActionsWithoutFolder": true,
         "perforce.enableP4ConfigScanOnStartup": true,
         "perforce.explorer.showBasicOpCommands": true,
         "perforce.explorer.showFileOpCommands": true,
@@ -865,6 +880,7 @@
         "html.format.wrapLineLength": 120,
         "html.hover.documentation": true,
         "html.hover.references": true,
+        "html.suggest.hideEndTagSuggestions": false,
         "html.suggest.html5": true,
         "html.trace.server": "off",
         "html.validate.scripts": true,
@@ -1126,6 +1142,7 @@
         "accessibility.verbosity.replEditor": true,
         "accessibility.verbosity.sourceControl": true,
         "accessibility.verbosity.terminal": true,
+        "accessibility.verbosity.terminalChatOutput": true,
         "accessibility.verbosity.walkthrough": true,
         "accessibility.windowTitleOptimized": true,
 
@@ -1166,17 +1183,18 @@
         "breadcrumbs.symbolSortOrder": "position",
 
     // Chat
+        "chat.agent.codeBlockProgress": false,
         "chat.agent.enabled": false,
         "chat.agent.maxRequests": 0,
+        "chat.agent.thinking.collapsedTools": "readOnly",
+        "chat.agent.thinking.generateTitles": false,
         "chat.agent.thinkingStyle": "collapsedPreview",
-        "chat.agent.todoList": {
-            "position": "default"
-        },
         "chat.agentSessionsViewLocation": "disabled",
         "chat.allowAnonymousAccess": false,
         "chat.checkpoints.enabled": false,
         "chat.checkpoints.showFileChanges": false,
         "chat.commandCenter.enabled": false,
+        "chat.customAgentInSubagent.enabled": false,
         "chat.detectParticipant.enabled": false,
         "chat.disableAIFeatures": false,
         "chat.editRequests": "none",
@@ -1189,9 +1207,9 @@
         "chat.editor.lineHeight": 0,
         "chat.editor.wordWrap": "off",
         "chat.edits2.enabled": false,
-        "chat.emptyChatState.enabled": false,
-        "chat.emptyState.history.enabled": false,
+        "chat.exitAfterDelegation": true,
         "chat.extensionTools.enabled": false,
+        "chat.extensionUnification.enabled": false,
         "chat.fontFamily": "default",
         "chat.fontSize": 13,
         "chat.implicitContext.enabled": {
@@ -1214,22 +1232,19 @@
         },
         "chat.mcp.gallery.enabled": false,
         "chat.mcp.serverSampling": {},
-        "chat.modeFilesLocations": {
-            ".github/chatmodes": false
-        },
         "chat.notifyWindowOnConfirmation": true,
         "chat.notifyWindowOnResponseReceived": true,
-        "chat.promptFiles": true,
         "chat.promptFilesLocations": {
             ".github/prompts": false
         },
         "chat.promptFilesRecommendations": {},
         "chat.renderRelatedFiles": false,
+        "chat.restoreLastPanelSession": true,
         "chat.sendElementsToChat.attachCSS": true,
         "chat.sendElementsToChat.attachImages": true,
         "chat.sendElementsToChat.enabled": true,
-        "chat.setup.signInDialogVariant": "default",
         "chat.showAgentSessionsViewDescription": true,
+        "chat.suspendThrottling": true,
         "chat.todoListTool.descriptionField": true,
         "chat.todoListTool.writeOnly": false,
         "chat.tools.edits.autoApprove": {
@@ -1239,6 +1254,7 @@
             "**/{package.json,package-lock.json,server.xml,build.rs,web.config,.gitattributes,.env}": false,
             "**/*.{csproj,fsproj,vbproj}": false
         },
+        "chat.tools.eligibleForAutoApproval": {},
         "chat.tools.global.autoApprove": false,
         "chat.tools.terminal.autoApprove": {
             "rm": false,
@@ -1253,15 +1269,23 @@
             "/^Remove-Item\\b/i": false
         },
         "chat.tools.terminal.autoReplyToPrompts": false,
+        "chat.tools.terminal.blockDetectedFileWrites": "outsideWorkspace",
         "chat.tools.terminal.enableAutoApprove": false,
-        "chat.tools.terminal.shellIntegrationTimeout": -1,
+        "chat.tools.terminal.ignoreDefaultAutoApproveRules": false,
+        "chat.tools.terminal.outputLocation": "terminal",
         "chat.tools.terminal.terminalProfile.linux": null,
         "chat.tools.terminal.terminalProfile.osx": null,
         "chat.tools.terminal.terminalProfile.windows": null,
+        "chat.tools.todos.showWidget": true,
+        "chat.tools.urls.autoApprove": {},
         "chat.undoRequests.restoreInput": true,
         "chat.useAgentsMdFile": true,
-        "chat.useCloudButtonV2": false,
+        "chat.useClaudeSkills": true,
         "chat.useNestedAgentsMdFiles": false,
+        "chat.viewSessions.enabled": false,
+        "chat.viewSessions.orientation": "auto",
+        "chat.viewTitle.enabled": true,
+        "chat.viewWelcome.enabled": false,
         "mermaid-chat.enabled": false,
 
     // Comments
@@ -1373,9 +1397,6 @@
         "editor.dropIntoEditor.showDropSelector": "afterDrop",
         "editor.editContext": true,
         "editor.emptySelectionClipboard": true,
-        "editor.experimental.asyncTokenization": false,
-        "editor.experimental.asyncTokenizationLogging": false,
-        "editor.experimental.asyncTokenizationVerification": false,
         "editor.experimental.preferTreeSitter.css": false,
         "editor.experimental.preferTreeSitter.ini": false,
         "editor.experimental.preferTreeSitter.regex": false,
@@ -1422,7 +1443,7 @@
         "editor.hideCursorInOverviewRuler": false,
         "editor.hover.above": true,
         "editor.hover.delay": 300,
-        "editor.hover.enabled": true,
+        "editor.hover.enabled": "on",
         "editor.hover.hidingDelay": 300,
         "editor.hover.sticky": true,
         "editor.indentSize": "tabSize",
@@ -1435,6 +1456,7 @@
         "editor.inlineCompletionsAccessibilityVerbose": false,
         "editor.inlineSuggest.edits.renderSideBySide": "auto",
         "editor.inlineSuggest.edits.showCollapsed": false,
+        "editor.inlineSuggest.edits.showLongDistanceHint": true,
         "editor.inlineSuggest.enabled": true,
         "editor.inlineSuggest.experimental.emptyResponseInformation": false,
         "editor.inlineSuggest.experimental.showOnSuggestConflict": "always",
@@ -1648,6 +1670,7 @@
         "extensions.experimental.deferredStartupFinishedActivation": false,
         "extensions.experimental.issueQuickAccess": true,
         "extensions.ignoreRecommendations": false,
+        "extensions.requestTimeout": 60000,
         "extensions.supportNodeGlobalNavigator": false,
         "extensions.supportUntrustedWorkspaces": {},
         "extensions.supportVirtualWorkspaces": {},
@@ -1689,16 +1712,14 @@
         "http.proxyStrictSSL": true,
         "http.proxySupport": "override",
         "http.systemCertificates": true,
+        "http.systemCertificatesNode": true,
         "http.useLocalProxyConfiguration": true,
 
     // Inline Chat
         "inlineChat.accessibleDiffView": "auto",
         "inlineChat.enableV2": false,
         "inlineChat.finishOnType": false,
-        "inlineChat.hideOnRequest": false,
         "inlineChat.holdToSpeech": true,
-        "inlineChat.lineEmptyHint": false,
-        "inlineChat.lineNaturalLanguageHint": true,
         "inlineChat.notebookAgent": false,
 
     // Interactive Windows
@@ -1887,11 +1908,15 @@
         "scm.graph.badges": "filter",
         "scm.graph.pageOnScroll": true,
         "scm.graph.pageSize": 50,
+        "scm.graph.showIncomingChanges": true,
+        "scm.graph.showOutgoingChanges": true,
         "scm.inputFontFamily": "default",
         "scm.inputFontSize": 13,
         "scm.inputMaxLineCount": 10,
         "scm.inputMinLineCount": 1,
         "scm.providerCountBadge": "hidden",
+        "scm.repositories.explorer": false,
+        "scm.repositories.selectionMode": "multiple",
         "scm.repositories.sortOrder": "discovery time",
         "scm.repositories.visible": 10,
         "scm.showActionButton": true,
@@ -2010,6 +2035,9 @@
         "terminal.integrated.defaultProfile.linux": null,
         "terminal.integrated.defaultProfile.osx": null,
         "terminal.integrated.detectLocale": "auto",
+        "terminal.integrated.developer.devMode": false,
+        "terminal.integrated.developer.ptyHost.latency": 0,
+        "terminal.integrated.developer.ptyHost.startupDelay": 0,
         "terminal.integrated.drawBoldTextInBrightColors": true,
         "terminal.integrated.enableFileLinks": "on",
         "terminal.integrated.enableImages": false,
@@ -2019,7 +2047,6 @@
         "terminal.integrated.env.linux": {},
         "terminal.integrated.env.osx": {},
         "terminal.integrated.env.windows": {},
-        "terminal.integrated.environmentChangesIndicator": "warnonly",
         "terminal.integrated.environmentChangesRelaunch": true,
         "terminal.integrated.fastScrollSensitivity": 5,
         "terminal.integrated.focusAfterRun": "none",
@@ -2179,7 +2206,9 @@
         "terminal.integrated.shellIntegration.enabled": true,
         "terminal.integrated.shellIntegration.environmentReporting": false,
         "terminal.integrated.shellIntegration.history": 100,
+        "terminal.integrated.shellIntegration.quickFixEnabled": true,
         "terminal.integrated.shellIntegration.showCommandGuide": true,
+        "terminal.integrated.shellIntegration.timeout": -1,
         "terminal.integrated.showExitAlert": true,
         "terminal.integrated.showLinkHover": true,
         "terminal.integrated.smoothScrolling": false,
@@ -2189,9 +2218,9 @@
         "terminal.integrated.suggest.cdPath": "absolute",
         "terminal.integrated.suggest.enabled": false,
         "terminal.integrated.suggest.inlineSuggestion": "alwaysOnTop",
+        "terminal.integrated.suggest.insertTrailingSpace": false,
         "terminal.integrated.suggest.providers": {
-            "pwsh-shell-integration": false,
-            "terminal-suggest": true
+            "lsp": true
         },
         "terminal.integrated.suggest.quickSuggestions": {
             "arguments": "on",
@@ -2292,6 +2321,7 @@
         "workbench.commandPalette.experimental.suggestCommands": false,
         "workbench.commandPalette.history": 50,
         "workbench.commandPalette.preserveInput": false,
+        "workbench.commandPalette.showAskInChat": true,
         "workbench.editor.alwaysShowEditorActions": false,
         "workbench.editor.autoLockGroups": {
             "default": false,
@@ -2440,7 +2470,7 @@
     /************************
      * UPDATABLE PARAMETERS *
      ************************/
-        "diffEditor.hideUnchangedRegions.enabled": true,
-        "diffEditor.ignoreTrimWhitespace": true,
+        "diffEditor.ignoreTrimWhitespace": false,
         "editor.inlineSuggest.edits.allowCodeShifting": "always",
+        "diffEditor.hideUnchangedRegions.enabled": true,
 }
