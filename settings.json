@@ -1,4 +1,4 @@
-// Last Sync: 1.109.0
+// Last Sync: 1.110.1
 {
     /***************
      * ENVIRONMENT *
@@ -202,20 +202,6 @@
         // "batchrunner.cmdPath": "C:\\windows\\System32\\cmd.exe",
         // "batchrunner.runBatchIn": "Terminal",
 
-    // Continue - Codestral, Claude, and more
-        "continue.disableQuickFix": false,
-        "continue.enableConsole": false,
-        "continue.enableNextEdit": false,
-        "continue.enableQuickActions": true,
-        "continue.enableTabAutocomplete": false,
-        "continue.pauseCodebaseIndexOnStart": false,
-        "continue.pauseTabAutocompleteOnBattery": false,
-        "continue.remoteConfigServerUrl": null,
-        "continue.remoteConfigSyncPeriod": 60,
-        "continue.showInlineTip": false,
-        "continue.telemetryEnabled": false,
-        "continue.userToken": "XXX",
-
     // C/C++
         "C_Cpp.addNodeAddonIncludePaths": false,
         "C_Cpp.autoAddFileAssociations": true,
@@ -275,6 +261,7 @@
         "C_Cpp.debugger.useBacktickCommandSubstitution": false,
         "C_Cpp.default.browse.databaseFilename": "",
         "C_Cpp.default.browse.limitSymbolsToIncludedHeaders": true,
+        "C_Cpp.default.browse.path": null,
         "C_Cpp.default.cStandard": "c17",
         "C_Cpp.default.compileCommands": "",
         "C_Cpp.default.compilerArgs": [],
@@ -423,12 +410,29 @@
         "C_Cpp.workspaceParsingPriority": "high",   // Limit CPU to 75%
         "C_Cpp.workspaceSymbols": "All",
 
+    // Claude Code for VS Code
+        "claudeCode.allowDangerouslySkipPermissions": false,
+        "claudeCode.autosave": true,
+        "claudeCode.claudeProcessWrapper": "",
+        "claudeCode.disableLoginPrompt": false,
+        "claudeCode.enableNewConversationShortcut": true,
+        "claudeCode.environmentVariables": [],
+        "claudeCode.hideOnboarding": false,
+        "claudeCode.initialPermissionMode": "default",
+        "claudeCode.preferredLocation": "panel",
+        "claudeCode.respectGitIgnore": true,
+        "claudeCode.selectedModel": "default",
+        "claudeCode.useCtrlEnterToSend": false,
+        "claudeCode.usePythonEnvironment": true,
+        "claudeCode.useTerminal": false,
+    
     // Compare Folders
         "compareFolders.compareContent": true,
         "compareFolders.defaultDiffViewMode": "tree",
         "compareFolders.diffLayout": "local <> compared",
         "compareFolders.diffViewTitle": "name only",
         "compareFolders.excludeFilter": [],
+        "compareFolders.fileParsingRules": [],
         "compareFolders.folderLeft": "",
         "compareFolders.folderRight": "",
         "compareFolders.ignoreAllWhiteSpaces": true,
@@ -445,9 +449,9 @@
         "compareFolders.warnBeforeTake": true,
 
     // Custom Language Properties
-    "custom-language-properties": {
-        "bat.comments.lineComment": "Rem",
-    },
+        "custom-language-properties": {
+            "bat.comments.lineComment": "Rem",
+        },
 
     // Encoding Alert for VS Code
         // "EncodingAlert.Encoding": "ISO-8859-1", // Windows 1252
@@ -537,7 +541,7 @@
         "perforce.changelistSearch.maxResults": 200,
         "perforce.charset": "none",
         "perforce.client": "XXX",
-        "perforce.command": "C:\\Perforce-2025.2\\p4.exe",
+        "perforce.command": "C:\\Program Files\\Perforce\\p4.exe",
         "perforce.countBadge": "all-but-shelved",
         "perforce.debugModeActive": false,
         "perforce.debugP4Commands": false,
@@ -991,6 +995,7 @@
      *****************/
     // Accessibility
         "accessibility.accessibleView.closeOnKeyPress": true,
+        "accessibility.chat.showCheckmarks": false,
         "accessibility.debugWatchVariableAnnouncements": true,
         "accessibility.dimUnfocused.enabled": false,
         "accessibility.dimUnfocused.opacity": 0.75,
@@ -1140,6 +1145,7 @@
         "accessibility.verbosity.diffEditor": true,
         "accessibility.verbosity.diffEditorActive": true,
         "accessibility.verbosity.emptyEditorHint": true,
+        "accessibility.verbosity.find": true,
         "accessibility.verbosity.hover": true,
         "accessibility.verbosity.inlineChat": true,
         "accessibility.verbosity.inlineCompletions": true,
@@ -1192,6 +1198,10 @@
         "breadcrumbs.symbolSortOrder": "position",
 
     // Chat - Deactivated by default
+        "chat.agent.thinking.phrases": {
+            "mode": "append",
+            "phrases": []
+        },
         "chat.agent.codeBlockProgress": false,
         "chat.agent.enabled": false,
         "chat.agent.maxRequests": 0,
@@ -1202,6 +1212,17 @@
         "chat.agentFilesLocations": {
             ".github/agents": false
         },
+        "chat.autoReply": false,
+        "chat.contextUsage.enabled": false,
+        "chat.customizationsMenu.enabled": false,
+        "chat.exploreAgent.defaultModel": "",
+        "chat.growthNotification.enabled": false,
+        "chat.planAgent.defaultModel": "",
+        "chat.plugins.enabled": false,
+        "chat.plugins.marketplaces": [
+            // "github/awesome-copilot"
+            // "github/copilot-plugins",
+        ],
         "chat.agentSessionProjection.enabled": false,
         "chat.agentSkillsLocations": {
             ".github/skills": false,
@@ -1214,7 +1235,6 @@
         "chat.agentsControl.clickBehavior": "default",
         "chat.agentsControl.enabled": false,
         "chat.allowAnonymousAccess": false,
-        "chat.alternativeToolAction.enabled": false,
         "chat.checkpoints.enabled": false,
         "chat.checkpoints.showFileChanges": false,
         "chat.customAgentInSubagent.enabled": false,
@@ -1262,17 +1282,19 @@
         },
         "chat.mcp.gallery.enabled": false,
         "chat.mcp.serverSampling": {},
-        "chat.notifyWindowOnConfirmation": true,
-        "chat.notifyWindowOnResponseReceived": true,
+        "chat.notifyWindowOnConfirmation": "windowNotFocused",
+        "chat.notifyWindowOnResponseReceived": "windowNotFocused",
+        "chat.plugins.paths": {},
         "chat.promptFilesLocations": {
             ".github/prompts": false
         },
         "chat.promptFilesRecommendations": {},
+        "chat.requestQueuing.defaultAction": "steer",
         "chat.restoreLastPanelSession": true,
         "chat.sendElementsToChat.attachCSS": true,
         "chat.sendElementsToChat.attachImages": true,
         "chat.sendElementsToChat.enabled": true,
-        "chat.statusWidget.sku": "",
+        "chat.statusWidget.anonymous": true,
         "chat.tips.enabled": false,
         "chat.tools.autoExpandFailures": true,
         "chat.tools.edits.autoApprove": {
@@ -1286,6 +1308,7 @@
         },
         "chat.tools.eligibleForAutoApproval": {},
         "chat.tools.global.autoApprove": false,
+        "chat.tools.renameTool.enabled": true,
         "chat.tools.terminal.autoApprove": {
             "cd": true,
             "echo": true,
@@ -1436,15 +1459,21 @@
             "allowedDomains": [],
             "deniedDomains": []
         },
+        "chat.tools.terminal.simpleCollapsible": true,
         "chat.tools.terminal.terminalProfile.linux": null,
         "chat.tools.terminal.terminalProfile.osx": null,
         "chat.tools.terminal.terminalProfile.windows": null,
         "chat.tools.todos.showWidget": false,
         "chat.tools.urls.autoApprove": {},
+        "chat.tools.usagesTool.enabled": false,
         "chat.undoRequests.restoreInput": true,
         "chat.unifiedAgentsBar.enabled": false,
+        "chat.upvoteAnimation": "off",
         "chat.useAgentSkills": false,
         "chat.useAgentsMdFile": false,
+        "chat.useClaudeHooks": false,
+        "chat.useClaudeMdFile": false,
+        "chat.useHooks": false,
         "chat.useNestedAgentsMdFiles": false,
         "chat.viewProgressBadge.enabled": false,
         "chat.viewSessions.enabled": false,
@@ -1555,6 +1584,7 @@
         "editor.defaultFoldingRangeProvider": null,
         "editor.defaultFormatter": null,
         "editor.definitionLinkOpensInPeek": false,
+        "editor.doubleClickSelectsBlock": true,
         "editor.dragAndDrop": true,
         "editor.dropIntoEditor.enabled": true,
         "editor.dropIntoEditor.preferences": [],
@@ -1823,6 +1853,7 @@
         "explorer.sortOrderReverse": false,
 
     // Extensions
+        "extensions.allowOpenInModalEditor": false,
         "extensions.allowed": "*",
         "extensions.autoCheckUpdates": true,
         "extensions.autoUpdate": true,
@@ -1882,7 +1913,14 @@
         "inlineChat.defaultModel": "",
         "inlineChat.enableV2": false,
         "inlineChat.finishOnType": false,
+        "inlineChat.fixDiagnostics": false,
         "inlineChat.holdToSpeech": true,
+        "chat.hookFilesLocations": {
+            ".github/hooks": false,
+            ".claude/settings.local.json": false,
+            ".claude/settings.json": false,
+            "~/.claude/settings.json": false
+        },
         "inlineChat.notebookAgent": false,
         "inlineChat.renderMode": "zone",
 
@@ -1906,6 +1944,9 @@
     // Merge
         "mergeEditor.diffAlgorithm": "advanced",
         "mergeEditor.showDeletionMarkers": true,
+
+    // Network - Disabled
+        "network.meteredConnection": "off",
 
     // Notebook
         "notebook.backup.sizeLimit": 10000,
@@ -2203,6 +2244,7 @@
         "terminal.integrated.enableImages": false,
         "terminal.integrated.enableKittyKeyboardProtocol": false,
         "terminal.integrated.enableMultiLinePasteWarning": "auto",
+        "terminal.integrated.enableNotifications": true,
         "terminal.integrated.enablePersistentSessions": true,
         "terminal.integrated.enableVisualBell": false,
         "terminal.integrated.enableWin32InputMode": false,
@@ -2417,6 +2459,7 @@
         "terminal.integrated.tabs.showActions": "singleTerminalOrNarrow",
         "terminal.integrated.tabs.showActiveTerminal": "singleTerminalOrNarrow",
         "terminal.integrated.tabs.title": "${process}",
+        "terminal.integrated.textBlinking": false,
         "terminal.integrated.unicodeVersion": "11",
         "terminal.integrated.useWslProfiles": true,
         "terminal.integrated.windowsUseConptyDll": false,
@@ -2451,6 +2494,7 @@
     // Update
         "update.enableWindowsBackgroundUpdates": true,
         "update.showReleaseNotes": true,
+        "update.statusBar": "detailed",
 
     // Window
         "window.autoDetectColorScheme": false,
@@ -2483,8 +2527,11 @@
         "window.zoomPerWindow": true,
 
     // Workbenck
+        "workbench.activityBar.autoHide": false,
+        "workbench.activityBar.compact": true,
         "workbench.activityBar.iconClickBehavior": "toggle",
         "workbench.browser.dataStorage": "global",
+        "workbench.browser.enableChatTools": false,
         "workbench.browser.openLocalhostLinks": false,
         "workbench.cloudChanges.autoResume": "onReload",
         "workbench.cloudChanges.continueOn": "prompt",
@@ -2570,6 +2617,7 @@
         "workbench.editor.titleScrollbarSizing": "default",
         "workbench.editor.titleScrollbarVisibility": "auto",
         "workbench.editor.untitled.labelFormat": "content",
+        "workbench.editor.useModal": "off",
         "workbench.editor.wrapTabs": false,
         "workbench.editorAssociations": {},
         "workbench.enableExperiments": true,
@@ -2597,6 +2645,8 @@
         "workbench.localHistory.maxFileSize": 256,
         "workbench.localHistory.mergeWindow": 10,
         "workbench.navigationControl.enabled": true,
+        "workbench.notifications.position": "bottom-right",
+        "workbench.notifications.showInTitleBar": true,
         "workbench.panel.defaultLocation": "bottom",
         "workbench.panel.opensMaximized": "preserve",
         "workbench.panel.showLabels": true,
@@ -2608,6 +2658,7 @@
         "workbench.quickOpen.closeOnFocusLost": true,
         "workbench.quickOpen.preserveInput": false,
         "workbench.reduceMotion": "auto",
+        "workbench.reduceTransparency": "off",
         "workbench.remoteIndicator.showExtensionRecommendations": true,
         "workbench.sash.hoverDelay": 300,
         "workbench.sash.size": 4,
@@ -2650,7 +2701,7 @@
     /************************
      * UPDATABLE PARAMETERS *
      ************************/
-        "diffEditor.hideUnchangedRegions.enabled": false,
-        "diffEditor.ignoreTrimWhitespace": true,
+        "diffEditor.ignoreTrimWhitespace": false,
         "editor.inlineSuggest.edits.allowCodeShifting": "always",
+        "diffEditor.hideUnchangedRegions.enabled": true,
 }
