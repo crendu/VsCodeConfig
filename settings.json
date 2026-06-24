@@ -1,4 +1,4 @@
-// Last Sync: 1.110.1
+// Last Sync: 1.126.0
 {
     /***************
      * ENVIRONMENT *
@@ -10,13 +10,10 @@
     "editor.cursorBlinking": "phase",
     "editor.cursorSmoothCaretAnimation": "on",
     "editor.detectIndentation": false,
-    "editor.experimental.asyncTokenization": true,             // Better for asynchrone coloration
-    "editor.experimental.asyncTokenizationLogging": true,      // Better for asynchrone coloration
-    "editor.experimental.asyncTokenizationVerification": true, // Better for asynchrone coloration
+    "editor.experimental.asyncTokenization": true,  // Better for asynchrone coloration
     "editor.fontFamily": "Fira Code, Cascadia Code PL, Consolas, 'Courier New', monospace",
     "editor.fontLigatures": true,
     "editor.guides.bracketPairs": true,
-    "editor.largeFileOptimizations": false, // Better for large files
     "editor.minimap.showSlider": "always",
     "editor.multiCursorLimit": 100000,
     "editor.padding.bottom": 200,
@@ -44,8 +41,9 @@
     "telemetry.editStats.showDecorations": false,
     "telemetry.editStats.showStatusBar": false,
     "telemetry.feedback.enabled": false,
+    "telemetry.performance.inputLatencySamplingProbability": 0,
     "telemetry.telemetryLevel": "off",
-    "update.mode": "default",
+    "update.mode": "manual",
     "window.zoomLevel": -0.9,
 
     "workbench.activityBar.location": "top",
@@ -70,7 +68,6 @@
     "workbench.editor.splitInGroupLayout": "horizontal",
     "workbench.editorLargeFileConfirmation": 2048,
     "workbench.iconTheme": "vs-seti",
-    "workbench.layoutControl.enabled": false,
     "workbench.startupEditor": "none",
 
 
@@ -85,8 +82,8 @@
         "*.rc": "rc-script",
         "*.rsc": "properties"
     },
-    "files.autoGuessEncoding": true,   // To resolve pb with UTF8 VS Windows1252 encoding.
-    "files.encoding": "utf8",
+    "files.autoGuessEncoding": false,
+    "files.encoding": "windows1252",
     "files.exclude": {
         "**/*.acx": true,
         "**/*.csproj": true,
@@ -119,7 +116,7 @@
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.watcherExclude": {   // Seems to avoid the ipch flood
-        "**/Intermediates/**": true,
+        "**/Intermediates/CMake-build/**": true,
         "**/Software/**": true
     },
     "search.exclude": {
@@ -145,26 +142,30 @@
         "**/.vscode/": true,
         "**/doc*/": true,
         "**/Documentation/": true,
+        "**/Intermediates/**": true,
+        "**/Software/**": true
         // "**/target/": true,
         // "**/templates/": true,
     },
     "search.followSymlinks": false, // Seems to avoid High CPU usage
 
-    // "[cc]": { "files.encoding": "windows1252" },
-    "[cmd]": { "files.encoding": "windows1252" },
-    "[cpp]": { "files.encoding": "windows1252" },
-    "[h]": { "files.encoding": "windows1252" },
+    "[cpp]": { "editor.defaultFormatter": "ms-vscode.cpptools" },
+    "[csv]": { "files.encoding": "utf8" },
+    "[h]": { "editor.defaultFormatter": "ms-vscode.cpptools" },
     "[log]": {
         "files.encoding": "utf8",
 
         // Better for large files
         "editor.folding": false,
         "editor.foldingHighlight": false,
-        "editor.maxTokenizationLineLength": 100000, // Coloration for long lines
+        "editor.largeFileOptimizations": false, // Keep tokenisation in memory
+        "editor.maxTokenizationLineLength": 5000,
         "editor.minimap.enabled": false,
         "editor.occurrencesHighlight": "off",
         "editor.semanticHighlighting.enabled": false,
+        "editor.stickyScroll.enabled": false
     },
+    "[md]": { "files.encoding": "utf8" },
     "[out]": { "files.encoding": "utf8" },
 
 
@@ -193,10 +194,8 @@
     /***********************
      * EXTENSIONS SETTINGS *
      ***********************/
-    // AutoScrollDown
-        // "autoscrolldown.alsoAutoscrollActive": false,
-        // "autoscrolldown.allFiles": true,
-        // "autoscrolldown.onlyWhenAtEnd": false,
+    // Auto Reload
+        "auto-reload.interval": 200,
 
     // Batch Runner
         // "batchrunner.cmdPath": "C:\\windows\\System32\\cmd.exe",
@@ -266,12 +265,11 @@
         "C_Cpp.default.compileCommands": "",
         "C_Cpp.default.compilerArgs": [],
         "C_Cpp.default.compilerPath": "cl.exe",
-        "C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools",
+        "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
         "C_Cpp.default.cppStandard": "c++20",
         "C_Cpp.default.customConfigurationVariables": null,
         "C_Cpp.default.defines": [
             "_CRT_USE_BUILTIN_OFFSETOF",    // Fix the clang tidy error (make offsetof constexpr)
-            "_DEBUG",
             "UNICODE",
             "_UNICODE",
             "WIN32"
@@ -289,6 +287,7 @@
         "C_Cpp.default.systemIncludePath": [],
         "C_Cpp.default.windowsSdkVersion": "",
         "C_Cpp.dimInactiveRegions": true,
+        "C_Cpp.doxygen.generateOnCodeAction": true,
         "C_Cpp.doxygen.generateOnType": true,
         "C_Cpp.doxygen.generatedStyle": "/**",
         "C_Cpp.doxygen.sectionTags": [
@@ -324,7 +323,7 @@
         "C_Cpp.inlayHints.referenceOperator.enabled": true,
         "C_Cpp.inlayHints.referenceOperator.showSpace": true,
         "C_Cpp.intelliSense.maxCachedProcesses": null,
-        "C_Cpp.intelliSense.maxMemory": 30000,
+        "C_Cpp.intelliSense.maxMemory": null,
         "C_Cpp.intelliSenseCachePath": "",
         "C_Cpp.intelliSenseCacheSize": 0,       // Better for large AutoPCH cache file (hello there Unreal Engine)
         "C_Cpp.intelliSenseEngine": "default",
@@ -340,7 +339,7 @@
         "C_Cpp.persistVsDeveloperEnvironment": true,
         "C_Cpp.preferredPathSeparator": "Backslash",
         "C_Cpp.refactoring.includeHeader": "ifNeeded",
-        "C_Cpp.references.maxCachedProcesses": 0,
+        "C_Cpp.references.maxCachedProcesses": null,
         "C_Cpp.references.maxConcurrentThreads": null,
         "C_Cpp.references.maxMemory": null,
         "C_Cpp.renameRequiresIdentifier": true,
@@ -416,16 +415,206 @@
         "claudeCode.claudeProcessWrapper": "",
         "claudeCode.disableLoginPrompt": false,
         "claudeCode.enableNewConversationShortcut": true,
-        "claudeCode.environmentVariables": [],
+        "claudeCode.enableReopenClosedSessionShortcut": true,
+        "claudeCode.environmentVariables": [
+            { "name": "NODE_TLS_REJECT_UNAUTHORIZED", "value": "0" }
+        ],
         "claudeCode.hideOnboarding": false,
-        "claudeCode.initialPermissionMode": "default",
+        "claudeCode.initialPermissionMode": "plan", // Avoid Claude Code to write in files
         "claudeCode.preferredLocation": "panel",
         "claudeCode.respectGitIgnore": true,
-        "claudeCode.selectedModel": "default",
         "claudeCode.useCtrlEnterToSend": false,
         "claudeCode.usePythonEnvironment": true,
         "claudeCode.useTerminal": false,
-    
+
+    // CMake Tools
+        "cmake.additionalBuildProblemMatchers": [],
+        "cmake.additionalCompilerSearchDirs": [],
+        "cmake.additionalKits": [],
+        "cmake.allowCommentsInPresetsFile": false,
+        "cmake.allowUnsupportedPresetsVersions": false,
+        "cmake.autoSelectActiveFolder": true,
+        "cmake.automaticReconfigure": false, // Avoid slow startup
+        "cmake.buildArgs": [],
+        "cmake.buildBeforeRun": true,
+        "cmake.buildDirectory": "${workspaceFolder}/Intermediates/CMake-build",
+        "cmake.buildEnvironment": {},
+        "cmake.buildTask": false,
+        "cmake.buildToolArgs": [],
+        "cmake.cacheInit": null,
+        "cmake.clearOutputBeforeBuild": true,
+        "cmake.cmakeCommunicationMode": "automatic",
+        "cmake.cmakePath": "cmake",
+        "cmake.cmakeProviderExtensions": [
+            "stmicroelectronics.stm32-vscode-extension",
+            "espressif.esp-idf-extension",
+            "NXPSemiconductors.mcuxpresso",
+            "nordic-semiconductor.nrf-connect"
+        ],
+        "cmake.configureArgs": [],
+        "cmake.configureEnvironment": {},
+        "cmake.configureOnEdit": false, // Avoid slow startup
+        "cmake.configureOnOpen": false, // Avoid slow startup
+        "cmake.configureSettings": {},
+        "cmake.copyCompileCommands": "${workspaceFolder}/Intermediates/CMake-build/compile_commands.json",
+        "cmake.coverageInfoFiles": [],
+        "cmake.cpackArgs": [],
+        "cmake.cpackEnvironment": {},
+        "cmake.cpackPath": null,
+        "cmake.ctest.allowParallelJobs": false,
+        "cmake.ctest.debugLaunchTarget": null,
+        "cmake.ctest.failurePatterns": [
+            {
+                "regexp": "(.*?):(\\d+): *(?:error: *)(.*)"
+            },
+            {
+                "regexp": "(.*?)\\((\\d+)\\): *(?:error: *)(.*)"
+            }
+        ],
+        "cmake.ctest.neverDebugTestsWithLaunchConfiguration": false,
+        "cmake.ctest.parallelJobs": 0,
+        "cmake.ctest.testExplorerIntegrationEnabled": true,
+        "cmake.ctest.testSuiteDelimiter": null,
+        "cmake.ctest.testSuiteDelimiterMaxOccurrence": 0,
+        "cmake.ctestArgs": [],
+        "cmake.ctestDefaultArgs": [
+            "-T",
+            "test",
+            "--output-on-failure"
+        ],
+        "cmake.ctestPath": null,
+        "cmake.debugConfig": {},
+        "cmake.defaultActiveFolder": "",
+        "cmake.defaultVariants": {
+            "buildType": {
+                "default": "debug",
+                "description": "The build type.",
+                "choices": {
+                    "debug": {
+                        "short": "Debug",
+                        "long": "Disable optimizations - include debug information.",
+                        "buildType": "Debug"
+                    },
+                    "release": {
+                        "short": "Release",
+                        "long": "Optimize for speed - exclude debug information.",
+                        "buildType": "Release"
+                    },
+                    "minsize": {
+                        "short": "MinSizeRel",
+                        "long": "Optimize for smallest binary size - exclude debug information.",
+                        "buildType": "MinSizeRel"
+                    },
+                    "reldeb": {
+                        "short": "RelWithDebInfo",
+                        "long": "Optimize for speed - include debug information.",
+                        "buildType": "RelWithDebInfo"
+                    },
+                    "unspecified": {
+                        "short": "Unspecified",
+                        "long": "Let CMake pick the default build type.",
+                        "buildType": "Unspecified"
+                    }
+                }
+            }
+        },
+        "cmake.deleteBuildDirOnCleanConfigure": false,
+        "cmake.emscriptenSearchDirs": [],
+        "cmake.enableAutomaticKitScan": true,
+        "cmake.enableLanguageServices": true,
+        "cmake.enableTraceLogging": false,
+        "cmake.enabledOutputParsers": [
+            "cmake",
+            "gcc",
+            "gnuld",
+            "msvc",
+            "ghs",
+            "diab"
+        ],
+        "cmake.environment": {},
+        "cmake.exclude": [],
+        "cmake.exportCompileCommandsFile": true,
+        "cmake.generator": "Ninja Multi-Config",
+        "cmake.ignoreCMakeListsMissing": false,
+        "cmake.ignoreKitEnv": false,
+        "cmake.installPrefix": null,
+        "cmake.languageServerOnlyMode": false,
+        "cmake.launchBehavior": "reuseTerminal",
+        "cmake.loadCompileCommands": true,
+        "cmake.loggingLevel": "info",
+        "cmake.mergedCompileCommands": "${workspaceFolder}/compile_commands.json",
+        "cmake.modifyLists.addNewSourceFiles": "ask",
+        "cmake.modifyLists.removeDeletedSourceFiles": "ask",
+        "cmake.modifyLists.scopeSelection": "ask",
+        "cmake.modifyLists.sourceListKeywords": [],
+        "cmake.modifyLists.sourceVariables": [
+            "SRC",
+            "SRCS",
+            "SOURCES",
+            "SOURCE_FILES",
+            "*_SRC",
+            "*_SRCS",
+            "*_SOURCES",
+            "*_SOURCE_FILES"
+        ],
+        "cmake.modifyLists.targetCommandInvocationSelection": "askParentDirs",
+        "cmake.modifyLists.targetSelection": "askParentSourceDirs",
+        "cmake.modifyLists.targetSourceCommands": [
+            "target_sources",
+            "add_executable",
+            "add_library"
+        ],
+        "cmake.modifyLists.variableSelection": "never",
+        "cmake.options.advanced": {
+            "build": {
+                "statusBarVisibility": "inherit",
+                "inheritDefault": "visible"
+            },
+            "launch": {
+                "statusBarVisibility": "inherit",
+                "inheritDefault": "visible"
+            },
+            "debug": {
+                "statusBarVisibility": "inherit",
+                "inheritDefault": "visible"
+            }
+        },
+        "cmake.options.statusBarVisibility": "hidden",
+        "cmake.outlineViewType": "list",
+        "cmake.outputLogEncoding": "auto",
+        "cmake.parallelJobs": 0,
+        "cmake.parseBuildDiagnostics": true,
+        "cmake.pinnedCommands": [
+            "workbench.action.tasks.configureTaskRunner",
+            "workbench.action.tasks.runTask"
+        ],
+        "cmake.platform": null,
+        "cmake.postConfigureTask": null,
+        "cmake.postRunCoverageTarget": null,
+        "cmake.preRunCoverageTarget": null,
+        "cmake.preferredGenerators": [],
+        "cmake.removeStaleKitsOnScan": false,
+        "cmake.revealLog": "always",
+        "cmake.saveBeforeBuild": true,
+        "cmake.setBuildTargetSameAsLaunchTarget": false,
+        "cmake.setBuildTypeOnMultiConfig": false,
+        "cmake.shell": null,
+        "cmake.showConfigureWithDebuggerNotification": true,
+        "cmake.showNotAllDocumentsSavedQuestion": true,
+        "cmake.showSystemKits": true,
+        "cmake.skipConfigureIfCachePresent": null,
+        "cmake.sourceDirectory": "${workspaceFolder}/Sources",
+        "cmake.testEnvironment": {},
+        "cmake.toolset": null,
+        "cmake.touchbar.advanced": {},
+        "cmake.touchbar.visibility": "default",
+        "cmake.useCMakePresets": "auto",
+        "cmake.useFolderPropertyInBuildTargetDropdown": false,
+        "cmake.useVsDeveloperEnvironment": "always",
+        "cpp-devtools.enableCMakeGetDiagnosticsTool": false,
+        "cpp-devtools.enableCppCodeEditingTools": false,
+        "cpp-devtools.symbolReferencesLimit": 25,
+
     // Compare Folders
         "compareFolders.compareContent": true,
         "compareFolders.defaultDiffViewMode": "tree",
@@ -440,9 +629,11 @@
         "compareFolders.ignoreExtension": [],
         "compareFolders.ignoreFileNameCase": false,
         "compareFolders.ignoreLineEnding": true,
+        "compareFolders.ignoreStrings": [],
         "compareFolders.ignoreWhiteSpaces": true,
         "compareFolders.includeFilter": [],
         "compareFolders.respectGitIgnore": false,
+        "compareFolders.showFileCount": true,
         "compareFolders.showIdentical": false,
         "compareFolders.useDiffMerge": false,
         "compareFolders.warnBeforeDelete": true,
@@ -542,12 +733,12 @@
         "perforce.charset": "none",
         "perforce.client": "XXX",
         "perforce.command": "C:\\Program Files\\Perforce\\p4.exe",
-        "perforce.countBadge": "all-but-shelved",
+        "perforce.countBadge": "off",           // otpimise p4 speed on large workspaces
         "perforce.debugModeActive": false,
         "perforce.debugP4Commands": false,
         "perforce.deleteOnFileDelete": false,
         "perforce.dir": "none",
-        "perforce.editOnFileModified": true,
+        "perforce.editOnFileModified": false,   // otpimise p4 speed on large workspaces
         "perforce.editOnFileSave": true,
         "perforce.editorButtons.diffPrevAndNext": "All diffable files",
         "perforce.enableFileSystemActionsWithoutFolder": true,
@@ -565,7 +756,7 @@
         "perforce.password": "none",
         "perforce.port": "XXX",
         "perforce.promptBeforeSubmit": true,
-        "perforce.realpath": true,
+        "perforce.realpath": false,             // otpimise p4 speed on large workspaces
         "perforce.resolve.p4editor": "",
         "perforce.scm.activateOnFileOpen": false,
         "perforce.scm.deactivateOnFileClose": false,
@@ -913,6 +1104,11 @@
         "json.validate.enable": true,
 
     // Markdown Language Features - ENABLED
+        "markdown-mermaid.controls.show": "onHoverOrFocus",
+        "markdown-mermaid.darkModeTheme": "vscode",
+        "markdown-mermaid.languages": [
+            "mermaid"
+        ],
         "markdown.copyFiles.destination": {},
         "markdown.copyFiles.overwriteBehavior": "nameIncrementally",
         "markdown.editor.drop.copyIntoWorkspace": "mediaFiles",
@@ -930,6 +1126,7 @@
         "markdown.preview.doubleClickToSwitchToEditor": true,
         "markdown.preview.fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif",
         "markdown.preview.fontSize": 14,
+        "markdown.preview.frontMatter": "table",
         "markdown.preview.lineHeight": 1.6,
         "markdown.preview.linkify": true,
         "markdown.preview.markEditorSelection": true,
@@ -956,6 +1153,11 @@
         "markdown.validate.ignoredLinks": [],
         "markdown.validate.referenceLinks.enabled": "warning",
         "markdown.validate.unusedLinkDefinitions.enabled": "hint",
+        "markdown-mermaid.lightModeTheme": "vscode",
+        "markdown-mermaid.maxHeight": "",
+        "markdown-mermaid.maxTextSize": 50000,
+        "markdown-mermaid.mouseNavigation.enabled": "alt",
+        "markdown-mermaid.resizable": true,
 
     // Markdown Math - ENABLED
         "markdown.math.enabled": true,
@@ -985,7 +1187,6 @@
 
     // SimpleBrowser - ENABLED
         "simpleBrowser.focusLockIndicator.enabled": true,
-        "simpleBrowser.useIntegratedBrowser": false,
 
     // TypeScript and JavaScript Language Features - DISABLED
 
@@ -1140,6 +1341,7 @@
         },
         "accessibility.underlineLinks": false,
         "accessibility.verboseChatProgressUpdates": true,
+        "accessibility.verbosity.chatQuestionCarousel": true,
         "accessibility.verbosity.comments": true,
         "accessibility.verbosity.debug": true,
         "accessibility.verbosity.diffEditor": true,
@@ -1154,7 +1356,9 @@
         "accessibility.verbosity.notification": true,
         "accessibility.verbosity.panelChat": true,
         "accessibility.verbosity.replEditor": true,
+        "accessibility.verbosity.sessionsChat": true,
         "accessibility.verbosity.sourceControl": true,
+        "accessibility.verbosity.survey": true,
         "accessibility.verbosity.terminal": true,
         "accessibility.verbosity.terminalChatOutput": true,
         "accessibility.verbosity.walkthrough": true,
@@ -1198,82 +1402,172 @@
         "breadcrumbs.symbolSortOrder": "position",
 
     // Chat - Deactivated by default
+        "chat.agent.allowedNetworkDomains": [],
+        "chat.agent.codeBlockProgress": false,
+        "chat.agent.deniedNetworkDomains": [],
+        "chat.agent.enabled": false,
+        "chat.agent.maxRequests": 0,
+        "chat.agent.networkFilter": false,
+        "chat.agent.sandbox.advanced.runtime": {
+            "enableWeakerNestedSandbox": false
+        },
+        "chat.agent.sandbox.allowAutoApprove": false,
+        "chat.agent.sandbox.allowUnsandboxedCommands": true,
+        "chat.agent.sandbox.enabled": "off",
+        "chat.agent.sandbox.enabledWindows": "off",
+        "chat.agent.sandbox.fileSystem.linux": {
+            "denyRead": [],
+            "allowRead": [],
+            "allowWrite": [],
+            "denyWrite": []
+        },
+        "chat.agent.sandbox.fileSystem.mac": {
+            "denyRead": [],
+            "allowRead": [],
+            "allowWrite": [],
+            "denyWrite": []
+        },
+        "chat.agent.sandbox.fileSystem.windows": {
+            "denyRead": [],
+            "allowRead": [],
+            "allowWrite": []
+        },
+        "chat.agent.sandbox.retryWithAllowNetworkRequests": false,
+        "chat.agent.thinking.collapsedTools": "off",
+        "chat.agent.thinking.generateTitles": false,
         "chat.agent.thinking.phrases": {
             "mode": "append",
             "phrases": []
         },
-        "chat.agent.codeBlockProgress": false,
-        "chat.agent.enabled": false,
-        "chat.agent.maxRequests": 0,
-        "chat.agent.thinking.collapsedTools": "off",
-        "chat.agent.thinking.generateTitles": false,
         "chat.agent.thinking.terminalTools": false,
         "chat.agent.thinkingStyle": "collapsedPreview",
         "chat.agentFilesLocations": {
-            ".github/agents": false
+            ".github/agents": false,
+            ".claude/agents": true,
+            "~/.copilot/agents": false
+        },
+        "chat.agentHost.ahpJsonlLoggingEnabled": false,
+        "chat.agentHost.claudeAgent.enabled": false,
+        "chat.agentHost.clientTools": [
+            "runTask",
+            "getTaskOutput",
+            "problems",
+            "runTests",
+            "openBrowserPage",
+            "readPage",
+            "screenshotPage",
+            "navigatePage",
+            "clickElement",
+            "typeInPage",
+            "hoverElement",
+            "dragElement",
+            "handleDialog",
+            "runPlaywrightCode"
+        ],
+        "chat.agentHost.codexAgent.enabled": false,
+        "chat.agentHost.customTerminalTool.enabled": false,
+        "chat.agentHost.enabled": false,
+        "chat.agentHost.opus48Prompt.enabled": false,
+        "chat.agentHost.otel.captureContent": false,
+        "chat.agentHost.otel.dbSpanExporter.enabled": false,
+        "chat.agentHost.otel.enabled": false,
+        "chat.agentHost.otel.exporterType": "otlp-http",
+        "chat.agentHost.otel.otlpEndpoint": "",
+        "chat.agentHost.otel.outfile": "",
+        "chat.agentHost.sdkSandbox.enabled": "off",
+        "chat.agentSessionProjection.enabled": false,
+        "chat.agentSkillsLocations":{
+            ".agents/skills": true,
+            ".github/skills": false,
+            ".claude/skills": true,
+            "~/.agents/skills": true,
+            "~/.copilot/skills": false,
+            "~/.claude/skills": true
+        },
+        "chat.agents.claude.preferAgentHost": false,
+        "chat.agents.copilotCli.hideExtensionHost": false,
+        "chat.agentsControl.enabled": "compact",
+        "chat.agentsHandoffTip.mode": "hidden",
+        "chat.artifacts.enabled": false,
+        "chat.artifacts.rules.byFilePath": {
+            "**/*plan*.md": {
+                "groupName": "Plans"
+            }
+        },
+        "chat.artifacts.rules.byMemoryFilePath": {
+            "**/*plan*.md": {
+                "groupName": "Plans"
+            }
+        },
+        "chat.artifacts.rules.byMimeType": {
+            "image/*": {
+                "groupName": "Screenshots",
+                "onlyShowGroup": true
+            }
         },
         "chat.autoReply": false,
-        "chat.contextUsage.enabled": false,
-        "chat.customizationsMenu.enabled": false,
-        "chat.exploreAgent.defaultModel": "",
-        "chat.growthNotification.enabled": false,
-        "chat.planAgent.defaultModel": "",
-        "chat.plugins.enabled": false,
-        "chat.plugins.marketplaces": [
-            // "github/awesome-copilot"
-            // "github/copilot-plugins",
-        ],
-        "chat.agentSessionProjection.enabled": false,
-        "chat.agentSkillsLocations": {
-            ".github/skills": false,
-            ".agents/skills": false,
-            ".claude/skills": false,
-            "~/.copilot/skills": false,
-            "~/.agents/skills": false,
-            "~/.claude/skills": false
-        },
-        "chat.agentsControl.clickBehavior": "default",
-        "chat.agentsControl.enabled": false,
-        "chat.allowAnonymousAccess": false,
+        "chat.autopilot.advanced.enabled": false,
         "chat.checkpoints.enabled": false,
         "chat.checkpoints.showFileChanges": false,
-        "chat.customAgentInSubagent.enabled": false,
+        "chat.contextUsage.enabled": false,
+        "chat.customizations.harnessSelector.enabled": true,
+        "chat.customizations.structuredPreview.enabled": false,
+        "chat.defaultConfiguration": {
+            "mode": "interactive",
+            "approvals": "default"
+        },
         "chat.detectParticipant.enabled": false,
         "chat.disableAIFeatures": false,
-        "chat.editMode.hidden": false,
         "chat.editRequests": "none",
         "chat.editing.autoAcceptDelay": 0,
         "chat.editing.confirmEditRequestRemoval": true,
         "chat.editing.confirmEditRequestRetry": true,
         "chat.editing.explainChanges.enabled": false,
+        "chat.editing.openChangedFileInDiffEditor": true,
+        "chat.editing.revealNextChangeOnResolve": true,
+        "chat.editor.claude.preferAgentHost": false,
+        "chat.editor.copilotCli.hideExtensionHost": false,
+        "chat.editor.defaultProvider": "local",
         "chat.editor.fontFamily": "default",
         "chat.editor.fontSize": 14,
         "chat.editor.fontWeight": "default",
         "chat.editor.lineHeight": 0,
+        "chat.editor.localAgent.enabled": false,
         "chat.editor.wordWrap": "off",
         "chat.editorAssociations": {},
-        "chat.edits2.enabled": false,
         "chat.exitAfterDelegation": true,
+        "chat.experimental.collectInstructionsInExtension": false,
+        "chat.experimental.incrementalRendering.animationStyle": "fade",
+        "chat.experimental.incrementalRendering.buffering": "word",
+        "chat.experimental.incrementalRendering.enabled": false,
         "chat.experimental.useSkillAdherencePrompt": false,
+        "chat.experimentalSessionsWindowOverride": false,
+        "chat.exploreAgent.defaultModel": "",
         "chat.extensionTools.enabled": false,
         "chat.extensionUnification.enabled": false,
         "chat.fontFamily": "default",
         "chat.fontSize": 13,
+        "chat.generalPurposeAgent.enabled": false,
+        "chat.growthNotification.enabled": false,
         "chat.implicitContext.enabled": {
-            "panel": "never"
+            "panel": "always"
         },
         "chat.implicitContext.suggestedContext": false,
         "chat.includeApplyingInstructions": false,
         "chat.includeReferencedInstructions": false,
         "chat.inlineReferences.style": "box",
         "chat.instructionsFilesLocations": {
-            ".github/instructions": false
+            ".github/instructions": false,
+            ".claude/rules": true,
+            "~/.copilot/instructions": false,
+            "~/.claude/rules": true
         },
         "chat.math.enabled": false,
         "chat.mcp.access": "none",
         "chat.mcp.apps.enabled": false,
         "chat.mcp.assisted.nuget.enabled": false,
         "chat.mcp.autostart": "never",
+        "chat.mcp.collisionBehavior": "disable",
         "chat.mcp.discovery.enabled": {
             "claude-desktop": false,
             "windsurf": false,
@@ -1282,33 +1576,53 @@
         },
         "chat.mcp.gallery.enabled": false,
         "chat.mcp.serverSampling": {},
+        "chat.newSession.defaultMode": "",
         "chat.notifyWindowOnConfirmation": "windowNotFocused",
         "chat.notifyWindowOnResponseReceived": "windowNotFocused",
-        "chat.plugins.paths": {},
+        "chat.permissions.default": "default",
+        "chat.persistentProgress.enabled": false,
+        "chat.planAgent.defaultModel": "",
+        "chat.planReview.inlineEditor.enabled": true,
+        "chat.pluginLocations": {},
+        "chat.plugins.enabled": false,
+        "chat.plugins.enabledPlugins": {},
+        "chat.plugins.marketplaces": [
+            // "github/copilot-plugins",
+            // "github/awesome-copilot#marketplace"
+        ],
+        "chat.plugins.strictMarketplaces": null,
+        "chat.progressBorder.enabled": true,
         "chat.promptFilesLocations": {
             ".github/prompts": false
         },
         "chat.promptFilesRecommendations": {},
         "chat.requestQueuing.defaultAction": "steer",
         "chat.restoreLastPanelSession": true,
-        "chat.sendElementsToChat.attachCSS": true,
         "chat.sendElementsToChat.attachImages": true,
-        "chat.sendElementsToChat.enabled": true,
-        "chat.statusWidget.anonymous": true,
+        "chat.sessionSync.enabled": false,
+        "chat.sessionSync.excludeRepositories": [],
+        "chat.subagents.allowInvocationsFromSubagents": false,
         "chat.tips.enabled": false,
+        "chat.titleBar.openInAgentsWindow.enabled": false,
+        "chat.titleBar.signIn.enabled": false,
         "chat.tools.autoExpandFailures": true,
+        "chat.tools.compressOutput.enabled": false,
+        "chat.tools.confirmationCarousel.enabled": false,
         "chat.tools.edits.autoApprove": {
-            "**/*": false,
+            "**/*": true,
             "**/.vscode/*.json": false,
             "**/.git/**": false,
-            "**/{package.json,server.xml,build.rs,web.config,.gitattributes,.env}": false,
-            "**/*.{code-workspace,csproj,fsproj,vbproj,vcxproj,proj,targets,props}": false,
+            "**/{package.json,server.xml,build.rs,web.config,.gitattributes,.env,Cargo.toml}": false,
+            "**/*.{code-workspace,csproj,fsproj,vbproj,vcxproj,proj,targets,props,gradle,gradle.kts}": false,
+            "**/gradle.properties": false,
+            "**/ruby_lsp/*/addon": false,
             "**/*.lock": false,
             "**/*-lock.{yaml,json}": false
         },
         "chat.tools.eligibleForAutoApproval": {},
         "chat.tools.global.autoApprove": false,
-        "chat.tools.renameTool.enabled": true,
+        "chat.tools.riskAssessment.enabled": false,
+        "chat.tools.riskAssessment.model": "copilot-utility-small",
         "chat.tools.terminal.autoApprove": {
             "cd": true,
             "echo": true,
@@ -1433,39 +1747,21 @@
             "iex": false
         },
         "chat.tools.terminal.autoApproveWorkspaceNpmScripts": false,
-        "chat.tools.terminal.autoReplyToPrompts": false,
         "chat.tools.terminal.blockDetectedFileWrites": "outsideWorkspace",
         "chat.tools.terminal.enableAutoApprove": false,
         "chat.tools.terminal.enforceTimeoutFromModel": false,
+        "chat.tools.terminal.idlePollInterval": 1000,
+        "chat.tools.terminal.idleSilenceTimeoutMs": 300000,
         "chat.tools.terminal.ignoreDefaultAutoApproveRules": false,
+        "chat.tools.terminal.outputDeltas": false,
         "chat.tools.terminal.outputLocation": "terminal",
         "chat.tools.terminal.preventShellHistory": true,
-        "chat.tools.terminal.sandbox.enabled": false,
-        "chat.tools.terminal.sandbox.linuxFileSystem": {
-            "denyRead": [],
-            "allowWrite": [
-                "."
-            ],
-            "denyWrite": []
-        },
-        "chat.tools.terminal.sandbox.macFileSystem": {
-            "denyRead": [],
-            "allowWrite": [
-                "."
-            ],
-            "denyWrite": []
-        },
-        "chat.tools.terminal.sandbox.network": {
-            "allowedDomains": [],
-            "deniedDomains": []
-        },
         "chat.tools.terminal.simpleCollapsible": true,
         "chat.tools.terminal.terminalProfile.linux": null,
         "chat.tools.terminal.terminalProfile.osx": null,
         "chat.tools.terminal.terminalProfile.windows": null,
         "chat.tools.todos.showWidget": false,
         "chat.tools.urls.autoApprove": {},
-        "chat.tools.usagesTool.enabled": false,
         "chat.undoRequests.restoreInput": true,
         "chat.unifiedAgentsBar.enabled": false,
         "chat.upvoteAnimation": "off",
@@ -1473,12 +1769,17 @@
         "chat.useAgentsMdFile": false,
         "chat.useClaudeHooks": false,
         "chat.useClaudeMdFile": false,
+        "chat.useCustomizationsInParentRepositories": false,
         "chat.useHooks": false,
         "chat.useNestedAgentsMdFiles": false,
+        "chat.utilityModel": "",
+        "chat.utilitySmallModel": "",
         "chat.viewProgressBadge.enabled": false,
         "chat.viewSessions.enabled": false,
         "chat.viewSessions.orientation": "sideBySide",
-        "mermaid-chat.enabled": false,
+        "imageCarousel.chat.enabled": true,
+        "imageCarousel.explorerContextMenu.enabled": false,
+        "jsts-chat-features.skills.enabled": false,
 
     // Comments
         "comments.collapseOnResolve": true,
@@ -1528,7 +1829,7 @@
         "diffEditor.codeLens": false,
         "diffEditor.diffAlgorithm": "advanced",
         "diffEditor.experimental.showEmptyDecorations": true,
-        "diffEditor.experimental.showMoves": false,
+        "diffEditor.experimental.showMoves": true,
         "diffEditor.experimental.useTrueInlineView": false,
         "diffEditor.hideUnchangedRegions.contextLineCount": 3,
         "diffEditor.hideUnchangedRegions.minimumLineCount": 3,
@@ -1591,6 +1892,8 @@
         "editor.dropIntoEditor.showDropSelector": "afterDrop",
         "editor.editContext": true,
         "editor.emptySelectionClipboard": true,
+        "editor.experimental.asyncTokenizationLogging": false,
+        "editor.experimental.asyncTokenizationVerification": false,
         "editor.experimental.preferTreeSitter.css": false,
         "editor.experimental.preferTreeSitter.ini": false,
         "editor.experimental.preferTreeSitter.regex": false,
@@ -1601,6 +1904,7 @@
         "editor.fastScrollSensitivity": 5,
         "editor.find.addExtraSpaceOnTop": true,
         "editor.find.autoFindInSelection": "never",
+        "editor.find.closeOnResult": false,
         "editor.find.cursorMoveOnType": true,
         "editor.find.findOnType": true,
         "editor.find.history": "workspace",
@@ -1639,6 +1943,7 @@
         "editor.hover.delay": 300,
         "editor.hover.enabled": "on",
         "editor.hover.hidingDelay": 300,
+        "editor.hover.showLongLineWarning": true,
         "editor.hover.sticky": true,
         "editor.indentSize": "tabSize",
         "editor.inertialScroll": false,
@@ -1665,6 +1970,7 @@
         "editor.insertSpaces": true,
         "editor.language.brackets": null,
         "editor.language.colorizedBracketPairs": null,
+        "editor.largeFileOptimizations": true,      // Better for large files
         "editor.letterSpacing": 0,
         "editor.lightbulb.enabled": "onCode",
         "editor.lineHeight": 0,
@@ -1672,7 +1978,7 @@
         "editor.linkedEditing": false,
         "editor.links": true,
         "editor.matchBrackets": "always",
-        "editor.maxTokenizationLineLength": 20000,
+        "editor.maxTokenizationLineLength": 10000,  // Better for large files
         "editor.minimap.autohide": "none",
         "editor.minimap.enabled": true,
         "editor.minimap.markSectionHeaderRegex": "\\bMARK:\\s*(?<separator>-?)\\s*(?<label>.*)$",
@@ -1856,7 +2162,8 @@
         "extensions.allowOpenInModalEditor": false,
         "extensions.allowed": "*",
         "extensions.autoCheckUpdates": true,
-        "extensions.autoUpdate": true,
+        "extensions.autoUpdate": "on",
+        "extensions.autoUpdateDelay": 2,
         "extensions.closeExtensionDetailsOnViewChange": false,
         "extensions.confirmedUriHandlerExtensionIds": [],
         "extensions.experimental.affinity": {},
@@ -1864,6 +2171,7 @@
         "extensions.experimental.issueQuickAccess": true,
         "extensions.ignoreRecommendations": false,
         "extensions.requestTimeout": 60000,
+        "extensions.supportAgentsWindow": {},
         "extensions.supportNodeGlobalNavigator": false,
         "extensions.supportUntrustedWorkspaces": {},
         "extensions.supportVirtualWorkspaces": {},
@@ -1899,22 +2207,21 @@
         "http.experimental.systemCertificatesV2": false,
         "http.fetchAdditionalSupport": true,
         "http.noProxy": [],
-        "http.proxy": "",
+        "http.proxy": "XXX"
         "http.proxyAuthorization": null,
         "http.proxyKerberosServicePrincipal": "",
-        "http.proxyStrictSSL": true,
-        "http.proxySupport": "override",
+        "http.proxyStrictSSL": false,
+        "http.proxySupport": "on",
         "http.systemCertificates": true,
         "http.systemCertificatesNode": true,
         "http.useLocalProxyConfiguration": true,
+        "http.webSocketAdditionalSupport": false,
 
     // Inline Chat
         "inlineChat.affordance": "off",
+        "inlineChat.askInChat": true,
         "inlineChat.defaultModel": "",
-        "inlineChat.enableV2": false,
-        "inlineChat.finishOnType": false,
         "inlineChat.fixDiagnostics": false,
-        "inlineChat.holdToSpeech": true,
         "chat.hookFilesLocations": {
             ".github/hooks": false,
             ".claude/settings.local.json": false,
@@ -1922,7 +2229,6 @@
             "~/.claude/settings.json": false
         },
         "inlineChat.notebookAgent": false,
-        "inlineChat.renderMode": "zone",
 
     // Interactive Windows
         "interactiveWindow.alwaysScrollOnNewCell": true,
@@ -1930,6 +2236,10 @@
         "interactiveWindow.executeWithShiftEnter": false,
         "interactiveWindow.promptToSaveOnClose": false,
         "interactiveWindow.showExecutionHint": true,
+
+    // Issue Reporter
+        "issueReporter.wizard.enabled": false,
+        "issueReporter.wizard.fullWorkspaceScan": false,
 
     // Keyboard
         "keyboard.mapAltGrToCtrlAlt": false,
@@ -2145,6 +2455,7 @@
         "search.decorations.colors": true,
         "search.defaultViewMode": "list",
         "search.experimental.closedNotebookRichContentResults": false,
+        "search.experimental.useIgnoreFilesInFindFiles": false,
         "search.maxResults": 20000,
         "search.mode": "view",
         "search.quickAccess.preserveInput": false,
@@ -2206,6 +2517,9 @@
         "terminal.external.windowsExec": "C:\\Windows\\System32\\cmd.exe",
         "terminal.integrated.accessibleViewFocusOnCommandExecution": false,
         "terminal.integrated.accessibleViewPreserveCursorPosition": false,
+        "terminal.integrated.agentHostProfile.linux": null,
+        "terminal.integrated.agentHostProfile.osx": null,
+        "terminal.integrated.agentHostProfile.windows": null,
         "terminal.integrated.allowChords": true,
         "terminal.integrated.allowMnemonics": false,
         "terminal.integrated.allowedLinkSchemes": [
@@ -2250,7 +2564,9 @@
         "terminal.integrated.enableWin32InputMode": false,
         "terminal.integrated.env.linux": {},
         "terminal.integrated.env.osx": {},
-        "terminal.integrated.env.windows": {},
+        "terminal.integrated.env.windows": {
+            "NODE_TLS_REJECT_UNAUTHORIZED": "0"
+        },
         "terminal.integrated.environmentChangesRelaunch": true,
         "terminal.integrated.fastScrollSensitivity": 5,
         "terminal.integrated.focusAfterRun": "none",
@@ -2334,6 +2650,7 @@
         ],
         "terminal.integrated.inheritEnv": true,
         "terminal.integrated.initialHint": true,
+        "terminal.integrated.initialHintCopilotCli": false,
         "terminal.integrated.letterSpacing": 0,
         "terminal.integrated.localEchoEnabled": "auto",
         "terminal.integrated.localEchoExcludePrograms": [
@@ -2447,6 +2764,7 @@
         "terminal.integrated.suggest.upArrowNavigatesHistory": true,
         "terminal.integrated.suggest.windowsExecutableExtensions": {},
         "terminal.integrated.tabStopWidth": 8,
+        "terminal.integrated.tabs.allowAgentCliTitle": false,
         "terminal.integrated.tabs.defaultColor": "terminal.ansiGreen",
         "terminal.integrated.tabs.defaultIcon": "terminal",
         "terminal.integrated.tabs.description": "${task}${separator}${local}${separator}${cwdFolder}",
@@ -2477,6 +2795,7 @@
             "yellow": 60,
             "green": 90
         },
+        "testing.coverageMinimapEnabled": true,
         "testing.coverageToolbarEnabled": false,
         "testing.defaultGutterClickAction": "run",
         "testing.displayedCoveragePercent": "totalCoverage",
@@ -2493,8 +2812,9 @@
 
     // Update
         "update.enableWindowsBackgroundUpdates": true,
+        "update.showPostInstallInfo": false,
         "update.showReleaseNotes": true,
-        "update.statusBar": "detailed",
+        "update.titleBar": true,
 
     // Window
         "window.autoDetectColorScheme": false,
@@ -2506,7 +2826,7 @@
         "window.confirmSaveUntitledWorkspace": true,
         "window.controlsStyle": "native",
         "window.customMenuBarAltFocus": true,
-        "window.customTitleBarVisibility": "auto",
+        "window.customTitleBarVisibility": "windowed",
         "window.density.editorTabHeight": "default",
         "window.dialogStyle": "native",
         "window.doubleClickIconToClose": false,
@@ -2532,7 +2852,13 @@
         "workbench.activityBar.iconClickBehavior": "toggle",
         "workbench.browser.dataStorage": "global",
         "workbench.browser.enableChatTools": false,
+        "workbench.browser.enableRemoteProxy": false,
+        "workbench.browser.experimentalUserTools.enabled": false,
+        "workbench.browser.maxHistoryEntries": 200,
         "workbench.browser.openLocalhostLinks": false,
+        "workbench.browser.pageZoom": "Match Window",
+        "workbench.browser.searchEngine": "none",
+        "workbench.browser.showInTitleBar": false,
         "workbench.cloudChanges.autoResume": "onReload",
         "workbench.cloudChanges.continueOn": "prompt",
         "workbench.commandPalette.experimental.askChatLocation": "chatView",
@@ -2541,14 +2867,16 @@
         "workbench.commandPalette.history": 50,
         "workbench.commandPalette.preserveInput": false,
         "workbench.commandPalette.showAskInChat": true,
+        "workbench.diffEditorAssociations": {},
         "workbench.editor.alwaysShowEditorActions": false,
         "workbench.editor.autoLockGroups": {
             "default": false,
             "workbench.editor.chatSession": false,
+            "workbench.editor.chatDebug": false,
             "workbench.editorinputs.searchEditorInput": false,
             "workbench.editor.processExplorer": true,
             "agentSessionsWelcomePage": false,
-            "workbench.editorinputs.browser": false,
+            "workbench.editor.browser": false,
             "notebookOutputEditor": false,
             "repl": false,
             "workbench.editors.gettingStartedInput": false,
@@ -2623,11 +2951,13 @@
         "workbench.enableExperiments": true,
         "workbench.experimental.cloudChanges.autoStore": "off",
         "workbench.experimental.cloudChanges.partialMatches.enabled": false,
+        "workbench.experimental.modernUI": true,
         "workbench.experimental.share.enabled": false,
         "workbench.externalBrowser": "",
         "workbench.externalUriOpeners": {},
         "workbench.hover.delay": 500,
         "workbench.hover.reducedDelay": 500,
+        "workbench.layoutControl.enabled": false,
         "workbench.layoutControl.type": "both",
         "workbench.list.defaultFindMatchType": "fuzzy",
         "workbench.list.defaultFindMode": "highlight",
@@ -2650,10 +2980,10 @@
         "workbench.panel.defaultLocation": "bottom",
         "workbench.panel.opensMaximized": "preserve",
         "workbench.panel.showLabels": true,
-        "workbench.preferredDarkColorTheme": "Default Dark Modern",
+        "workbench.preferredDarkColorTheme": "Dark Modern",
         "workbench.preferredHighContrastColorTheme": "Default High Contrast",
         "workbench.preferredHighContrastLightColorTheme": "Default High Contrast Light",
-        "workbench.preferredLightColorTheme": "Default Light Modern",
+        "workbench.preferredLightColorTheme": "Light Modern",
         "workbench.productIconTheme": "Default",
         "workbench.quickOpen.closeOnFocusLost": true,
         "workbench.quickOpen.preserveInput": false,
@@ -2674,6 +3004,7 @@
         "workbench.settings.settingsSearchTocBehavior": "filter",
         "workbench.settings.showAISearchToggle": false,
         "workbench.settings.useSplitJSON": false,
+        "workbench.shadows": true,
         "workbench.sideBar.location": "left",
         "workbench.statusBar.visible": true,
         "workbench.tips.enabled": true,
@@ -2685,6 +3016,7 @@
         "workbench.trustedDomains.promptInTrustedWorkspace": false,
         "workbench.view.alwaysShowHeaderActions": false,
         "workbench.view.showQuietly": {},
+        "workbench.welcomePage.experimentalOnboarding": true,
         "workbench.welcomePage.walkthroughs.openOnInstall": true,
 
     // ZenMode
